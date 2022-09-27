@@ -10,8 +10,8 @@ import PostPage from './pages/PostPage';
 function App() {
   return (
     <Routes>
-    <Route path="/" element={<PostListPage />} exact />
-    <Route path="/:id" element={<PostListPage/>} exact />
+    <Route path="/" element={<PostListPage />}  />
+    <Route path="/:id" element={<PostListPage/>}  />
     <Route path="/login" element={<LoginPage/>} />
     <Route path= "/register" element={<RegisterPage/>}/>
     <Route path="/write" element={<WritePage/>}/>
