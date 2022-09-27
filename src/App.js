@@ -11,11 +11,11 @@ function App() {
   return (
     <Routes>
     <Route path="/" element={<PostListPage />} exact />
-    <Route path="/@:username" element={<PostListPage/>} exact />
+    <Route path="/:id" element={<PostListPage/>} exact />
     <Route path="/login" element={<LoginPage/>} />
     <Route path= "/register" element={<RegisterPage/>}/>
     <Route path="/write" element={<WritePage/>}/>
-    <Route path="/@:username/:postId" element={<PostPage/>}  />
+    <Route path="/:id/:postId" element={<PostPage/>}  />
    </Routes>
   );
 }

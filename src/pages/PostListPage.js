@@ -1,7 +1,14 @@
 import React from "react";
+import styled from 'styled-components';
+import Header from '../components/Header';
 
-const PostListPage = () => {
-    return <div>포스트 리스트</div>;
+
+
+function PostListPage(){
+    return(
+            <Header/>
+        ) 
+  
 };
 
 export default PostListPage;
