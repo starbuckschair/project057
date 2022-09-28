@@ -125,9 +125,12 @@ let JoinButton = styled.button`
     border-radius: 10px;
 `
 let CommentBox = styled.div`
-    width: 800px;
+    width: 770px;
     height: auto;
     margin-top: 10px;
+    padding-bottom: 1%;
+    /* background-color: rgb(217 217 217); */
+    color:black;
     border: 1px solid gray;
     border-radius: 10px;
     display: flex;
@@ -139,6 +142,7 @@ let CommentLine = styled.div`
    width: 98%;
    height: 30px;
    /* border: 1px solid gray; */
+   border-radius: 10px;
     margin-top: 1em;
    display: flex;
    justify-content: space-around;
