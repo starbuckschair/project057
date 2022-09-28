@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 const Background = styled.div`
   width: 100%;
   height: auto;
-
   margin-top: 80px;
   display: flex;
   justify-content: center;
