@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import styled from 'styled-components';
 
 let Body = styled.div`
@@ -82,9 +83,10 @@ let LiveInfoImg = styled.div`
 let LiveInfoImgs = styled.div`
     width: 20%;
     height: 40px;
-    font-size: 35px;
+    font-size: 15px;
+    font-weight: 600;
     border:1px solid gray;
-    background:${ props => props.bg };
+    /* background:${ props => props.bg }; */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -123,6 +125,10 @@ let JoinButton = styled.button`
     background-color: white;
     border: 2px solid gray;
     border-radius: 10px;
+    &:hover {
+    cursor: pointer;
+    color: red;
+    }
 `
 let CommentBox = styled.div`
     width: 770px;
@@ -164,16 +170,19 @@ let CommentInput = styled(CommentItem)`
 
 
 
-function PostPageBody(){
+function PostPageBody(props){
+    let pickItem = props.posts.find(x=> x.userId === props.id)//홈화면에서 선택한 주문 상세내용
+    let [icon, setIcon] = useState(['가'])
+
     return(
         <>
             <Body>
                 <OrderInfo>
-                    <MapBox></MapBox>
+                    <MapBox />
                     <DetailInfo>
                         <StaticInfo>
                             <StaticInfoTitle>픽업장소</StaticInfoTitle>
-                            <StaticInfoDetail>더큰내일센터 2층 김녕회의실</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem.location}</StaticInfoDetail>
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>메뉴정보</StaticInfoTitle>
@@ -185,21 +194,34 @@ function PostPageBody(){
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>모집인원</StaticInfoTitle>
-                            <StaticInfoDetail>3명</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem.recruit}</StaticInfoDetail>
                         </StaticInfo>
                         <LiveInfo>
                             <LiveInfoImg>
-                                <LiveInfoImgs>😎</LiveInfoImgs>
-                                <LiveInfoImgs>🥰</LiveInfoImgs>
-                                <LiveInfoImgs>🥸</LiveInfoImgs>
+                                {
+                                    icon.map((a, i)=>{
+                                        return(
+                                            <LiveInfoImgs key={i}>
+                                                {a[i]}
+                                            </LiveInfoImgs>
+                                        )  
+                                    })   
+                                }
                             </LiveInfoImg>
                             <LiveInfoText>
-                                <LiveInfoTextTo>1명 참여중</LiveInfoTextTo>
+                                <LiveInfoTextTo>{icon.length}명 참여중</LiveInfoTextTo>
                                 <LiveInfoTextTo>마감 5분전</LiveInfoTextTo>
                             </LiveInfoText>
                         </LiveInfo>
                         <JoinButtonBox>
-                            <JoinButton>참여하기</JoinButton>
+                            <JoinButton onClick={()=>{
+                                if(icon.length<pickItem.recruit){
+                                    let arr = [...icon]
+                                    arr.push('다')
+                                    setIcon(arr)
+                                }
+                                
+                            }}>참여하기</JoinButton>
                         </JoinButtonBox>
                     </DetailInfo>
                 </OrderInfo>
