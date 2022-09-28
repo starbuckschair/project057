@@ -11,9 +11,15 @@ let Box = styled.div`
     align-items: center;
 `;
 
-let Img = styled.img`
-    width: 400px;
+let LogoBox = styled.div`
+    width: 100px;
     height: 50px;
+    font-weight: 500;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
 `
 
 let LoginBox = styled.div`
@@ -45,7 +51,7 @@ const OpenButton = styled(Button)`
 function Header(){
     return(
             <Box>
-                <Img src={process.env.PUBLIC_URL + '/pumkinlogo.png'} /> 
+                <LogoBox>호박공구마</LogoBox> 
                 <LoginBox>
                     <OpenButton>방만들기</OpenButton>
                     <Button>로그인</Button>
