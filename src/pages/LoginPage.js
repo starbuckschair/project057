@@ -21,6 +21,9 @@ const ContentsBox = styled.div`
   padding-top: 40px;
   padding-left: 30px;
   border: 1px solid blue;
+  div {
+    display: flex;
+  }
 `;
 
 const InputBox = styled.input`
@@ -39,6 +42,7 @@ const LoginButton = styled.button`
 
 const LoginPage = () => {
   const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChecked = (event) => {
