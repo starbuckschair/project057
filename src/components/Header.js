@@ -39,7 +39,7 @@ let LoginBox = styled.div`
       cursor: pointer;
     }
 `;
-const Button = styled.button`//로그인/회원가입버튼
+let Button = styled.button`//로그인/회원가입버튼
     width: 120px;
     height: 30px;
   color: black;
