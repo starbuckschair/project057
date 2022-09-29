@@ -39,7 +39,7 @@ const LoginButton = styled.button`
   margin-bottom: 10px;
 `;
 
-const LoginPage = () => {
+function LoginPage(){
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [isChecked, setIsChecked] = useState(false);
