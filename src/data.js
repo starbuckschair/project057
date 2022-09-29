@@ -12,7 +12,7 @@ let data = [
         "deadline" : "2022-04-20T21:00:21.634121",
         "location" : "신가깅이 픽업하고 싶은곳",
         "restaurant-url" : "www.프라닭.com",
-        "participants-list" : [ ],
+        "participants-list" : [ ],// recruit 대체 할것
         "body" : "프라닭 주문하실분 아이파크 경비실픽업이요",
         "image-url" :"image.프라닭.com"
     },

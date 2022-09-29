@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styled from 'styled-components';
+import Comment from './Comment'
 
 let Body = styled.div`
     width: 98%;
@@ -23,6 +24,7 @@ let MapBox = styled.div`
     height: 300px;
     margin: 1%;
     border: 1px solid gray;
+    border-radius: 10px;
     background-image:url('./직방이미지.png');
     background-size:cover;
     background-position: center;
@@ -76,6 +78,8 @@ let LiveInfoImg = styled.div`
     width: 60%;
     height: 50px;
     border: 1px solid gray;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -96,6 +100,8 @@ let LiveInfoText = styled.div`
     width: 40%;
     height: 50px;
     border: 1px solid gray;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -130,43 +136,7 @@ let JoinButton = styled.button`
     color: red;
     }
 `
-let CommentBox = styled.div`
-    width: 770px;
-    height: auto;
-    margin-top: 10px;
-    padding-bottom: 1%;
-    /* background-color: rgb(217 217 217); */
-    color:black;
-    border: 1px solid gray;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-`
 
-let CommentLine = styled.div`
-   width: 98%;
-   height: 30px;
-   /* border: 1px solid gray; */
-   border-radius: 10px;
-    margin-top: 1em;
-   display: flex;
-   justify-content: space-around;
-`
-let CommentItem = styled.div`
-    width: 15%;
-    height: 30px;
-    font-weight: 600;
-    /* border: 1px solid gray; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-let CommentInput = styled(CommentItem)`
-    width: 85%;
-    font-weight: 300;
-    justify-content: flex-start;
-`
 
 
 
@@ -220,33 +190,12 @@ function PostPageBody(props){
                                     arr.push('다')
                                     setIcon(arr)
                                 }
-                                
                             }}>참여하기</JoinButton>
                         </JoinButtonBox>
                     </DetailInfo>
                 </OrderInfo>
-                <CommentBox>
-                    <CommentLine>
-                        <CommentItem>이태원</CommentItem>
-                        <CommentInput>정말 맛있겠네요 빨리 참여하기 눌러주세요</CommentInput>
-                    </CommentLine>
-                    <CommentLine>
-                        <CommentItem>송지효</CommentItem>
-                        <CommentInput>애월하귀포구점 정말 좋아요 </CommentInput>
-                    </CommentLine>
-                    <CommentLine>
-                        <CommentItem>건휘바</CommentItem>
-                        <CommentInput>아 고민되네 카카오페이 되나요?</CommentInput>
-                    </CommentLine>
-                    <CommentLine>
-                        <CommentItem>신가깅</CommentItem>
-                        <CommentInput>계좌이체 되나요?</CommentInput>
-                    </CommentLine>
-                    <CommentLine>
-                        <CommentItem>은주모니</CommentItem>
-                        <CommentInput>송지효님 혹시 더큰내일센터 다니세요?</CommentInput>
-                    </CommentLine>
-                </CommentBox>
+                <Comment />
+                
             </Body>
         </>
     )
