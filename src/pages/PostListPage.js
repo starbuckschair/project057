@@ -48,22 +48,6 @@ let MapImg = styled.div`
 
 
 function PostListPage(){
-    let [choice, setChoice] = useState([]);
-
-    useEffect(()=>{
-        axios.get("http://localhost:4000/items").then((res)=>{
-            let copy = [...choice, ...res.data];
-            // console.log(copy);
-            setChoice(copy)
-            // console.log(choice)
-
-        })
-        .catch(()=>{
-          console.log('실패함')
-        })
-    
-  },[])
-
     return(
         <>
             <Header/>
