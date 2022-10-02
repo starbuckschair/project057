@@ -3,14 +3,17 @@ import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import styled from 'styled-components';
 
 let Box = styled.div`
-    width: auto;
+    width: 100%;
     height: 50px;
-    /* color : grey; */
+    background-color: white;
     border-bottom: 2px solid grey;
+    position: fixed;
+    z-index: 100;
     display: flex;
     justify-content: space-around;
     align-items: center;
 `;
+
 let LogoBox = styled.div`
     width: 100px;
     height: 45px;
@@ -62,14 +65,15 @@ const OpenButton = styled(Button)`//방만들기버튼
 function Header(){
     let navigate = useNavigate();
     return(
-            <Box>
-                <LogoBox onClick={()=>{navigate('/')}}>호박공구마</LogoBox> 
-                <LoginBox>
-                    <OpenButton onClick={()=>{navigate('/write')}}>방만들기</OpenButton>
-                    <Button onClick={()=>{navigate('/login')}}>로그인</Button>
-                    <Button onClick={()=>{navigate('/register')}}>회원가입</Button>
-                </LoginBox>
-            </Box>
+        <Box>
+            <LogoBox onClick={()=>{navigate('/')}}>호박공구마</LogoBox> 
+            <LoginBox>
+                <OpenButton onClick={()=>{navigate('/write')}}>방만들기</OpenButton>
+                <Button onClick={()=>{navigate('/login')}}>로그인</Button>
+                <Button onClick={()=>{navigate('/register')}}>회원가입</Button>
+            </LoginBox>
+        </Box>
+        
         ) 
   
 };

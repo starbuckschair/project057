@@ -7,6 +7,9 @@ import { useParams, useNavigate } from 'react-router-dom'
 import PostPageBody from "../components/PostPageBody"
 import data from "../data";
 
+let PaddingBox = styled.div`
+    height: 60px;
+`
 
 function PostPage() {
     let {id} = useParams();
@@ -14,6 +17,7 @@ function PostPage() {
     return (
         <>
             <Header/>
+            <PaddingBox/>
             <PostPageBody posts={posts} id={id}/>
         </>
     );

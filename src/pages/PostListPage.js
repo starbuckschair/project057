@@ -1,11 +1,15 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Header from '../components/Header';
 import PostLists from '../components/PostLists'
 import FilterBar from '../components/FilterBar'
+import {Map, MapMarker} from 'react-kakao-maps-sdk'
+import axios from 'axios';
+import { toBePartiallyChecked } from "../../node_modules/@testing-library/jest-dom/dist/matchers";
+
 
 let PaddingBox = styled.div`
-    height: 5px;
+    height: 60px;
 `
 
 let Body = styled.div`
@@ -28,31 +32,56 @@ let Describe = styled.div`
     border: 1px solid gray;
     border-radius: 10px;
 `
-let Map = styled.div`
+let MapImg = styled.div`
     width: 800px;
     height: 300px;
     margin-top: 1%;
     border: 1px solid gray;
     border-radius: 10px;
-    background-image: url('./map.png');
-    background-size: cover;
-    background-position: center;
+    /* background-image: url('./map.png'); */
+    /* background-size: cover;
+    background-position: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 
-
-
 function PostListPage(){
+    let [choice, setChoice] = useState([]);
+
+    useEffect(()=>{
+        axios.get("http://localhost:4000/items").then((res)=>{
+            let copy = [...choice, ...res.data];
+            // console.log(copy);
+            setChoice(copy)
+            // console.log(choice)
+
+        })
+        .catch(()=>{
+          console.log('실패함')
+        })
+    
+  },[])
+
     return(
         <>
             <Header/>
             <PaddingBox />
             <Body>
                 <Describe><br></br>호박공구마는 배달건당 주문량을 늘려 탄소절감과 고객비용부담 완화를 통해 <br></br>더 나은 세상을 만들기 위한 배달비공유 사이트입니다.</Describe>
-                <Map />
+                <MapImg>
+                    <Map
+                        center={{ lat: 33.5563, lng: 126.79581 }}
+                        style={{ width: "98%", height: "98%"}}
+                        >
+                        <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
+                            <div style={{ color: "#000" }}>호박공구마</div>
+                        </MapMarker>
+                    </Map>   
+                </MapImg>
                 <FilterBar/>
                 <PostLists />
-                
             </Body>
         </>
         ) 

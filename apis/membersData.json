@@ -1,0 +1,126 @@
+{
+    "v1/members": [
+        {
+            "memberId" : 1,
+            "username" : "이은주",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 2,
+            "username" : "서태원",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 3,
+            "username" : "신가경",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 4,
+            "username" : "김건휘",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 5,
+            "username" : "박지효",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 6,
+            "username" : "황윤준",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 7,
+            "username" : "강시혁",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 8,
+            "username" : "홍민정",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 9,
+            "username" : "이현석",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 10,
+            "username" : "정다운",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 11,
+            "username" : "홍성권",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        },
+        {
+            "memberId" : 12,
+            "username" : "오나래",
+            "email" : "test@naver.com",
+            "phoneNumber" : "010-1111-1111",
+            "profileImageUrl" : "www.test.com",
+            "modifiedAt" : 1664436397982,
+            "joinedAt" : 1664436397982,
+            "role" : "ROLE_USER"
+        }
+
+    ]
+
+  }

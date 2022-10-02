@@ -30,11 +30,26 @@
 
   </head>
   <body>
+    <!-- <div
+      id="map"
+      style="width: 98%; height: 98%; border-radius: 15px; position: relative;"
+    ></div> -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script
-    type="text/javascript"
-    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a9d02fbbd911b92467f10168726957fb"></script>
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c0b3dc07c39b7225d266872118b043c1">
+    </script>
+    <script>
+      var container = document.getElementById("map");
+      var options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3
+      };
+  
+      var map = new kakao.maps.Map(container, options);
+    </script>
+  
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import styled from 'styled-components';
-import Comment from './Comment'
+import Comment from './Comment';
+import {Map, MapMarker} from 'react-kakao-maps-sdk';
 
 let Body = styled.div`
     width: 98%;
@@ -25,9 +26,13 @@ let MapBox = styled.div`
     margin: 1%;
     border: 1px solid gray;
     border-radius: 10px;
-    background-image:url('./직방이미지.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* background-image:url('./직방이미지.png');
     background-size:cover;
-    background-position: center;
+    background-position: center; */
 `
 let DetailInfo = styled.div`
     width: 45%;
@@ -148,7 +153,16 @@ function PostPageBody(props){
         <>
             <Body>
                 <OrderInfo>
-                    <MapBox />
+                    <MapBox>
+                        <Map
+                            center={{ lat: 33.5563, lng: 126.79581 }}
+                            style={{ width: "98%", height: "98%"}}
+                            >
+                            <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
+                                <div style={{ color: "#000" }}>호박공구마</div>
+                            </MapMarker>
+                        </Map>    
+                    </MapBox>
                     <DetailInfo>
                         <StaticInfo>
                             <StaticInfoTitle>픽업장소</StaticInfoTitle>
