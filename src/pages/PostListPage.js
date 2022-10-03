@@ -4,8 +4,6 @@ import Header from '../components/Header';
 import PostLists from '../components/PostLists'
 import FilterBar from '../components/FilterBar'
 import {Map, MapMarker} from 'react-kakao-maps-sdk'
-import axios from 'axios';
-import { toBePartiallyChecked } from "../../node_modules/@testing-library/jest-dom/dist/matchers";
 
 
 let PaddingBox = styled.div`

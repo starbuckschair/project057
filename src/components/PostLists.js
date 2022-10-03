@@ -1,9 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import {useParams} from "react-router-dom"
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import styled from 'styled-components';
-import data from '../data'
 import axios from 'axios';
 
 let PostList = styled.div`

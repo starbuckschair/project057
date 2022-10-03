@@ -13,12 +13,11 @@ let PaddingBox = styled.div`
 
 function PostPage() {
     let {id} = useParams();
-    let [posts, setPosts] = useState(data);
     return (
         <>
             <Header/>
             <PaddingBox/>
-            <PostPageBody posts={posts} id={id}/>
+            <PostPageBody id={id}/>
         </>
     );
 };
