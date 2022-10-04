@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
 import { detail } from '../components/PostLists';
 
+let PaddingBox = styled.div`
+    height: 60px;
+`
 const Background = styled.div`
   width: 100%;
   height: auto;
@@ -134,6 +137,7 @@ function WritePage(props) {
   return (
     <>
       <Header />
+      <PaddingBox/>
       <Background>
         <form onSubmit={onSubmit}>
           <ContentsArea>

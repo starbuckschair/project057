@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 
+let PaddingBox = styled.div`
+  height: 60px;
+`;
 const Background = styled.div`
   width: 100%;
   height: auto;
@@ -100,6 +103,7 @@ const RegisterPage = () => {
   return (
     <>
       <Header />
+      <PaddingBox />
       <Background>
         <FormBox>
           <h1>회원가입</h1>

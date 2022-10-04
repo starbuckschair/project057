@@ -4,7 +4,9 @@ import Header from '../components/Header';
 import { useEffect, useState } from 'react';
 
 //커밋테스트
-
+let PaddingBox = styled.div`
+    height: 60px;
+`
 const Background = styled.div`
   width: 100%;
   height: auto;
@@ -74,6 +76,7 @@ function LoginPage() {
   return (
     <>
       <Header />
+      <PaddingBox/>
       <Background>
         <ContentsBox>
           <h2>로그인</h2>

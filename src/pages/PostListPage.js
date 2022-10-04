@@ -9,7 +9,6 @@ import {Map, MapMarker} from 'react-kakao-maps-sdk'
 let PaddingBox = styled.div`
     height: 60px;
 `
-
 let Body = styled.div`
     width: 96%;
     margin: 0 auto;
