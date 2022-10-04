@@ -18,11 +18,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<PostListPage />} />
-      <Route path="/post" element={<PostListPage />} />
+      <Route path="/items" element={<PostListPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/write" element={<WritePage />} />
-      <Route path="/post/:id" element={<PostPage />} />
+      <Route path="/items/:id" element={<PostPage />} />
     </Routes>
   );
 }

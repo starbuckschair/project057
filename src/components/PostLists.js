@@ -48,7 +48,7 @@ function PostLists(){
     let navigate = useNavigate();
     
     useEffect(()=>{
-        axios.get("http://localhost:4000/items").then((res)=>{
+        axios.get("http://192.168.4.143:8080/items?page=0&size=5").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -60,7 +60,7 @@ function PostLists(){
      },[])
    
      useEffect(()=>{
-        axios.get("http://localhost:4000/members").then((res)=>{
+        axios.get("http://192.168.4.143:8080/v1/members?page=0&size=5").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
@@ -90,10 +90,10 @@ function PostLists(){
                 
                 return(
                     <PostHead key={i} onClick={()=>{
-                        navigate(`/post/${detail}`)
+                        navigate(`/items/${detail}`)
                     }}>
                         <ContentsBox>{a.restaurantName}</ContentsBox>
-                        <ContentsBox>{user?.username}</ContentsBox>
+                        <ContentsBox>{user?.memberId}</ContentsBox>
                         <ContentsBox>{a.participantsList.length}명</ContentsBox>
                         <ContentsBox>100미터</ContentsBox>
                         <ContentsBox>5분전</ContentsBox>
