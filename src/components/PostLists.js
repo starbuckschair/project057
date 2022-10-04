@@ -48,7 +48,7 @@ function PostLists(){
     let navigate = useNavigate();
     
     useEffect(()=>{
-        axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/first").then((res)=>{
+        axios.get("http://localhost:4000/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -60,7 +60,7 @@ function PostLists(){
      },[])
    
      useEffect(()=>{
-        axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/second").then((res)=>{
+        axios.get("http://localhost:4000/members").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
@@ -85,14 +85,15 @@ function PostLists(){
         {
             contents.map((a, i)=>{
                 const detail = a.itemId; //detail은 게시판 글 클릭시 해당 글의 itemId입니다.
-                const userName = users.filter((el)=>{return el.memberId===a.memberId})[0].username;
+                const user = users.find((el)=>{return el.memberId===a.memberId});
+
                 
                 return(
                     <PostHead key={i} onClick={()=>{
                         navigate(`/post/${detail}`)
                     }}>
                         <ContentsBox>{a.restaurantName}</ContentsBox>
-                        <ContentsBox>{userName}</ContentsBox>
+                        <ContentsBox>{user?.username}</ContentsBox>
                         <ContentsBox>{a.participantsList.length}명</ContentsBox>
                         <ContentsBox>100미터</ContentsBox>
                         <ContentsBox>5분전</ContentsBox>

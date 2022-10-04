@@ -1,5 +1,6 @@
 {
-  "items": [ {
+  "items": [ 
+  {
     "itemId" : 1,  
     "memberId" : 1, 
     "title" : "Title1", 
@@ -35,7 +36,7 @@
       "modifiedAt" : 1664436396803
     }
   }, 
-    {
+  {
     "itemId" : 2,
     "memberId" : 2,
     "title" : "Title2",
@@ -70,7 +71,8 @@
       "createdAt" : 1664436396803,
       "modifiedAt" : 1664436396803
     }
-  }, {
+  }, 
+  {
     "itemId" : 3,
     "memberId" : 3,
     "title" : "Title3",
@@ -105,7 +107,8 @@
       "createdAt" : 1664436396803,
       "modifiedAt" : 1664436396803
     }
-  }, {
+  }, 
+  {
     "itemId" : 4,
     "memberId" : 4,
     "title" : "Title4",
@@ -140,7 +143,8 @@
       "createdAt" : 1664436396803,
       "modifiedAt" : 1664436396803
     }
-  }, {
+  }, 
+  {
     "itemId" : 5,
     "memberId" : 5,
     "title" : "Title5",
@@ -175,7 +179,8 @@
       "createdAt" : 1664436396803,
       "modifiedAt" : 1664436396803
     }
-  }, {
+  }, 
+  {
     "itemId" : 6,
     "memberId" : 6,
     "title" : "Title6",
@@ -210,7 +215,8 @@
       "createdAt" : 1664436396803,
       "modifiedAt" : 1664436396803
     }
-  }, {
+  }, 
+  {
     "itemId" : 7,
     "memberId" : 7,
     "title" : "Title7",
@@ -245,7 +251,8 @@
       "createdAt" : 1664436396803,
       "modifiedAt" : 1664436396803
     }
-  }, {
+  }, 
+  {
     "itemId" : 8,
     "memberId" : 8,
     "title" : "Title8",
@@ -280,7 +287,8 @@
       "createdAt" : 1664436396803,
       "modifiedAt" : 1664436396803
     }
-  }, {
+  }, 
+  {
     "itemId" : 9,
     "memberId" : 9,
     "title" : "Title9",
@@ -315,7 +323,8 @@
       "createdAt" : 1664436396803,
       "modifiedAt" : 1664436396803
     }
-  }, {
+  }, 
+  {
     "itemId" : 10,
     "memberId" : 10,
     "title" : "Title10",
@@ -351,5 +360,128 @@
       "modifiedAt" : 1664436396803
     }
   } 
+],
+"members": [
+  {
+      "memberId" : 1,
+      "username" : "이은주",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 2,
+      "username" : "서태원",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 3,
+      "username" : "신가경",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 4,
+      "username" : "김건휘",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 5,
+      "username" : "박지효",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 6,
+      "username" : "황윤준",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 7,
+      "username" : "강시혁",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 8,
+      "username" : "홍민정",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 9,
+      "username" : "이현석",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 10,
+      "username" : "정다운",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 11,
+      "username" : "홍성권",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  },
+  {
+      "memberId" : 12,
+      "username" : "오나래",
+      "email" : "test@naver.com",
+      "phoneNumber" : "010-1111-1111",
+      "profileImageUrl" : "www.test.com",
+      "modifiedAt" : 1664436397982,
+      "joinedAt" : 1664436397982,
+      "role" : "ROLE_USER"
+  }
+
 ]
 }

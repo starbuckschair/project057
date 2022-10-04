@@ -157,7 +157,7 @@ function PostPageBody(){
   
 
     useEffect(()=>{
-        axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/first").then((res)=>{
+        axios.get("http://localhost:4000/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -169,7 +169,7 @@ function PostPageBody(){
      },[])
    
      useEffect(()=>{
-        axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/second").then((res)=>{
+        axios.get("http://localhost:4000/members").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
