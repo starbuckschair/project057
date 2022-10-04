@@ -36,10 +36,8 @@
     transform: rotate(360deg);
   }
 }
-
-
-
+/* 
 @font-face {
   font-family: PretendardVariable;
-  src: url(./font/PretendardVariable.ttf);
-}
+  src: url(./style/font/PretendardVariable.ttf);
+} */

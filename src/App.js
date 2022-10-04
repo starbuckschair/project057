@@ -6,17 +6,24 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
 import PostPage from './pages/PostPage';
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  body{
+    font-size: medium;
+  }
+`;
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<PostListPage />}  />
-      <Route path="/post" element={<PostListPage/>}  />
-      <Route path="/login" element={<LoginPage/>} />
-      <Route path= "/register" element={<RegisterPage/>}/>
-      <Route path="/write" element={<WritePage/>}/>
-      <Route path="/post/:id" element={<PostPage/>}  />
-   </Routes>
+      <Route path="/" element={<PostListPage />} />
+      <Route path="/post" element={<PostListPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/write" element={<WritePage />} />
+      <Route path="/post/:id" element={<PostPage />} />
+    </Routes>
   );
 }
 

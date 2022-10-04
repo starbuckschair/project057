@@ -17,5 +17,24 @@
             "body" : "프라닭 주문하실분 아이파크 경비실픽업이요",
             "image-url" :"image.프라닭.com"
         }
-    ]   
+    ],
+    "writeContent" : [
+        {
+        "itemId" : "은주모니",
+        "userId":"2",
+        "title" : "글루텐프리",
+        "recruit" : "3",
+        "distance" : "300",
+        "timeLimit" : "10",
+        "categoryId" : "1",
+        "createAt" : "2022-04-20T20:08:21.634121",
+        "modifiedAt" : "2022-04-20T20:08:21.634121",
+        "deadline" : "2022-04-20T21:00:21.634121",
+        "location" : "은주모니가 픽업하고 싶은곳",
+        "restaurant-url" : "www.피자나라치킨공구.com",
+        "participants-list" : [ ],
+        "body" : "피자나라치킨공구 주문하실분 아이파크 경비실픽업이요",
+        "image-url" :"image.프라닭.com"
+        }
+    ]
 }
