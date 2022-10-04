@@ -1,7 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {useParams} from "react-router-dom"
 import styled from 'styled-components';
-import Comment from './Comment'
+import Comment from './Comment';
+import {Map, MapMarker} from 'react-kakao-maps-sdk';
+import axios from 'axios';
 
 let Body = styled.div`
     width: 98%;
@@ -25,9 +28,13 @@ let MapBox = styled.div`
     margin: 1%;
     border: 1px solid gray;
     border-radius: 10px;
-    background-image:url('./직방이미지.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* background-image:url('./직방이미지.png');
     background-size:cover;
-    background-position: center;
+    background-position: center; */
 `
 let DetailInfo = styled.div`
     width: 45%;
@@ -140,23 +147,63 @@ let JoinButton = styled.button`
 
 
 
-function PostPageBody(props){
-    let pickItem = props.posts.find(x=> x.userId === props.id)//홈화면에서 선택한 주문 상세내용
+function PostPageBody(){
+    let [contents, setContents] = useState([]);
+    let [users, setUsers] = useState([]);
+    let {id} = useParams();
+    let pickItem = contents.find(el=>el.itemId == id);
+    let pickItemMaker = users.find(el=>el.memberId == pickItem.memberId);
     let [icon, setIcon] = useState(['가'])
+  
 
+    useEffect(()=>{
+        axios.get("http://localhost:4000/items").then((res)=>{
+            let copy = [...res.data];
+            // console.log(copy);
+            setContents(copy)
+            // console.log(choice)
+        })
+        .catch(()=>{
+          console.log('실패함')
+        })
+     },[])
+   
+     useEffect(()=>{
+        axios.get("http://localhost:4000/members").then((res)=>{
+            let copy = [...res.data];
+            // console.log(copy);
+            setUsers(copy)
+            // console.log(res.data)
+        })
+        .catch(()=>{
+          console.log('실패함')
+        })
+     },[])
+
+
+    
     return(
         <>
             <Body>
                 <OrderInfo>
-                    <MapBox />
+                    <MapBox>
+                        <Map
+                            center={{ lat: 33.5563, lng: 126.79581 }}
+                            style={{ width: "98%", height: "98%"}}
+                            >
+                            <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
+                                <div style={{ color: "#000" }}>호박공구마</div>
+                            </MapMarker>
+                        </Map>    
+                    </MapBox>
                     <DetailInfo>
                         <StaticInfo>
                             <StaticInfoTitle>픽업장소</StaticInfoTitle>
-                            <StaticInfoDetail>{pickItem.location}</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItemMaker?.username}</StaticInfoDetail>
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>메뉴정보</StaticInfoTitle>
-                            <StaticInfoDetail> https://baemin.me/oivNksxpo</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem?.restaurantUrl}</StaticInfoDetail>
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>배달료</StaticInfoTitle>
@@ -164,7 +211,7 @@ function PostPageBody(props){
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>모집인원</StaticInfoTitle>
-                            <StaticInfoDetail>{pickItem.recruit}</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem?.participantsList.length}명</StaticInfoDetail>
                         </StaticInfo>
                         <LiveInfo>
                             <LiveInfoImg>
@@ -180,18 +227,21 @@ function PostPageBody(props){
                             </LiveInfoImg>
                             <LiveInfoText>
                                 <LiveInfoTextTo>{icon.length}명 참여중</LiveInfoTextTo>
-                                <LiveInfoTextTo>마감 5분전</LiveInfoTextTo>
+                                <LiveInfoTextTo>마감 5분전 </LiveInfoTextTo>
                             </LiveInfoText>
                         </LiveInfo>
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
-                                if(icon.length<pickItem.recruit){
+                                if(icon.length<pickItem.participantsList.length){
                                     let arr = [...icon]
                                     arr.push('다')
                                     setIcon(arr)
                                 }
                             }}>참여하기</JoinButton>
                         </JoinButtonBox>
+                        {
+                            console.log(parseInt(pickItem?.participantsList))
+                        }
                     </DetailInfo>
                 </OrderInfo>
                 <Comment />

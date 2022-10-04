@@ -1,9 +1,8 @@
 import React from "react";
-import { useState } from "react";
-import {useParams} from "react-router-dom"
+import { useEffect, useState } from "react";
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import styled from 'styled-components';
-import data from '../data'
+import axios from 'axios';
 
 let PostList = styled.div`
     margin-top: 1%;
@@ -43,12 +42,34 @@ let ContentsBox = styled(PostHeadTitle)`
     text-align: center;
 `
 
-
 function PostLists(){
-    let [contents, setContents] = useState(data)
+    let [contents, setContents] = useState([]);
+    let [users, setUsers] = useState([]);
     let navigate = useNavigate();
-
-
+    
+    useEffect(()=>{
+        axios.get("http://localhost:4000/items").then((res)=>{
+            let copy = [...res.data];
+            // console.log(copy);
+            setContents(copy)
+            // console.log(choice)
+        })
+        .catch(()=>{
+          console.log('실패함')
+        })
+     },[])
+   
+     useEffect(()=>{
+        axios.get("http://localhost:4000/members").then((res)=>{
+            let copy = [...res.data];
+            // console.log(copy);
+            setUsers(copy)
+            // console.log(res.data)
+        })
+        .catch(()=>{
+          console.log('실패함')
+        })
+     },[])
     return(
         <PostList>
         <PostHeadTitle>
@@ -57,23 +78,31 @@ function PostLists(){
             <HeadLine>모집인원</HeadLine>
             <HeadLine>거리</HeadLine>
             <HeadLine>마감시간</HeadLine>
+         
+ 
         </PostHeadTitle>
+        
         {
             contents.map((a, i)=>{
-                const detail = a.userId; //detail은 게시판 글 클릭시 해당 글의 userId입니다.
+                const detail = a.itemId; //detail은 게시판 글 클릭시 해당 글의 itemId입니다.
+                const user = users.find((el)=>{return el.memberId===a.memberId});
+
+                
                 return(
                     <PostHead key={i} onClick={()=>{
                         navigate(`/post/${detail}`)
                     }}>
-                        <ContentsBox>{a.title}</ContentsBox>
-                        <ContentsBox>{a.itemId}</ContentsBox>
-                        <ContentsBox>{a.recruit}명</ContentsBox>
-                        <ContentsBox>{a.distance}미터</ContentsBox>
-                        <ContentsBox>{a.timeLimit}분전</ContentsBox>
+                        <ContentsBox>{a.restaurantName}</ContentsBox>
+                        <ContentsBox>{user?.username}</ContentsBox>
+                        <ContentsBox>{a.participantsList.length}명</ContentsBox>
+                        <ContentsBox>100미터</ContentsBox>
+                        <ContentsBox>5분전</ContentsBox>
                     </PostHead>
                 )
             })
         }
+        
+    
         </PostList>
     ) 
   
