@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import data from '../data';
 import * as Yup from 'yup';
 
 let PaddingBox = styled.div`
@@ -76,35 +77,57 @@ function RegisterInfo() {
   const [payment, setPayment] = useState('');
   const navigate = useNavigate();
 
+  let Named = (e) => setUserName(e.target.value);
+  let Email = (e) => setEmail(e.target.value);
+  let Pass = (e) => setPw(e.target.value);
+  let Phone = (e) => setPhone(e.target.value);
+  let Pay = (e) => setPayment(e.target.value);
   //   const handleClick = (event) => {
   //     // event.preventDefault();
   //     // setUserName(event.target.username)
   //     console.log(event.target);
   //   };
 
+  const JoinFetch = () => {
+    let members = {
+      username: `${username}`,
+      email: `${email}`,
+      password: `${pw}`,
+      phoneNumber: `${phone}`,
+      profileImageUrl: 'image.come',
+      paymentMethod: `${payment}`,
+    };
+
+    fetch('http://192.168.4.161:8080/v1/members', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(members),
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          //throw new Error('fail to fetch');
+          res.json();
+        }
+      })
+      .then((res) => console.log(res))
+      .then((data) => console.log('성공:', data))
+      .catch((err) => console.error('실패:', err));
+    // SignUp();
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    setUserName(e.target.username.value);
-    setEmail(e.target.email.value);
-    setPw(e.target.pw.value);
-    setPhone(e.target.phone.value);
-    setPayment(e.target.payment.value);
+    // setUserName(e.target.name.value);
+    // setEmail(e.target.emailId.value);
+    // setPw(e.target.pw.value);
+    // setPhone(e.target.phone.value);
+    // setPayment(e.target.payment.value);
 
-    fetch('http://localhost:4000/members', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: 'username',
-        email: 'email',
-        password: 'pw',
-        phoneNumber: 'phoneNumber',
-        payment: 'payment',
-      }),
-    }).then((res) => console.log(res.json()));
+    JoinFetch();
     SignUp();
   };
   const SignUp = () => {
-    navigate('/');
+    navigate('/login');
   };
 
   return (
@@ -114,18 +137,24 @@ function RegisterInfo() {
       <Background>
         <form onSubmit={onSubmit}>
           <FormBox>
-            <h1>RegisterInfo</h1>
+            <h1>회원가입정보</h1>
             <FormPosition>
               <FormTitle>이름</FormTitle>
               <InputBox
                 type="text"
-                name="username"
+                name="name"
                 placeholder="name"
+                onChange={Named}
               ></InputBox>
             </FormPosition>
             <FormPosition>
               <FormTitle>이메일</FormTitle>
-              <InputBox type="text" name="email" placeholder="email"></InputBox>
+              <InputBox
+                type="text"
+                name="emailId"
+                placeholder="email"
+                onChange={Email}
+              ></InputBox>
             </FormPosition>
             <FormPosition>
               <FormTitle>비밀번호</FormTitle>
@@ -133,11 +162,17 @@ function RegisterInfo() {
                 type="password"
                 name="pw"
                 placeholder="password"
+                onChange={Pass}
               ></InputBox>
             </FormPosition>
             <FormPosition>
               <FormTitle>연락처</FormTitle>
-              <InputBox type="tel" name="phone" placeholder="phone"></InputBox>
+              <InputBox
+                type="tel"
+                name="phone"
+                placeholder="phone"
+                onChange={Phone}
+              ></InputBox>
             </FormPosition>
             <FormPosition>
               <FormTitle>결제수단</FormTitle>
@@ -145,6 +180,7 @@ function RegisterInfo() {
                 type="text"
                 name="payment"
                 placeholder="payment"
+                onChange={Pay}
               ></InputBox>
             </FormPosition>
             <div>
