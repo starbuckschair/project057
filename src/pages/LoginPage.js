@@ -1,9 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import { useEffect, useState } from 'react';
 
-//커밋테스트
 let PaddingBox = styled.div`
     height: 60px;
 `

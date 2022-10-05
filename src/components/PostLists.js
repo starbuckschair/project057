@@ -89,7 +89,7 @@ function PostLists(){
                     }}>
                         <ContentsBox>{a.restaurantName}</ContentsBox>
                         <ContentsBox>{user?.username}</ContentsBox>
-                        <ContentsBox>{a.participantsList.length}명</ContentsBox>
+                        <ContentsBox>{a.participantsList.length+1}명</ContentsBox>
                         <ContentsBox>100미터</ContentsBox>
                         <ContentsBox>5분전</ContentsBox>
                     </PostHead>
