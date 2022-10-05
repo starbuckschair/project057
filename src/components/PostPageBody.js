@@ -255,9 +255,6 @@ function PostPageBody(){
                                });
                             }}>참여하기</JoinButton>
                         </JoinButtonBox>
-                        {
-                            console.log(parseInt(pickItem?.participantsList))
-                        }
                     </DetailInfo>
                 </OrderInfo>
                 <Comment />
