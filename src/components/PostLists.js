@@ -89,11 +89,7 @@ function PostLists(){
                     }}>
                         <ContentsBox>{a.restaurantName}</ContentsBox>
                         <ContentsBox>{user?.username}</ContentsBox>
-<<<<<<< HEAD
-                        <ContentsBox>{a.participantsList.length}/{a.recruit}명</ContentsBox>
-=======
                         <ContentsBox>{a.participantsList.length}명</ContentsBox>
->>>>>>> parent of 4358e12 (design 참가하기 버튼 활성화)
                         <ContentsBox>100미터</ContentsBox>
                         <ContentsBox>5분전</ContentsBox>
                     </PostHead>
