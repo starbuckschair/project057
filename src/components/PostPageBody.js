@@ -6,7 +6,6 @@ import Comment from './Comment';
 import {Map, MapMarker} from 'react-kakao-maps-sdk';
 import axios from 'axios';
 
-
 let Body = styled.div`
     width: 98%;
     height: auto;
@@ -167,6 +166,7 @@ function PostPageBody(){
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
+            // console.log(choice)
         })
         .catch(()=>{
           console.log('실패함')
@@ -179,13 +179,15 @@ function PostPageBody(){
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
-            // console.log(res.data);
+            // console.log(res.data)
         })
         .catch(()=>{
           console.log('실패함')
         })
      },[])
- 
+
+
+    
     return(
         <>
             <Body>
@@ -203,7 +205,7 @@ function PostPageBody(){
                     <DetailInfo>
                         <StaticInfo>
                             <StaticInfoTitle>픽업장소</StaticInfoTitle>
-                            <StaticInfoDetail>{pickItem?.pickupLocation?.nameOfPlace}</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItemMaker?.username}</StaticInfoDetail>
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>메뉴정보</StaticInfoTitle>
@@ -215,7 +217,7 @@ function PostPageBody(){
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>모집인원</StaticInfoTitle>
-                            <StaticInfoDetail>{pickItem?.recruit}명</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem?.participantsList.length}명</StaticInfoDetail>
                         </StaticInfo>
                         <LiveInfo>
                             <LiveInfoImg>
@@ -228,13 +230,11 @@ function PostPageBody(){
                                     pickItem?.participantsList?.map((a, i)=>{
                                         return(
                                             <LiveInfoImgs key={i}>
-                                                {pickItem?.participantsList[i]?.member?.username}
+                                                {pickItem?.participantsList[i]?.member.username}
                                             </LiveInfoImgs>
-                                        )
-                                    })
+                                        )  
+                                    })   
                                 }
-
-                               
                             </LiveInfoImg>
                             <LiveInfoText>
                                 <LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
@@ -255,6 +255,9 @@ function PostPageBody(){
                                });
                             }}>참여하기</JoinButton>
                         </JoinButtonBox>
+                        {
+                            console.log(parseInt(pickItem?.participantsList))
+                        }
                     </DetailInfo>
                 </OrderInfo>
                 <Comment />
