@@ -78,16 +78,11 @@ function PostLists(){
             <HeadLine>모집인원</HeadLine>
             <HeadLine>거리</HeadLine>
             <HeadLine>마감시간</HeadLine>
-         
- 
         </PostHeadTitle>
-        
         {
             contents.map((a, i)=>{
                 const detail = a.itemId; //detail은 게시판 글 클릭시 해당 글의 itemId입니다.
                 const user = users.find((el)=>{return el.memberId===a.memberId});
-
-                
                 return(
                     <PostHead key={i} onClick={()=>{
                         navigate(`/post/${detail}`)
@@ -101,11 +96,8 @@ function PostLists(){
                 )
             })
         }
-        
-    
         </PostList>
     ) 
-  
 };
 
 export default PostLists;

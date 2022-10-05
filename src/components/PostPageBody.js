@@ -152,12 +152,17 @@ function PostPageBody(){
     let [users, setUsers] = useState([]);
     let {id} = useParams();
     let pickItem = contents.find(el=>el.itemId == id);
-    let pickItemMaker = users.find(el=>el.memberId == pickItem.memberId);
-    let [icon, setIcon] = useState(['가'])
+    let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
+    // let participants = pickItem.participantsList;
+    // let [icon, setIcon] = useState([])
+
+
   
 
+
     useEffect(()=>{
-        axios.get("http://localhost:4000/items").then((res)=>{
+        axios.get("http://localhost:4000/items?page=0&size=5").then((res)=>{
+        // axios.get("http://localhost:4000/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -169,7 +174,8 @@ function PostPageBody(){
      },[])
    
      useEffect(()=>{
-        axios.get("http://localhost:4000/members").then((res)=>{
+        axios.get("http://localhost:4000/members?page=0&size=5").then((res)=>{
+        // axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/second").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
@@ -215,28 +221,38 @@ function PostPageBody(){
                         </StaticInfo>
                         <LiveInfo>
                             <LiveInfoImg>
+                                <LiveInfoImgs>
+                                    {
+                                        pickItemMaker?.username
+                                    }
+                                </LiveInfoImgs>
                                 {
-                                    icon.map((a, i)=>{
+                                    pickItem?.participantsList?.map((a, i)=>{
                                         return(
                                             <LiveInfoImgs key={i}>
-                                                {a[i]}
+                                                {pickItem?.participantsList[i]?.member.username}
                                             </LiveInfoImgs>
                                         )  
                                     })   
                                 }
                             </LiveInfoImg>
                             <LiveInfoText>
-                                <LiveInfoTextTo>{icon.length}명 참여중</LiveInfoTextTo>
+                                <LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
                                 <LiveInfoTextTo>마감 5분전 </LiveInfoTextTo>
                             </LiveInfoText>
                         </LiveInfo>
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
-                                if(icon.length<pickItem.participantsList.length){
-                                    let arr = [...icon]
-                                    arr.push('다')
-                                    setIcon(arr)
-                                }
+                               axios.post(
+                                 `http://localhost:4000/items/${id}?memberId=4`
+                               )
+                               .then((response) => {
+                                 console.log(response);
+                                 
+                               })
+                               .catch((error) => {
+                                 console.log(error.response);
+                               });
                             }}>참여하기</JoinButton>
                         </JoinButtonBox>
                         {

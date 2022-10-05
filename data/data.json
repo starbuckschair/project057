@@ -4,13 +4,9 @@
     "itemId" : 1,  
     "memberId" : 1, 
     "title" : "Title1", 
-    "category" : {
-      "foodCategoryId" : 0,
-      "category" : "치킨",
-      "createdAt" : 1664436396803,
-      "modifiedAt" : 1664436396803 
-    },
-    "createdAt" : 1664436396803, 
+    "recruit" : 3,
+    "foodCategoryId" : 1,
+    "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
     "deadline" : 1664436396803, 
     "pickupLocation" : {
@@ -26,7 +22,29 @@
     },
     "restaurantName" : "세븐일레븐",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1", "참여자2"],
+    "participantsList" : [
+      {
+        "participantsId": 1,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
     "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
@@ -37,15 +55,11 @@
     }
   }, 
   {
-    "itemId" : 2,
-    "memberId" : 2,
-    "title" : "Title2",
-    "category" : {
-      "foodCategoryId" : 0,
-      "category" : "피자",
-      "createdAt" : 1664436396803,
-      "modifiedAt" : 1664436396803
-    },
+    "itemId" : 2,  
+    "memberId" : 2, 
+    "title" : "Title2", 
+    "recruit" : 3,
+    "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
     "deadline" : 1664436396803,
@@ -62,8 +76,30 @@
     },
     "restaurantName" : "다동뼈감자탕",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2","참여자3"],
-    "body" : "Body2배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 1,
+        "type": 2,
+        "member": {
+          "memberId": 3,
+          "username": "신가경",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
@@ -73,15 +109,11 @@
     }
   }, 
   {
-    "itemId" : 3,
-    "memberId" : 3,
-    "title" : "Title3",
-    "category" : {
-      "foodCategoryId" : 0,
-      "category" : "피자",
-      "createdAt" : 1664436396803,
-      "modifiedAt" : 1664436396803
-    },
+    "itemId" : 3,  
+    "memberId" : 3, 
+    "title" : "Title1", 
+    "recruit" : 3,
+    "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
     "deadline" : 1664436396803,
@@ -98,8 +130,30 @@
     },
     "restaurantName" : "비에이치",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2","참여자3"],
-    "body" : "Body3배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 2,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
@@ -109,15 +163,11 @@
     }
   }, 
   {
-    "itemId" : 4,
-    "memberId" : 4,
-    "title" : "Title4",
-    "category" : {
-      "foodCategoryId" : 0,
-      "category" : "피자",
-      "createdAt" : 1664436396803,
-      "modifiedAt" : 1664436396803
-    },
+    "itemId" : 4,  
+    "memberId" : 4, 
+    "title" : "Title4", 
+    "recruit" : 3,
+    "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
     "deadline" : 1664436396803,
@@ -134,8 +184,30 @@
     },
     "restaurantName" : "역기떡볶이",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2"],
-    "body" : "Body4배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 2,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
@@ -170,8 +242,30 @@
     },
     "restaurantName" : "메종글래드삼다정",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2"],
-    "body" : "Body5배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 1,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
@@ -206,8 +300,30 @@
     },
     "restaurantName" : "제주삼다수",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2","참여자3"],
-    "body" : "Body6배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 1,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
@@ -217,15 +333,11 @@
     }
   }, 
   {
-    "itemId" : 7,
-    "memberId" : 7,
-    "title" : "Title7",
-    "category" : {
-      "foodCategoryId" : 0,
-      "category" : "한식",
-      "createdAt" : 1664436396803,
-      "modifiedAt" : 1664436396803
-    },
+    "itemId" : 7,  
+    "memberId" : 7, 
+    "title" : "Title7", 
+    "recruit" : 3,
+    "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
     "deadline" : 1664436396803,
@@ -242,8 +354,30 @@
     },
     "restaurantName" : "일품돈까스",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2"],
-    "body" : "Body7배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 1,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
@@ -278,8 +412,30 @@
     },
     "restaurantName" : "네네치킨",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2","참여자3"],
-    "body" : "Body8배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 1,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
@@ -314,8 +470,30 @@
     },
     "restaurantName" : "대왕족발",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2"],
-    "body" : "Body9배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 1,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
@@ -350,8 +528,30 @@
     },
     "restaurantName" : "왕큰이피자",
     "restaurantUrl" : "http://test-url.com",
-    "participantsList" : ["참여자1","참여자2","참여자3"],
-    "body" : "Body10배송비나눔해요, 결제는 계좌이체 희망합니다",
+    "participantsList" : [
+      {
+        "participantsId": 1,
+        "type": 2,
+        "member": {
+          "memberId": 2,
+          "username": "서태원",
+          "email": "test2@email.com",
+          "password": "pass1234",
+          "phoneNumber": "010-2222-1111",
+          "location": null,
+          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+          "joinedAt": 12341234,
+          "modifiedAt": 12341234,
+          "paymentMethod": "cash",
+          "role": "ROLE_USER",
+          "provider": "provider2",
+          "providerId": "providerId2"
+        },
+        "createdAt": 1664858338741,
+        "modifiedAt": 1664858338741
+      }
+    ],
+    "body" : "배송비나눔해요, 결제는 계좌이체 희망합니다.",
     "imageUrl" : {
       "imageUrlId" : 0,
       "url" : "http://test.com",
