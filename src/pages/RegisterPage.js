@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
 
@@ -22,8 +23,7 @@ const Background = styled.div`
 const FormBox = styled.div`
   width: 500px;
   height: 500px;
-  padding-top: 40px;
-  padding-left: 30px;
+  padding: 40px 30px;
   border-radius: 3px;
   border: none;
   border: 1px solid hsl(210, 8%, 75%);
@@ -63,12 +63,13 @@ const TextZone = styled.div`
 `;
 
 const SubmitButton = styled.button`
-  width: 500px;
-  height: 18px;
+  width: 300px;
+  height: 30px;
   padding: 4.5px;
   border-radius: 3px;
   border: none;
   outline: 1px solid hsl(210, 8%, 75%);
+  margin-top: 20px;
 `;
 
 const RegisterPage = () => {
@@ -79,6 +80,7 @@ const RegisterPage = () => {
     { id: 3, title: '[선택] 마케팅 정보 수신에 대한 동의' },
   ];
   const [checkItems, setCheckItems] = useState([]);
+  const navigate = useNavigate();
 
   const handleSingleCheck = (checked, id) => {
     if (checked) {
@@ -140,8 +142,10 @@ const RegisterPage = () => {
               </TextZone>
             </FormBoxChild>
           ))}
+          <SubmitButton onClick={() => navigate('/regiInfo')}>
+            동의하고 진행하기
+          </SubmitButton>
         </FormBox>
-        <SubmitButton>동의하고 진행하기</SubmitButton>
       </Background>
     </>
   );

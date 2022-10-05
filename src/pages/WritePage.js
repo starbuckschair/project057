@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
-import { detail } from '../components/PostLists';
+import data from '../data';
 
 let PaddingBox = styled.div`
-    height: 60px;
-`
+  height: 60px;
+`;
 const Background = styled.div`
   width: 100%;
   height: auto;
@@ -120,24 +120,45 @@ const TextareaBox = styled.textarea`
 `;
 
 function WritePage(props) {
+  let [category, setCategory] = useState('선택');
   let [url, setUrl] = useState('');
   let [involved, setInvolved] = useState();
   let [deadline, setDeadLine] = useState();
   let [notice, setNotice] = useState('');
   let navigate = useNavigate();
-  let { detail } = useParams();
+  let { id } = useParams();
+
+  const SelecCt = (value) => {
+    console.log();
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
     setUrl(e.target.url.value);
     setInvolved(e.target.number.value);
-    console.log(e.target.value);
-    setNotice(e.target.deadline.value);
+    setDeadLine(e.target.deadline.value);
+    setNotice(e.target.notice.value);
+    // console.log(e.target.deadline.value)
+
+    fetch('http://localhost:4000/items', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        url: 'url',
+        number: 'involved',
+      }),
+    }).then((res) => console.log(res.json()));
+    writeContents();
   };
+
+  const writeContents = () => {
+    navigate(`/post/${id}`);
+  };
+
   return (
     <>
       <Header />
-      <PaddingBox/>
+      <PaddingBox />
       <Background>
         <form onSubmit={onSubmit}>
           <ContentsArea>
@@ -158,19 +179,19 @@ function WritePage(props) {
                 <Title>카테고리</Title>
                 <Content>
                   <select>
-                    <option>--선택--</option>
-                    <option>1인분 주문</option>
-                    <option>프렌차이즈</option>
-                    <option>치킨</option>
-                    <option>피자/양식</option>
-                    <option>중식</option>
-                    <option>한식</option>
-                    <option>일식/돈까스</option>
-                    <option>족발/보쌈</option>
-                    <option>야식</option>
-                    <option>분식</option>
-                    <option>카페/디저트</option>
-                    <option>편의점/마트</option>
+                    <option value="선택">--선택--</option>
+                    <option value="1인분주문">1인분 주문</option>
+                    <option value="프렌차이즈">프렌차이즈</option>
+                    <option value="치킨">치킨</option>
+                    <option value="피자/양식">피자/양식</option>
+                    <option value="중식">중식</option>
+                    <option value="한식">한식</option>
+                    <option value="일식/돈까스">일식/돈까스</option>
+                    <option value="족발/보쌈">족발/보쌈</option>
+                    <option value="야식">야식</option>
+                    <option value="분식">분식</option>
+                    <option value="카페/디저트">카페/디저트</option>
+                    <option value="편의점/마트">편의점/마트</option>
                   </select>
                 </Content>
               </WriteInfoChild>
@@ -219,7 +240,8 @@ function WritePage(props) {
                 </Content>
               </WriteInfoChild>
             </WriteInfo>
-            <button onClick={() => navigate(`/post/${detail}`)}>글쓰기</button>
+            {/* <button onClick={() => navigate(`/post/${detail}`)}>글쓰기</button> */}
+            <input type="submit" />
           </ContentsArea>
         </form>
       </Background>

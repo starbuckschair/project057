@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
 import PostPage from './pages/PostPage';
+import RegisterInfo from './pages/RegisterInfo';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -21,6 +22,7 @@ function App() {
       <Route path="/post" element={<PostListPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/regiInfo" element={<RegisterInfo />} />
       <Route path="/write" element={<WritePage />} />
       <Route path="/post/:id" element={<PostPage />} />
     </Routes>
