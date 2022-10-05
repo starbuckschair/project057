@@ -48,7 +48,7 @@ function PostLists(){
     let navigate = useNavigate();
     
     useEffect(()=>{
-        axios.get("http://localhost:4000/items?page=0&size=5").then((res)=>{
+        axios.get("http://localhost:4000/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -60,7 +60,7 @@ function PostLists(){
      },[])
    
      useEffect(()=>{
-        axios.get("http://localhost:4000/members?page=0&size=5").then((res)=>{
+        axios.get("http://localhost:4000/members").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
