@@ -156,14 +156,13 @@ function PostPageBody(){
     let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
     // let participants = pickItem.participantsList;
     // let [icon, setIcon] = useState([])
-    // console.log(pickItem?.participantsList)
 
 
   
 
 
     useEffect(()=>{
-        axios.get("http://192.168.4.143:8080/items?page=0&size=5").then((res)=>{
+        axios.get("http://localhost:4000/items?page=0&size=5").then((res)=>{
         // axios.get("http://localhost:4000/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
@@ -175,7 +174,7 @@ function PostPageBody(){
      },[])
    
      useEffect(()=>{
-        axios.get("http://192.168.4.143:8080/v1/members?page=0&size=5").then((res)=>{
+        axios.get("http://localhost:4000/members?page=0&size=5").then((res)=>{
         // axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/second").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
@@ -226,10 +225,10 @@ function PostPageBody(){
                                     }
                                 </LiveInfoImgs>
                                 {
-                                    pickItem?.participantsList.map((a, i)=>{
+                                    pickItem?.participantsList?.map((a, i)=>{
                                         return(
                                             <LiveInfoImgs key={i}>
-                                                {pickItem?.participantsList[i]?.member.username}
+                                                {pickItem?.participantsList[i]?.member?.username}
                                             </LiveInfoImgs>
                                         )
                                     })
@@ -238,14 +237,14 @@ function PostPageBody(){
                                
                             </LiveInfoImg>
                             <LiveInfoText>
-                                <LiveInfoTextTo>5명 참여중</LiveInfoTextTo>
+                                <LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
                                 <LiveInfoTextTo>마감 5분전 </LiveInfoTextTo>
                             </LiveInfoText>
                         </LiveInfo>
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
                                axios.post(
-                                 `http://192.168.4.143:8080/items/${id}?memberId=4`
+                                 `http://localhost:4000/items/${id}?memberId=4`
                                )
                                .then((response) => {
                                  console.log(response);

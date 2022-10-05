@@ -4,7 +4,7 @@
     "itemId" : 1,  
     "memberId" : 1, 
     "title" : "Title1", 
-    "recruit" : 10,
+    "recruit" : 3,
     "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
@@ -25,27 +25,6 @@
     "participantsList" : [
       {
         "participantsId": 1,
-        "type": 2,
-        "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
-      {
-        "participantsId": 2,
         "type": 2,
         "member": {
           "memberId": 2,
@@ -79,7 +58,7 @@
     "itemId" : 2,  
     "memberId" : 2, 
     "title" : "Title2", 
-    "recruit" : 2,
+    "recruit" : 3,
     "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
@@ -100,27 +79,6 @@
     "participantsList" : [
       {
         "participantsId": 1,
-        "type": 2,
-        "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
-      {
-        "participantsId": 2,
         "type": 2,
         "member": {
           "memberId": 3,
@@ -154,7 +112,7 @@
     "itemId" : 3,  
     "memberId" : 3, 
     "title" : "Title1", 
-    "recruit" : 10,
+    "recruit" : 3,
     "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
@@ -173,27 +131,6 @@
     "restaurantName" : "비에이치",
     "restaurantUrl" : "http://test-url.com",
     "participantsList" : [
-      {
-        "participantsId": 1,
-        "type": 2,
-        "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
       {
         "participantsId": 2,
         "type": 2,
@@ -229,7 +166,7 @@
     "itemId" : 4,  
     "memberId" : 4, 
     "title" : "Title4", 
-    "recruit" : 2,
+    "recruit" : 3,
     "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
@@ -248,27 +185,6 @@
     "restaurantName" : "역기떡볶이",
     "restaurantUrl" : "http://test-url.com",
     "participantsList" : [
-      {
-        "participantsId": 1,
-        "type": 2,
-        "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
       {
         "participantsId": 2,
         "type": 2,
@@ -327,27 +243,6 @@
         "participantsId": 1,
         "type": 2,
         "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
-      {
-        "participantsId": 2,
-        "type": 2,
-        "member": {
           "memberId": 2,
           "username": "서태원",
           "email": "test2@email.com",
@@ -402,27 +297,6 @@
         "participantsId": 1,
         "type": 2,
         "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
-      {
-        "participantsId": 2,
-        "type": 2,
-        "member": {
           "memberId": 2,
           "username": "서태원",
           "email": "test2@email.com",
@@ -454,7 +328,7 @@
     "itemId" : 7,  
     "memberId" : 7, 
     "title" : "Title7", 
-    "recruit" : 10,
+    "recruit" : 3,
     "foodCategoryId" : 1,
     "createdAt" : 1664436396803,
     "modifiedAt" : 1664436396803,
@@ -475,27 +349,6 @@
     "participantsList" : [
       {
         "participantsId": 1,
-        "type": 2,
-        "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
-      {
-        "participantsId": 2,
         "type": 2,
         "member": {
           "memberId": 2,
@@ -552,27 +405,6 @@
         "participantsId": 1,
         "type": 2,
         "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
-      {
-        "participantsId": 2,
-        "type": 2,
-        "member": {
           "memberId": 2,
           "username": "서태원",
           "email": "test2@email.com",
@@ -627,27 +459,6 @@
         "participantsId": 1,
         "type": 2,
         "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
-      {
-        "participantsId": 2,
-        "type": 2,
-        "member": {
           "memberId": 2,
           "username": "서태원",
           "email": "test2@email.com",
@@ -700,27 +511,6 @@
     "participantsList" : [
       {
         "participantsId": 1,
-        "type": 2,
-        "member": {
-          "memberId": 1,
-          "username": "이은주",
-          "email": "test@email.com",
-          "password": "pass1234",
-          "phoneNumber": "010-1111-1111",
-          "location": null,
-          "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
-          "joinedAt": 12341234,
-          "modifiedAt": 12341234,
-          "paymentMethod": "card",
-          "role": "ROLE_USER",
-          "provider": "provider",
-          "providerId": "providerId"
-        },
-        "createdAt": 1664858331814,
-        "modifiedAt": 1664858331814
-      },
-      {
-        "participantsId": 2,
         "type": 2,
         "member": {
           "memberId": 2,

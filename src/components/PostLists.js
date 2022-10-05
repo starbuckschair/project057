@@ -48,7 +48,7 @@ function PostLists(){
     let navigate = useNavigate();
     
     useEffect(()=>{
-        axios.get("http://192.168.4.143:8080/items?page=0&size=5").then((res)=>{
+        axios.get("http://localhost:4000/items?page=0&size=5").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -60,7 +60,7 @@ function PostLists(){
      },[])
    
      useEffect(()=>{
-        axios.get("http://192.168.4.143:8080/v1/members?page=0&size=5").then((res)=>{
+        axios.get("http://localhost:4000/members?page=0&size=5").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
@@ -78,34 +78,26 @@ function PostLists(){
             <HeadLine>모집인원</HeadLine>
             <HeadLine>거리</HeadLine>
             <HeadLine>마감시간</HeadLine>
-         
- 
         </PostHeadTitle>
-        
         {
             contents.map((a, i)=>{
                 const detail = a.itemId; //detail은 게시판 글 클릭시 해당 글의 itemId입니다.
                 const user = users.find((el)=>{return el.memberId===a.memberId});
-
-                
                 return(
                     <PostHead key={i} onClick={()=>{
                         navigate(`/items/${detail}`)
                     }}>
                         <ContentsBox>{a.restaurantName}</ContentsBox>
-                        <ContentsBox>{user?.memberId}</ContentsBox>
-                        <ContentsBox>{a.participantsList.length}명</ContentsBox>
+                        <ContentsBox>{user?.username}</ContentsBox>
+                        <ContentsBox>{a.participantsList.length}/{a.recruit}명</ContentsBox>
                         <ContentsBox>100미터</ContentsBox>
                         <ContentsBox>5분전</ContentsBox>
                     </PostHead>
                 )
             })
         }
-        
-    
         </PostList>
     ) 
-  
 };
 
 export default PostLists;
