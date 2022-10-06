@@ -161,7 +161,7 @@ function PostPageBody(){
 
 
     useEffect(()=>{
-        axios.get("http://localhost:4000/items?page=0&size=5").then((res)=>{
+        axios.get("http://192.168.4.223:8080/items?page=0&size=100").then((res)=>{
         // axios.get("http://localhost:4000/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
@@ -174,7 +174,7 @@ function PostPageBody(){
      },[])
    
      useEffect(()=>{
-        axios.get("http://localhost:4000/members?page=0&size=5").then((res)=>{
+        axios.get("http://192.168.4.223:8080/v1/members?page=0&size=100").then((res)=>{
         // axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/second").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
@@ -244,7 +244,7 @@ function PostPageBody(){
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
                                axios.post(
-                                 `http://localhost:4000/items/${id}?memberId=4`
+                                 `http://192.168.4.223:8080/items/${id}?memberId=4`
                                )
                                .then((response) => {
                                  console.log(response);

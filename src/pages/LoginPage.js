@@ -82,6 +82,7 @@ function LoginPage({setIsLogin, setUserInfo}) {
   const loginRequestHandler = () => {
     // Login 컴포넌트가 가지고 있는 state를 이용해 로그인을 구현합니다.
     // 로그인에 필요한 유저정보가 충분히 제공되지 않았다면 에러메시지가 나타남  
+  console.log(loginInfo)
 
     if(!loginInfo.userId|| !loginInfo.password){
       setErrorMessage('아이디와 비밀번호를 입력하세요')
@@ -90,13 +91,14 @@ function LoginPage({setIsLogin, setUserInfo}) {
       setErrorMessage("")
     }
     return axios
-      .post("http://192.168.4.161:8080/v1/members/login",{loginInfo, checkedKeepLogin})
+      .post("http://192.168.4.223:8080/v1/members/login",{loginInfo, checkedKeepLogin})
       .then((res) => {
         // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
         console.log(res.data)
         // setUserInfo(res.data)
         // setIsLogin(true)
         SignIn('/')
+        // localStorage.setItem('user', JSON.stringify(user));
       })
       .catch((err) => {
         console.log(err.response.data)

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios'
 import data from '../data';
 
 let PaddingBox = styled.div`
@@ -66,7 +67,6 @@ const WriteInfoChild = styled.div`
     font-size: 10pt;
   }
 `;
-
 const Title = styled.div`
   width: 20%;
   height: 100%;
@@ -125,8 +125,31 @@ function WritePage(props) {
   let [involved, setInvolved] = useState();
   let [deadline, setDeadLine] = useState();
   let [notice, setNotice] = useState('');
+  let [posts, setPosts] = useState({
+    "memberId" : 1,
+    "title": "Title",
+    "foodCategoryId": "1",
+    "deadline" : 1664348627680,
+    "recruit" : 10,
+    "pickupLocation" : {
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 209.987,
+        "longitude": 1234.343
+    },
+    "restaurantName": "McDonalds1",
+    "restaurantUrl": "http://local1.com/",
+    "body": "오늘 저녁에 치킨 드실 분 같이 주문해요!!",
+    "imageUrl": {
+        "url": "imageurl/url/image.jpg",
+        "type": 1
+    }
+  });
   let navigate = useNavigate();
   let { id } = useParams();
+  console.log(JSON.stringify(posts))
 
   const SelecCt = (value) => {
     console.log();
@@ -140,7 +163,7 @@ function WritePage(props) {
     setNotice(e.target.notice.value);
     // console.log(e.target.deadline.value)
 
-    fetch('http://localhost:4000/items', {
+    fetch('/items', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -242,8 +265,17 @@ function WritePage(props) {
             </WriteInfo>
             {/* <button onClick={() => navigate(`/post/${detail}`)}>글쓰기</button> */}
             <input type="submit" />
+  
           </ContentsArea>
         </form>
+        <button onClick={()=>{
+              axios
+              .post("items",JSON.stringify(posts))
+              // .post("/items",{posts})
+              .then((res) => {
+                        console.log(res);
+                      });
+            }}>만들기</button>
       </Background>
     </>
   );
