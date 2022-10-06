@@ -98,7 +98,7 @@ function RegisterInfo() {
       paymentMethod: `${payment}`,
     };
 
-    fetch('http:///192.168.5.46:8080/v1/members', {
+    fetch('/v1/members', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(members),

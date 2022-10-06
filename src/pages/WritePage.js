@@ -145,15 +145,13 @@ function WritePage(props) {
     "imageUrl": {
         "url": "imageurl/url/image.jpg",
         "type": 1
-    }
+    },
   });
   let navigate = useNavigate();
   let { id } = useParams();
-  console.log(JSON.stringify(posts))
 
-  const SelecCt = (value) => {
-    console.log();
-  };
+
+ 
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -175,8 +173,9 @@ function WritePage(props) {
   };
 
   const writeContents = () => {
-    navigate(`/post/${id}`);
+    navigate(`http://192.168.4.223:8080/post/${id}`);
   };
+
 
   return (
     <>
@@ -268,14 +267,7 @@ function WritePage(props) {
   
           </ContentsArea>
         </form>
-        <button onClick={()=>{
-              axios
-              .post("items",JSON.stringify(posts))
-              // .post("/items",{posts})
-              .then((res) => {
-                        console.log(res);
-                      });
-            }}>만들기</button>
+        <button onClick={postTest}>만들기</button>
       </Background>
     </>
   );
