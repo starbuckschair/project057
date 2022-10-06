@@ -149,9 +149,11 @@ function WritePage(props) {
   });
   let navigate = useNavigate();
   let { id } = useParams();
+  console.log(JSON.stringify(posts))
 
-
- 
+  const SelecCt = (value) => {
+    console.log();
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -173,9 +175,19 @@ function WritePage(props) {
   };
 
   const writeContents = () => {
-    navigate(`http://192.168.4.223:8080/post/${id}`);
+    navigate(`/post/${id}`);
   };
 
+  const postTest =()=> {
+    return axios
+      .post("/items", JSON.stringify(posts))
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err)=>{
+        console.log(err.response.data)
+      });
+  }
 
   return (
     <>
