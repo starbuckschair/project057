@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import data from '../data';
-import * as Yup from 'yup';
+
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -16,7 +16,7 @@ const Background = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 const FormBox = styled.div`
   width: 500px;
@@ -98,7 +98,7 @@ function RegisterInfo() {
       paymentMethod: `${payment}`,
     };
 
-    fetch('http://192.168.4.161:8080/v1/members', {
+    fetch('http://localhost:4000/v1/members?page=0&size=100', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(members),

@@ -13,7 +13,7 @@ const Background = styled.div`
   margin-top: 50px;
   display: flex;
   justify-content: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 const ContentsBox = styled.div`
   width: 500px;
@@ -90,7 +90,8 @@ function LoginPage({setIsLogin, setUserInfo}) {
       setErrorMessage("")
     }
     return axios
-      .post("http://192.168.4.161:8080/v1/members/login",{loginInfo, checkedKeepLogin})
+      .post("http://192.168.5.46:8080/v1/members/login",
+      {loginInfo, checkedKeepLogin})
       .then((res) => {
         // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
         console.log(res.data)
