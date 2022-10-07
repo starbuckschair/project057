@@ -161,8 +161,8 @@ function PostPageBody(){
 
 
     useEffect(()=>{
-        axios.get("/items?page=0&size=100").then((res)=>{
-        // axios.get("http://localhost:4000/items").then((res)=>{
+        // axios.get("/items?page=0&size=100").then((res)=>{
+        axios.get("http://localhost:8080/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -174,8 +174,8 @@ function PostPageBody(){
      },[])
    
      useEffect(()=>{
-        axios.get("/members").then((res)=>{
-        // axios.get("http://localhost:4000/members").then((res)=>{
+        // axios.get("/members").then((res)=>{
+        axios.get("http://localhost:8080/members").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)

@@ -44,7 +44,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.1.8"
-  },
-  "proxy" : "ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/"
+  }
   
 }
