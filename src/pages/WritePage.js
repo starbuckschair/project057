@@ -201,26 +201,24 @@ function WritePage() {
     return '_' + Math.random().toString(36).substr(2, 9);
   }
 
-  const postTest = () => {
-    return (
-      axios
-        // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
-        .post(' http://localhost:8080/items', posts)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        })
-    );
-  };
+  const postTest =()=> {
+    return axios
+      // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
+      .post(" http://localhost:8080/items", JSON.stringify(posts))
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err)=>{
+        console.log(err.response.data)
+      });
+  }
 
   return (
     <>
       <Header />
       <PaddingBox />
       <Background>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={postTest}>
           <ContentsArea>
             <AddressBox>
               <h2>배송지 선택</h2>
