@@ -162,8 +162,8 @@ function PostPageBody(props){
 
 
     useEffect(()=>{
-        // axios.get("/items?page=0&size=100").then((res)=>{
-        axios.get("http://localhost:8080/items").then((res)=>{
+        axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items?page=0&size=100").then((res)=>{
+        // axios.get("http://localhost:8080/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -175,13 +175,8 @@ function PostPageBody(props){
      },[])
    
      useEffect(()=>{
-<<<<<<< HEAD
-        // axios.get("/members").then((res)=>{
-        axios.get("http://localhost:8080/members").then((res)=>{
-=======
-        axios.get("http://192.168.4.223:8080/v1/members?page=0&size=100").then((res)=>{
-        // axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/second").then((res)=>{
->>>>>>> 0863cf6d32d6e1765dd7ceaea76f35eebcb0f41c
+        axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/members").then((res)=>{
+        // axios.get("http://localhost:8080/members").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
@@ -250,7 +245,8 @@ function PostPageBody(props){
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
                                axios.post(
-                                 `http://192.168.4.223:8080/items/${id}?memberId=4`
+                                //  `http://192.168.4.223:8080/items/${id}?memberId=4`
+                                 `ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items/${id}?memberId=4`
                                )
                                .then((response) => {
                                  console.log(response);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import data from '../data';
 
 let PaddingBox = styled.div`
@@ -175,7 +176,8 @@ function WritePage() {
     //   setNotice(e.target.notice.value);
     //   // console.log(e.target.deadline.value);
 
-    fetch('http://localhost:4000/items', {
+    // fetch('http://localhost:4000/items', {
+    fetch('ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -183,12 +185,15 @@ function WritePage() {
         number: 'involved',
       }),
     }).then((res) => console.log(res.json()));
-    writeContents();
+    // writeContents();
+    postTest();
   };
 
-  const writeContents = () => {
-    navigate(`/post/${random}`);
-  };
+  // const writeContents = () => {
+  //   navigate(`/post/${random}`);
+  // };
+
+
   function randomIDGenerator() {
     // Math.random should be unique because of its seeding algorithm.
     // Convert it to base 36 (numbers + letters), and grab the first 9 characters
@@ -198,8 +203,8 @@ function WritePage() {
 
   const postTest =()=> {
     return axios
-      // .post("/items", JSON.stringify(posts))
-      .post(" http://localhost:8080/items", JSON.stringify(posts))
+      .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
+      // .post(" http://localhost:8080/items", JSON.stringify(posts))
       .then((res) => {
         console.log(res.data)
       })
