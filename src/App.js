@@ -8,7 +8,6 @@ import WritePage from './pages/WritePage';
 import PostPage from './pages/PostPage';
 import RegisterInfo from './pages/RegisterInfo';
 import { createGlobalStyle } from 'styled-components';
-import NewPage from './pages/NewPage';
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -26,7 +25,6 @@ function App() {
       <Route path="/regiInfo" element={<RegisterInfo />} />
       <Route path="/write" element={<WritePage />} />
       <Route path="/post/:id" element={<PostPage />} />
-      <Route path="/test" element={<NewPage />} />
 
     </Routes>
   );

@@ -98,7 +98,7 @@ function RegisterInfo() {
       paymentMethod: `${payment}`,
     };
 
-    fetch('/v1/members', {
+    fetch('ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/v1/members', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(members),
