@@ -199,6 +199,7 @@ function WritePage() {
   const postTest =()=> {
     return axios
       .post("/items", JSON.stringify(posts))
+      // .post(" http://localhost:4000/items", JSON.stringify(posts))
       .then((res) => {
         console.log(res.data)
       })

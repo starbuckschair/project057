@@ -91,12 +91,8 @@ function LoginPage({setIsLogin, setUserInfo}) {
       setErrorMessage("")
     }
     return axios
-<<<<<<< HEAD
-      .post("http://192.168.5.46:8080/v1/members/login",
-      {loginInfo, checkedKeepLogin})
-=======
-      .post("http://192.168.4.223:8080/v1/members/login",{loginInfo, checkedKeepLogin})
->>>>>>> ff7a30d81f798f617739e545fb0af3effdef27a9
+      .post("/members",{loginInfo, checkedKeepLogin})
+      // .post("http://localhost:4000/members",{loginInfo, checkedKeepLogin})
       .then((res) => {
         // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
         console.log(res.data)

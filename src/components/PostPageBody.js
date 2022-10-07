@@ -179,11 +179,7 @@ function PostPageBody(props){
      },[])
    
      useEffect(()=>{
-<<<<<<< HEAD
-        axios.get("http://192.168.5.46:8080/v1/members?page=0&size=100").then((res)=>{
-=======
         axios.get("http://192.168.4.223:8080/v1/members?page=0&size=100").then((res)=>{
->>>>>>> ff7a30d81f798f617739e545fb0af3effdef27a9
         // axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/second").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
@@ -214,7 +210,7 @@ function PostPageBody(props){
                     <DetailInfo>
                         <StaticInfo>
                             <StaticInfoTitle>픽업장소</StaticInfoTitle>
-                            <StaticInfoDetail>{pickItemMaker?.username}</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem?.restaurantName}</StaticInfoDetail>
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>메뉴정보</StaticInfoTitle>
@@ -226,7 +222,7 @@ function PostPageBody(props){
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>모집인원</StaticInfoTitle>
-                            <StaticInfoDetail>{pickItem?.participantsList.length}명</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem?.recruit}명</StaticInfoDetail>
                         </StaticInfo>
                         <LiveInfo>
                             <LiveInfoImg>
@@ -253,15 +249,10 @@ function PostPageBody(props){
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
                                axios.post(
-<<<<<<< HEAD
-                                 `http://192.168.5.46:8080/items/${id}?memberId=4`
-=======
                                  `http://192.168.4.223:8080/items/${id}?memberId=4`
->>>>>>> ff7a30d81f798f617739e545fb0af3effdef27a9
                                )
                                .then((response) => {
                                  console.log(response);
-                                 
                                })
                                .catch((error) => {
                                  console.log(error.response);
