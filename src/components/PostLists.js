@@ -1,52 +1,51 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
 let PostList = styled.div`
-    margin-top: 1%;
-    width: 800px;
-    height: auto;
-    /* border: 1px solid pink; */
-    /* display: flex; */
-    /* justify-content: space-around; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-`
-let PostHeadTitle = styled(PostList)`    
-    margin-top: 1rem;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* border: 1px solid blue; */
-`
+  margin-top: 1%;
+  width: 800px;
+  height: auto;
+  /* border: 1px solid pink; */
+  /* display: flex; */
+  /* justify-content: space-around; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+`;
+let PostHeadTitle = styled(PostList)`
+  margin-top: 1rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 1px solid blue; */
+`;
 let PostHead = styled(PostHeadTitle)`
-    font-weight: 500;
-    &:hover {
-      /* border:2px solid red; */
-      cursor: pointer;
-    }
-`
+  font-weight: 500;
+  &:hover {
+    /* border:2px solid red; */
+    cursor: pointer;
+  }
+`;
 let HeadLine = styled.div`
-    width: 25%;
-    height:auto;
-    border-bottom: 1px solid gray;
-    text-align: center;
-`
+  width: 25%;
+  height: auto;
+  border-bottom: 1px solid gray;
+  text-align: center;
+`;
 let ContentsBox = styled(PostHeadTitle)`
-    margin-top: 2px;
-    font-weight: 400;
-    border-bottom: 1px solid gray;
-    text-align: center;
-`
+  margin-top: 2px;
+  font-weight: 400;
+  border-bottom: 1px solid gray;
+  text-align: center;
+`;
 
 function PostLists(){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let navigate = useNavigate();
-    console.log(contents)
     
     useEffect(()=>{
         // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items?page=0&size=100").then((res)=>{

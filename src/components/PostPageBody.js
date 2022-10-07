@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Comment from './Comment';
 import {Map, MapMarker} from 'react-kakao-maps-sdk';
 import axios from 'axios';
+import WritePage from '../pages/WritePage';
 
 let Body = styled.div`
     width: 98%;
@@ -147,7 +148,7 @@ let JoinButton = styled.button`
 
 
 
-function PostPageBody(){
+function PostPageBody(props){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let {id} = useParams();
@@ -174,8 +175,13 @@ function PostPageBody(){
      },[])
    
      useEffect(()=>{
+<<<<<<< HEAD
         // axios.get("/members").then((res)=>{
         axios.get("http://localhost:8080/members").then((res)=>{
+=======
+        axios.get("http://192.168.4.223:8080/v1/members?page=0&size=100").then((res)=>{
+        // axios.get("https://53a26b07-21c1-41b3-87a0-88d0c872d18a.mock.pstmn.io/testapi/second").then((res)=>{
+>>>>>>> 0863cf6d32d6e1765dd7ceaea76f35eebcb0f41c
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
@@ -244,7 +250,7 @@ function PostPageBody(){
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
                                axios.post(
-                                 `/items/${id}?memberId=4`
+                                 `http://192.168.4.223:8080/items/${id}?memberId=4`
                                )
                                .then((response) => {
                                  console.log(response);

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import data from '../data';
-import * as Yup from 'yup';
+
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -16,7 +16,7 @@ const Background = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 const FormBox = styled.div`
   width: 500px;

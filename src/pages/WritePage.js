@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios'
 import data from '../data';
 
 let PaddingBox = styled.div`
@@ -14,10 +13,10 @@ const Background = styled.div`
   margin-top: 50px;
   display: flex;
   justify-content: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 const ContentsArea = styled.div`
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   width: 600px;
   height: 630px;
   display: flex;
@@ -119,11 +118,11 @@ const TextareaBox = styled.textarea`
   outline: 1px solid hsl(210, 8%, 75%);
 `;
 
-function WritePage(props) {
-  let [category, setCategory] = useState('선택');
-  let [url, setUrl] = useState('');
-  let [involved, setInvolved] = useState();
-  let [deadline, setDeadLine] = useState();
+function WritePage() {
+  let [category, setCategory] = useState('');
+  let [menuUrl, setUrl] = useState('');
+  let [participate, setParticipate] = useState('');
+  let [deadline, setDeadLine] = useState('');
   let [notice, setNotice] = useState('');
   let [posts, setPosts] = useState({
     "memberId" : 1,
@@ -149,21 +148,34 @@ function WritePage(props) {
   });
   let navigate = useNavigate();
   let { id } = useParams();
-  console.log(JSON.stringify(posts))
 
-  const SelecCt = (value) => {
-    console.log();
+  const WriteFetch = () => {
+    fetch('http://localhost:4000/items?page=0&size=100', {
+      method: 'POST',                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(posts),
+      mode:"cors"
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          //throw new Error('fail to fetch');
+          res.json();
+        }
+      })
+      .then((res) => console.log(res))
+      .then((data) => console.log('성공:', data))
+      .catch((err) => console.error('실패:', err));
+    // SignUp();
   };
-
   const onSubmit = (e) => {
     e.preventDefault();
-    setUrl(e.target.url.value);
-    setInvolved(e.target.number.value);
-    setDeadLine(e.target.deadline.value);
-    setNotice(e.target.notice.value);
-    // console.log(e.target.deadline.value)
+    //   setUrl(e.target.menuUrl.value);
+    //   setParticipate(e.target.participate.value);
+    //   setDeadLine(e.target.deadline.value);
+    //   setNotice(e.target.notice.value);
+    //   // console.log(e.target.deadline.value);
 
-    fetch('/items', {
+    fetch('http://localhost:4000/items', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -175,8 +187,14 @@ function WritePage(props) {
   };
 
   const writeContents = () => {
-    navigate(`/post/${id}`);
+    navigate(`/post/${random}`);
   };
+  function randomIDGenerator() {
+    // Math.random should be unique because of its seeding algorithm.
+    // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+    // after the decimal.
+    return '_' + Math.random().toString(36).substr(2, 9);
+  }
 
   const postTest =()=> {
     return axios
@@ -277,10 +295,8 @@ function WritePage(props) {
             </WriteInfo>
             {/* <button onClick={() => navigate(`/post/${detail}`)}>글쓰기</button> */}
             <input type="submit" />
-  
           </ContentsArea>
         </form>
-        <button onClick={postTest}>만들기</button>
       </Background>
     </>
   );

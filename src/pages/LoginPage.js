@@ -13,7 +13,7 @@ const Background = styled.div`
   margin-top: 50px;
   display: flex;
   justify-content: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 const ContentsBox = styled.div`
   width: 500px;
