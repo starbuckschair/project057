@@ -152,10 +152,10 @@ function WritePage() {
 
   const WriteFetch = () => {
     fetch('http://localhost:4000/items?page=0&size=100', {
-      method: 'POST',                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(posts),
-      mode:"cors"
+      body: posts,
+      mode: 'cors',
     })
       .then((res) => {
         if (res.status === 201) {
@@ -191,9 +191,8 @@ function WritePage() {
   };
 
   // const writeContents = () => {
-    // navigate(`/post/1`);
+  // navigate(`/post/1`);
   // };
-
 
   function randomIDGenerator() {
     // Math.random should be unique because of its seeding algorithm.
@@ -202,17 +201,19 @@ function WritePage() {
     return '_' + Math.random().toString(36).substr(2, 9);
   }
 
-  const postTest =()=> {
-    return axios
-      // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
-      .post(" http://localhost:8080/items", JSON.stringify(posts))
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((err)=>{
-        console.log(err.response.data)
-      });
-  }
+  const postTest = () => {
+    return (
+      axios
+        // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
+        .post(' http://localhost:8080/items', posts)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        })
+    );
+  };
 
   return (
     <>
