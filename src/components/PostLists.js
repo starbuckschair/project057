@@ -42,71 +42,62 @@ let ContentsBox = styled(PostHeadTitle)`
   text-align: center;
 `;
 
-function PostLists() {
-  let [contents, setContents] = useState([]);
-  let [users, setUsers] = useState([]);
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:4000/items')
-      .then((res) => {
-        let copy = [...res.data];
-        // console.log(copy);
-        setContents(copy);
-        // console.log(choice)
-      })
-      .catch(() => {
-        console.log('실패함');
-      });
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:4000/members')
-      // http://localhost:4000/members?page=0&size=100
-      .then((res) => {
-        let copy = [...res.data];
-        // console.log(copy);
-        setUsers(copy);
-        // console.log(res.data)
-      })
-      .catch(() => {
-        console.log('실패함');
-      });
-  }, []);
-  return (
-    <PostList>
-      <PostHeadTitle>
-        <HeadLine>주문매장</HeadLine>
-        <HeadLine>공구마</HeadLine>
-        <HeadLine>모집인원</HeadLine>
-        <HeadLine>거리</HeadLine>
-        <HeadLine>마감시간</HeadLine>
-      </PostHeadTitle>
-
-      {contents.map((a, i) => {
-        const detail = a.itemId; //detail은 게시판 글 클릭시 해당 글의 itemId입니다.
-        const user = users.find((el) => {
-          return el.memberId === a.memberId;
-        });
-        return (
-          <PostHead
-            key={i}
-            onClick={() => {
-              navigate(`/post/${detail}`);
-            }}
-          >
-            <ContentsBox>{a.restaurantName}</ContentsBox>
-            <ContentsBox>{user?.username}</ContentsBox>
-            <ContentsBox>{a.participantsList.length + 1}명</ContentsBox>
-            <ContentsBox>100미터</ContentsBox>
-            <ContentsBox>5분전</ContentsBox>
-          </PostHead>
-        );
-      })}
-    </PostList>
-  );
-}
+function PostLists(){
+    let [contents, setContents] = useState([]);
+    let [users, setUsers] = useState([]);
+    let navigate = useNavigate();
+    
+    useEffect(()=>{
+        axios.get("http://localhost:4000/items").then((res)=>{
+            let copy = [...res.data];
+            // console.log(copy);
+            setContents(copy)
+            // console.log(choice)
+        })
+        .catch(()=>{
+          console.log('실패함')
+        })
+     },[])
+   
+     useEffect(()=>{
+        axios.get("http://localhost:4000/members").then((res)=>{
+            let copy = [...res.data];
+            // console.log(copy);
+            setUsers(copy)
+            // console.log(res.data)
+        })
+        .catch(()=>{
+          console.log('실패함')
+        })
+     },[])
+    return(
+        <PostList>
+        <PostHeadTitle>
+            <HeadLine>주문매장</HeadLine>
+            <HeadLine>공구마</HeadLine>
+            <HeadLine>모집인원</HeadLine>
+            <HeadLine>거리</HeadLine>
+            <HeadLine>마감시간</HeadLine>
+        </PostHeadTitle>
+        {
+            contents.map((a, i)=>{
+                const detail = a.itemId; //detail은 게시판 글 클릭시 해당 글의 itemId입니다.
+                const user = users.find((el)=>{return el.memberId===a.memberId});
+                return(
+                    <PostHead key={i} onClick={()=>{
+                        navigate(`/post/${detail}`)
+                    }}>
+                        <ContentsBox>{a.restaurantName}</ContentsBox>
+                        <ContentsBox>{user?.username}</ContentsBox>
+                        <ContentsBox>{a.participantsList.length+1}명</ContentsBox>
+                        <ContentsBox>100미터</ContentsBox>
+                        <ContentsBox>5분전</ContentsBox>
+                    </PostHead>
+                )
+            })
+        }
+        </PostList>
+    ) 
+};
 
 export default PostLists;
