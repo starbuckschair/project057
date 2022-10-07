@@ -169,28 +169,29 @@ function WritePage() {
     // SignUp();
   };
   const onSubmit = (e) => {
-    e.preventDefault();
-    //   setUrl(e.target.menuUrl.value);
-    //   setParticipate(e.target.participate.value);
-    //   setDeadLine(e.target.deadline.value);
-    //   setNotice(e.target.notice.value);
-    //   // console.log(e.target.deadline.value);
+    // e.preventDefault();
+    // //   setUrl(e.target.menuUrl.value);
+    // //   setParticipate(e.target.participate.value);
+    // //   setDeadLine(e.target.deadline.value);
+    // //   setNotice(e.target.notice.value);
+    // //   // console.log(e.target.deadline.value);
 
-    // fetch('http://localhost:4000/items', {
-    fetch('ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        url: 'url',
-        number: 'involved',
-      }),
-    }).then((res) => console.log(res.json()));
-    // writeContents();
-    postTest();
+    // // fetch('http://localhost:4000/items', {
+    // fetch('ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items', {
+    //   method: 'post',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     url: 'url',
+    //     number: 'involved',
+    //   }),
+    // }).then((res) => console.log(res.json()));
+    // // writeContents();
+    // postTest();
+    navigate(`/post/1`);
   };
 
   // const writeContents = () => {
-  //   navigate(`/post/${random}`);
+    // navigate(`/post/1`);
   // };
 
 
