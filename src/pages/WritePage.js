@@ -203,8 +203,8 @@ function WritePage() {
 
   const postTest =()=> {
     return axios
-      .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
-      // .post(" http://localhost:8080/items", JSON.stringify(posts))
+      // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
+      .post(" http://localhost:8080/items", JSON.stringify(posts))
       .then((res) => {
         console.log(res.data)
       })
