@@ -68,12 +68,39 @@ function elapsedTime(date) {
     // 모든 단위가 맞지 않을 시
     return "곧 마감";
   }
+
+  function getDistance(lat1, lon1, lat2, lon2) {
+    if ((lat1 == lat2) && (lon1 == lon2))
+        return 0;
+
+    var radLat1 = Math.PI * lat1 / 180;
+    var radLat2 = Math.PI * lat2 / 180;
+    var theta = lon1 - lon2;
+    var radTheta = Math.PI * theta / 180;
+    var dist = Math.sin(radLat1) * Math.sin(radLat2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radTheta);
+    if (dist > 1)
+        dist = 1;
+
+    dist = Math.acos(dist);
+    dist = dist * 180 / Math.PI;
+    dist = dist * 60 * 1.1515 * 1.609344 * 1000;
+    if (dist < 100) dist = Math.round(dist / 10) * 10;
+    else dist = Math.round(dist / 100) * 100;
+
+    return dist;
+}
+
+
 function PostLists(){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let navigate = useNavigate();
     // let 현재시간 = new Date("2022-11-01 11:11:11").getTime();
     // console.log(현재시간)
+
+
+
+
     
     useEffect(()=>{
         // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items?page=0&size=100").then((res)=>{
@@ -113,6 +140,8 @@ function PostLists(){
             contents.map((a, i)=>{
                 const detail = a.itemId; //detail은 게시판 글 클릭시 해당 글의 itemId입니다.
                 const user = users.find((el)=>{return el.memberId===a.memberId});
+                const lat2 = a.pickupLocation.latitude;
+                const lon2 = a.pickupLocation.longitude;
                 return(
                     <PostHead key={i} onClick={()=>{
                         navigate(`/post/${detail}`)
@@ -120,7 +149,7 @@ function PostLists(){
                         <ContentsBox>{a.restaurantName}</ContentsBox>
                         <ContentsBox>{user?.username}</ContentsBox>
                         <ContentsBox>{a.recruit}명</ContentsBox>
-                        <ContentsBox>100미터</ContentsBox>
+                        <ContentsBox>{getDistance(33.5563, 126.79581, lat2, lon2)}미터</ContentsBox>
                         <ContentsBox>{elapsedTime(a.deadline)}</ContentsBox>
                     </PostHead>
                 )
