@@ -151,7 +151,7 @@ function WritePage() {
   let { id } = useParams();
 
   const WriteFetch = () => {
-    fetch('http://localhost:4000/items?page=0&size=100', {
+    fetch(process.env.REACT_APP_TEST_URL+"/items", {
       method: 'POST',                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(posts),
@@ -205,7 +205,7 @@ function WritePage() {
   const postTest =()=> {
     return axios
       // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
-      .post("http://localhost:8080/items", posts)
+      .post(process.env.REACT_APP_TEST_URL+"/items", posts)
       .then((res) => {
         console.log(res.data)
       })
