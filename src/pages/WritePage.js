@@ -154,8 +154,8 @@ function WritePage() {
     fetch(process.env.REACT_APP_TEST_URL+"/items", {
       method: 'POST',                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(posts),
-      mode:"cors"
+      body: posts,
+      mode: 'cors',
     })
       .then((res) => {
         if (res.status === 201) {
@@ -191,9 +191,8 @@ function WritePage() {
   };
 
   // const writeContents = () => {
-    // navigate(`/post/1`);
+  // navigate(`/post/1`);
   // };
-
 
   function randomIDGenerator() {
     // Math.random should be unique because of its seeding algorithm.
