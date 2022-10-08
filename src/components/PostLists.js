@@ -41,11 +41,39 @@ let ContentsBox = styled(PostHeadTitle)`
   border-bottom: 1px solid gray;
   text-align: center;
 `;
-
+function elapsedTime(date) {
+    const end = new Date(date);// 마감 시간
+    const now = new Date(); // 현재 시간
+    
+    const diff = (end - now); // 차감 시간
+   
+    const times = [
+      {time: "분", milliSeconds: 1000 * 60},
+      {time: "시간", milliSeconds: 1000 * 60 * 60},
+      {time: "일", milliSeconds: 1000 * 60 * 60 * 24},
+      {time: "개월", milliSeconds: 1000 * 60 * 60 * 24 * 30},
+      {time: "년", milliSeconds: 1000 * 60 * 60 * 24 * 365},
+    ].reverse();
+    
+    // 년 단위부터 알맞는 단위 찾기
+    for (const value of times) {
+      const betweenTime = Math.floor(diff / value.milliSeconds);
+          
+      // 큰 단위는 0보다 작은 소수 단위 나옴
+      if (betweenTime > 0) {
+        return `${betweenTime}${value.time} 전`;
+      }
+    }
+    
+    // 모든 단위가 맞지 않을 시
+    return "곧 마감";
+  }
 function PostLists(){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let navigate = useNavigate();
+    // let 현재시간 = new Date("2022-11-01 11:11:11").getTime();
+    // console.log(현재시간)
     
     useEffect(()=>{
         // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items?page=0&size=100").then((res)=>{
@@ -91,9 +119,9 @@ function PostLists(){
                     }}>
                         <ContentsBox>{a.restaurantName}</ContentsBox>
                         <ContentsBox>{user?.username}</ContentsBox>
-                        <ContentsBox>{a.participantsList.length+1}명</ContentsBox>
+                        <ContentsBox>{a.recruit}명</ContentsBox>
                         <ContentsBox>100미터</ContentsBox>
-                        <ContentsBox>5분전</ContentsBox>
+                        <ContentsBox>{elapsedTime(a.deadline)}</ContentsBox>
                     </PostHead>
                 )
             })

@@ -129,7 +129,7 @@ function WritePage() {
     "memberId" : 1,
     "title": "Title",
     "foodCategoryId": "1",
-    "deadline" : 1664348627680,
+    "deadline" : 1667268671000,
     "recruit" : 10,
     "pickupLocation" : {
         "nameOfPlace": "더큰내일센터",
