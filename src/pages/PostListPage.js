@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import PostLists from '../components/PostLists';
 import FilterBar from '../components/FilterBar';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import axios from 'axios';
+
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -44,6 +46,7 @@ let MapImg = styled.div`
 
 function PostListPage() {
   const [position, setPosition] = useState();
+
 
   return (
     <>

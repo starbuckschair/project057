@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import {useParams} from "react-router-dom"
 import styled from 'styled-components';
 import Comment from './Comment';
@@ -175,6 +175,8 @@ function elapsedTime(date) {
     return "곧 마감";
   }
 
+
+
 function PostPageBody(props){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
@@ -183,9 +185,10 @@ function PostPageBody(props){
     let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
     // let participants = pickItem.participantsList;
     // let [icon, setIcon] = useState([])
-
-
-  
+    let pickLat = pickItem?.pickupLocation?.latitude;
+    let pickLng = pickItem?.pickupLocation?.longitude;
+    console.log(pickLat)
+    console.log(pickLng)
 
 
     useEffect(()=>{
@@ -214,21 +217,28 @@ function PostPageBody(props){
         })
      },[])
 
-
-    
+ 
+ 
     return(
         <>
             <Body>
                 <OrderInfo>
                     <MapBox>
                         <Map
-                            center={{ lat: 33.5563, lng: 126.79581 }}
-                            style={{ width: "98%", height: "98%"}}
+                            center={{ 
+                                lat: 33.5563, 
+                                lng: 126.8059
+                                }}
+                            style={{ width: "98%", height: "290px"}}
+                            level={7}
                             >
-                            <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
-                                <div style={{ color: "#000" }}>호박공구마</div>
+                            <MapMarker position={{
+                                 lat: pickLat, 
+                                 lng: pickLng 
+                                 }}>
+                                <div style={{ color: "#000" }}>픽업장소</div>
                             </MapMarker>
-                        </Map>    
+                        </Map>
                     </MapBox>
                     <DetailInfo>
                         <StaticInfo>
