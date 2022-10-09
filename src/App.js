@@ -19,12 +19,14 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<PostListPage />} />
+      <Route path="/:id" element={<PostListPage />} />
       <Route path="/post" element={<PostListPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/regiInfo" element={<RegisterInfo />} />
       <Route path="/write" element={<WritePage />} />
       <Route path="/post/:id" element={<PostPage />} />
+      <Route path="*" element={ <div>없는 페이지 입니다.</div> } />
 
     </Routes>
   );

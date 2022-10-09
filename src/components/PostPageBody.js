@@ -147,12 +147,39 @@ let JoinButton = styled.button`
 
 
 
+function elapsedTime(date) {
+    const end = new Date(date);// 마감 시간
+    const now = new Date(); // 현재 시간
+    
+    const diff = (end - now); // 차감 시간
+   
+    const times = [
+      {time: "분", milliSeconds: 1000 * 60},
+      {time: "시간", milliSeconds: 1000 * 60 * 60},
+      {time: "일", milliSeconds: 1000 * 60 * 60 * 24},
+      {time: "개월", milliSeconds: 1000 * 60 * 60 * 24 * 30},
+      {time: "년", milliSeconds: 1000 * 60 * 60 * 24 * 365},
+    ].reverse();
+    
+    // 년 단위부터 알맞는 단위 찾기
+    for (const value of times) {
+      const betweenTime = Math.floor(diff / value.milliSeconds);
+          
+      // 큰 단위는 0보다 작은 소수 단위 나옴
+      if (betweenTime > 0) {
+        return `${betweenTime}${value.time} 전`;
+      }
+    }
+    
+    // 모든 단위가 맞지 않을 시
+    return "곧 마감";
+  }
 
 function PostPageBody(props){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let {id} = useParams();
-    let pickItem = contents.find(el=>el.itemId == id);
+    let pickItem = contents.find(el=>el.id == id); //수정 el.id => itemId로
     let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
     // let participants = pickItem.participantsList;
     // let [icon, setIcon] = useState([])
@@ -206,7 +233,7 @@ function PostPageBody(props){
                     <DetailInfo>
                         <StaticInfo>
                             <StaticInfoTitle>픽업장소</StaticInfoTitle>
-                            <StaticInfoDetail>{pickItem?.restaurantName}</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem?.pickupLocation?.nameOfPlace}</StaticInfoDetail>
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>메뉴정보</StaticInfoTitle>
@@ -238,8 +265,12 @@ function PostPageBody(props){
                                 }
                             </LiveInfoImg>
                             <LiveInfoText>
-                                <LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
-                                <LiveInfoTextTo>마감 5분전 </LiveInfoTextTo>
+                                {
+                                    pickItem?.participantsList?.length+1 >= pickItem?.recruit
+                                    ?<LiveInfoTextTo>모집완료</LiveInfoTextTo>
+                                    :<LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
+                                }
+                                <LiveInfoTextTo>{elapsedTime(pickItem?.deadline)}</LiveInfoTextTo>
                             </LiveInfoText>
                         </LiveInfo>
                         <JoinButtonBox>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -68,7 +68,6 @@ function elapsedTime(date) {
     // 모든 단위가 맞지 않을 시
     return "곧 마감";
   }
-
   function getDistance(lat1, lon1, lat2, lon2) {
     if ((lat1 == lat2) && (lon1 == lon2))
         return 0;
@@ -95,11 +94,8 @@ function PostLists(){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let navigate = useNavigate();
-    // let 현재시간 = new Date("2022-11-01 11:11:11").getTime();
-    // console.log(현재시간)
-
-
-
+    let {id} = useParams()
+    let [limit, setLimit] = useState('');
 
     
     useEffect(()=>{
@@ -108,7 +104,6 @@ function PostLists(){
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
-            // console.log(choice)
         })
         .catch(()=>{
           console.log('실패함')
@@ -137,7 +132,26 @@ function PostLists(){
             <HeadLine>마감시간</HeadLine>
         </PostHeadTitle>
         {
-            contents.map((a, i)=>{
+            id === undefined
+            ?contents.map((a, i)=>{
+                const detail = a.id; //수정 id를 itemId로 
+                const user = users.find((el)=>{return el.memberId===a.memberId});
+                const lat2 = a.pickupLocation.latitude;
+                const lon2 = a.pickupLocation.longitude;
+                return(
+                    <PostHead key={i} onClick={()=>{
+                        navigate(`/post/${detail}`)
+                    }}>
+                        <ContentsBox>{a.restaurantName}</ContentsBox>
+                        <ContentsBox>{user?.username}</ContentsBox>
+                        <ContentsBox>{a.recruit}명</ContentsBox>
+                        <ContentsBox>{getDistance(33.5563, 126.79581, lat2, lon2)}미터</ContentsBox>
+                        <ContentsBox>{elapsedTime(a.deadline)}</ContentsBox>
+                    </PostHead>
+                )
+            })
+            :contents.filter((el)=>
+                el.foodCategoryId == id).map((a, i)=>{
                 const detail = a.itemId; //detail은 게시판 글 클릭시 해당 글의 itemId입니다.
                 const user = users.find((el)=>{return el.memberId===a.memberId});
                 const lat2 = a.pickupLocation.latitude;
