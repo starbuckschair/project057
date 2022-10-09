@@ -6,6 +6,7 @@ import Comment from './Comment';
 import {Map, MapMarker} from 'react-kakao-maps-sdk';
 import axios from 'axios';
 import WritePage from '../pages/WritePage';
+import { Alert } from '@coreui/react';
 
 let Body = styled.div`
     width: 98%;
@@ -230,7 +231,7 @@ function PostPageBody(props){
                                 lng: 126.8059
                                 }}
                             style={{ width: "98%", height: "290px"}}
-                            level={7}
+                            level={3}
                             >
                             <MapMarker position={{
                                  lat: pickLat, 
@@ -278,7 +279,13 @@ function PostPageBody(props){
                                 {
                                     pickItem?.participantsList?.length+1 >= pickItem?.recruit
                                     ?<LiveInfoTextTo>모집완료</LiveInfoTextTo>
-                                    :<LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
+                                    :(
+                                        pickItem?.participantsList?.length == undefined
+                                        ?<LiveInfoTextTo>1명 참여중</LiveInfoTextTo>
+                                        :<LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
+                                    )
+                                        
+                                    
                                 }
                                 <LiveInfoTextTo>{elapsedTime(pickItem?.deadline)}</LiveInfoTextTo>
                             </LiveInfoText>

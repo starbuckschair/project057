@@ -16,7 +16,7 @@
         "addressDetail": "2층 우도 회의실",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.80590,
+        "longitude": 126.806,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -70,7 +70,7 @@
         "addressDetail": "2층 우도 회의실",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.79590,
+        "longitude": 126.80601,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -124,7 +124,7 @@
         "addressDetail": "404호",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.79560,
+        "longitude": 126.80602,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -177,8 +177,8 @@
         "korAddress": "제주도 연북로",
         "addressDetail": "101동 101호",
         "type": 1,
-        "latitude": 33.5563,
-        "longitude": 126.79550,
+        "latitude": 33.55633,
+        "longitude": 126.80593,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -238,7 +238,7 @@
         "addressDetail": "101동 701호",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.80590,
+        "longitude": 126.80594,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -298,7 +298,7 @@
         "addressDetail": "101동 707호",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.79540,
+        "longitude": 126.80595,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -352,7 +352,7 @@
         "addressDetail": "101동 902호",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.78590,
+        "longitude": 126.80596,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -412,7 +412,7 @@
         "addressDetail": "101동 505호",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.79520,
+        "longitude": 126.80597,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -472,7 +472,7 @@
         "addressDetail": "102동 702호",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.79520,
+        "longitude": 126.80598,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -532,7 +532,7 @@
         "addressDetail": "102도 302호",
         "type": 1,
         "latitude": 33.5563,
-        "longitude": 126.76590,
+        "longitude": 126.80599,
         "createAt": 1664436396803,
         "modifiedAt": 1664436396803
       },
@@ -569,6 +569,121 @@
         "createdAt": 1664436396803,
         "modifiedAt": 1664436396803
       }
+    },
+    {
+      "memberId": 1,
+      "title": "테스트중입니다",
+      "foodCategoryId": "",
+      "deadline": "30",
+      "recruit": "",
+      "pickupLocation": {
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 33.556355,
+        "longitude": 126.79581
+      },
+      "restaurantName": "추후인풋창추가",
+      "restaurantUrl": "",
+      "body": "",
+      "imageUrl": {
+        "url": "imageurl/url/image.jpg",
+        "type": 1
+      },
+      "id": 11
+    },
+    {
+      "memberId": 1,
+      "title": "테스트중입니다",
+      "foodCategoryId": "1",
+      "deadline": "30",
+      "recruit": "3",
+      "pickupLocation": {
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 33.556355,
+        "longitude": 126.79581
+      },
+      "restaurantName": "추후인풋창추가",
+      "restaurantUrl": "www.naver.com",
+      "body": "양념치킨후라이드치킨안보고가져가기",
+      "imageUrl": {
+        "url": "imageurl/url/image.jpg",
+        "type": 1
+      },
+      "id": 12
+    },
+    {
+      "memberId": 1,
+      "title": "테스트중입니다",
+      "foodCategoryId": "1",
+      "deadline": "30",
+      "recruit": "2",
+      "pickupLocation": {
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 33.556355,
+        "longitude": 126.79581
+      },
+      "restaurantName": "추후인풋창추가",
+      "restaurantUrl": "www.naver.com",
+      "body": "치킨으로 본 세계경제",
+      "imageUrl": {
+        "url": "imageurl/url/image.jpg",
+        "type": 1
+      },
+      "id": 13
+    },
+    {
+      "memberId": 1,
+      "title": "테스트중입니다",
+      "foodCategoryId": "2",
+      "deadline": "30",
+      "recruit": "3",
+      "pickupLocation": {
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 33.556355,
+        "longitude": 126.79581
+      },
+      "restaurantName": "추후인풋창추가",
+      "restaurantUrl": "www.naver.com",
+      "body": "참여자에게 전달하시오",
+      "imageUrl": {
+        "url": "imageurl/url/image.jpg",
+        "type": 1
+      },
+      "id": 14
+    },
+    {
+      "memberId": 1,
+      "title": "테스트중입니다",
+      "foodCategoryId": "",
+      "deadline": "",
+      "recruit": "",
+      "pickupLocation": {
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 33.556355,
+        "longitude": 126.79581
+      },
+      "restaurantName": "추후인풋창추가",
+      "restaurantUrl": "",
+      "body": "",
+      "imageUrl": {
+        "url": "imageurl/url/image.jpg",
+        "type": 1
+      },
+      "id": 15
     }
   ],
   "members": [
