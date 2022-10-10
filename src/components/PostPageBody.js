@@ -7,6 +7,7 @@ import {Map, MapMarker} from 'react-kakao-maps-sdk';
 import axios from 'axios';
 import font from '../styles/font';
 import WritePage from '../pages/WritePage';
+import { useNavigate } from 'react-router-dom'
 
 let Body = styled.div`
     width: 98%;
@@ -187,21 +188,22 @@ function PostPageBody(props){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let {id} = useParams();
-    let pickItem = contents.find(el=>el.id == id); //수정 el.id => itemId로
+    let pickItem = contents.find(el=>el.itemId == id); //수정 el.id => itemId로
     let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
     // let participants = pickItem.participantsList;
     // let [icon, setIcon] = useState([])
     let pickLat = pickItem?.pickupLocation?.latitude;
     let pickLng = pickItem?.pickupLocation?.longitude;
+    let navigate = useNavigate()
     console.log(pickLat)
     console.log(pickLng)
+    console.log(pickItem?.pickupLocation?.nameOfPlace)
 
 
     useEffect(()=>{
-        // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items?page=0&size=100").then((res)=>{
-        axios.get(process.env.REACT_APP_TEST_URL+"/items").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_URL+"/items?page=0&size=100").then((res)=>{
             let copy = [...res.data];
-            // console.log(copy);
+            console.log(copy);
             setContents(copy)
             // console.log(choice)
         })
@@ -211,10 +213,9 @@ function PostPageBody(props){
      },[])
    
      useEffect(()=>{
-        // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/members").then((res)=>{
-        axios.get(process.env.REACT_APP_TEST_URL+"/members").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_URL+"/v1/members?page=0&size=100").then((res)=>{
             let copy = [...res.data];
-            // console.log(copy);
+            console.log(copy);
             setUsers(copy)
             // console.log(res.data)
         })
@@ -232,8 +233,8 @@ function PostPageBody(props){
                     <MapBox>
                         <Map
                             center={{ 
-                                lat: 33.5563, 
-                                lng: 126.8059
+                                lat: 33.481510, 
+                                lng: 126.508923
                                 }}
                             style={{ width: "98%", height: "290px"}}
                             level={3}
@@ -299,10 +300,10 @@ function PostPageBody(props){
                             <JoinButton onClick={()=>{
                                axios.post(
                                 process.env.REACT_APP_TEST_URL+`/items/${id}?memberId=4`
-                                //  `ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items/${id}?memberId=4`
                                )
                                .then((response) => {
                                  console.log(response);
+                                 navigate(`/post/${id}`)
                                })
                                .catch((error) => {
                                  console.log(error.response);

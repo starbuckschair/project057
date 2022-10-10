@@ -5,9 +5,7 @@ import Footer from '../components/Footer';
 import PostLists from '../components/PostLists';
 import FilterBar from '../components/FilterBar';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-const {kakao}= window;
 import axios from 'axios';
-
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -78,8 +76,7 @@ function PostListPage() {
   ]
 
   useEffect(()=>{
-    // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items?page=0&size=100").then((res)=>{
-    axios.get(process.env.REACT_APP_TEST_URL+"/items").then((res)=>{
+    axios.get(process.env.REACT_APP_TEST_URL+"/items?page=0&size=100").then((res)=>{
         let copy = [...res.data];
         // console.log(copy);
         setContents(copy)

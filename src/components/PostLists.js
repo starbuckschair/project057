@@ -99,8 +99,7 @@ function PostLists(){
 
     
     useEffect(()=>{
-        // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items?page=0&size=100").then((res)=>{
-        axios.get(process.env.REACT_APP_TEST_URL+"/items").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_URL+"/items?page=0&size=100").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -111,8 +110,7 @@ function PostLists(){
      },[])
    
      useEffect(()=>{
-        // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/vi/members?page=0&size=100").then((res)=>{
-        axios.get(process.env.REACT_APP_TEST_URL+"/members").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_URL+"/v1/members?page=0&size=100").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
@@ -134,7 +132,7 @@ function PostLists(){
         {
             id === undefined
             ?contents.map((a, i)=>{
-                const detail = a.id; //수정 id를 itemId로 
+                const detail = a.itemId; //수정 id를 itemId로 
                 const user = users.find((el)=>{return el.memberId===a.memberId});
                 const lat2 = a.pickupLocation.latitude;
                 const lon2 = a.pickupLocation.longitude;

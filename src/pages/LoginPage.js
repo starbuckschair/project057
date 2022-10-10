@@ -131,15 +131,14 @@ function LoginPage({ setIsLogin, setUserInfo }) {
       setErrorMessage('');
     }
     return axios
-      // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/members",{loginInfo, checkedKeepLogin})
-      .post(process.env.REACT_APP_TEST_URL+"/members",{loginInfo, checkedKeepLogin})
+      .post(process.env.REACT_APP_TEST_URL+"/v1/members/login",{loginInfo, checkedKeepLogin})
       .then((res) => {
         // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
+        SignIn()
         console.log(res.data)
-        // setUserInfo(res.data)
-        // setIsLogin(true)
-        SignIn('/')
-        // localStorage.setItem('user', JSON.stringify(user));
+        setUserInfo(res.data)
+        setIsLogin(true)
+       
       })
       .catch((err) => {
         console.log(err.response.data)
@@ -191,7 +190,7 @@ function LoginPage({ setIsLogin, setUserInfo }) {
             </CheckZone>
           </LoginInfoBox>
           <ButtonZone>
-            <LoginButton type="submit" onClick={SignIn}>
+            <LoginButton type="submit" onClick={loginRequestHandler}>
               로그인
             </LoginButton>
             {errorMessage ? (

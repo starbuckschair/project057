@@ -220,11 +220,10 @@ function WritePage() {
     };
 
     return axios
-    // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
     .post(process.env.REACT_APP_TEST_URL+"/items", posts)
     .then((res) => {
       console.log(res.data)
-      navigate(`/post/${res.data.id}`)
+      navigate(`/post/${res.data.itemId}`)
     })
     .catch((err)=>{
       console.log(err.response.data)
@@ -236,13 +235,11 @@ function WritePage() {
     SubmitWrite()
   };
 
-  console.log(Dday)
   return (
     <>
       <Header />
       <PaddingBox />
       <Background>
-        <form onSubmit={onSubmit}>
           <ContentsArea>
             <AddressBox>
               <font.H1>배송지 선택</font.H1>
@@ -255,7 +252,9 @@ function WritePage() {
                 <button>선택</button>
               </div>
             </AddressBox>
-            <SubmitBtn>+배송지추가</SubmitBtn>
+            <button>+배송지추가</button>
+
+          <form onSubmit={onSubmit}>
             <WriteInfo>
               <WriteInfoChild>
                 <Title>카테고리</Title>
@@ -326,9 +325,9 @@ function WritePage() {
                 </Content>
               </WriteInfoChild>
             </WriteInfo>
-            <SubmitInput type="submit" />
+            <input type="submit" value="방만들기" />
+          </form>
           </ContentsArea>
-        </form>
         <Footer />
       </Background>
     </>
