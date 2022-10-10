@@ -99,7 +99,7 @@ function PostLists(){
 
     
     useEffect(()=>{
-        axios.get(process.env.REACT_APP_TEST_URL+"/items?page=0&size=100").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_ALLITEMS_URL).then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -110,7 +110,7 @@ function PostLists(){
      },[])
    
      useEffect(()=>{
-        axios.get(process.env.REACT_APP_TEST_URL+"/v1/members?page=0&size=100").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_ALLMEMBERS_URL).then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)

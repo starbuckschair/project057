@@ -192,7 +192,7 @@ function PostPageBody(props){
 
 
     useEffect(()=>{
-        axios.get(process.env.REACT_APP_TEST_URL+"/items?page=0&size=100").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_ALLITEMS_URL).then((res)=>{
             let copy = [...res.data];
             console.log(copy);
             setContents(copy)
@@ -204,7 +204,7 @@ function PostPageBody(props){
      },[])
    
      useEffect(()=>{
-        axios.get(process.env.REACT_APP_TEST_URL+"/v1/members?page=0&size=100").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_ALLMEMBERS_URL).then((res)=>{
             let copy = [...res.data];
             console.log(copy);
             setUsers(copy)
@@ -228,7 +228,7 @@ function PostPageBody(props){
                                 lng: 126.508923
                                 }}
                             style={{ width: "98%", height: "290px"}}
-                            level={3}
+                            level={6}
                             >
                             <MapMarker position={{
                                  lat: pickLat, 
@@ -290,7 +290,7 @@ function PostPageBody(props){
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
                                axios.post(
-                                process.env.REACT_APP_TEST_URL+`/items/${id}?memberId=4`
+                                process.env.REACT_APP_TEST_JOIN_URL
                                )
                                .then((response) => {
                                  console.log(response);
