@@ -99,7 +99,8 @@ function RegisterInfo() {
       paymentMethod: `${payment}`,
     };
 
-    fetch('http://localhost:8080/v1/members', {
+    fetch(process.env.REACT_APP_TEST_URL+"/members", {
+
       // fetch('ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/v1/members', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

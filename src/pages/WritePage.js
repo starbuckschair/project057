@@ -165,107 +165,84 @@ const SubmitInput = styled(InputBox)`
 `;
 
 function WritePage() {
+  let navigate = useNavigate();
   let [category, setCategory] = useState('');
   let [menuUrl, setUrl] = useState('');
   let [participate, setParticipate] = useState('');
   let [deadline, setDeadLine] = useState('');
   let [notice, setNotice] = useState('');
-  let [posts, setPosts] = useState({
-    memberId: 1,
-    title: 'Title',
-    foodCategoryId: '1',
-    deadline: 1664348627680,
-    recruit: 10,
-    pickupLocation: {
-      nameOfPlace: '더큰내일센터',
-      korAddress: '제주도 연북로',
-      addressDetail: '101동 101호',
-      type: 1,
-      latitude: 209.987,
-      longitude: 1234.343,
-    },
-    restaurantName: 'McDonalds1',
-    restaurantUrl: 'http://local1.com/',
-    body: '오늘 저녁에 치킨 드실 분 같이 주문해요!!',
-    imageUrl: {
-      url: 'imageurl/url/image.jpg',
-      type: 1,
-    },
-  });
-  let navigate = useNavigate();
-  let { id } = useParams();
 
-  const WriteFetch = () => {
-    fetch('http://localhost:4000/items?page=0&size=100', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: posts,
-      mode: 'cors',
-    })
-      .then((res) => {
-        if (res.status === 201) {
-          //throw new Error('fail to fetch');
-          res.json();
-        }
-      })
-      .then((res) => console.log(res))
-      .then((data) => console.log('성공:', data))
-      .catch((err) => console.error('실패:', err));
-    // SignUp();
-  };
-  const onSubmit = (e) => {
-    e.preventDefault();
-    // //   setUrl(e.target.menuUrl.value);
-    // //   setParticipate(e.target.participate.value);
-    // //   setDeadLine(e.target.deadline.value);
-    // //   setNotice(e.target.notice.value);
-    // //   // console.log(e.target.deadline.value);
 
-    // // fetch('http://localhost:4000/items', {
-    // fetch('ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items', {
-    //   method: 'post',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     url: 'url',
-    //     number: 'involved',
-    //   }),
-    // }).then((res) => console.log(res.json()));
-    // // writeContents();
-    // postTest();
-    navigate(`/post/1`);
-  };
+  let NowCategory = (e) => setCategory(e.target.value);
+  let MenuURL = (e) => setUrl(e.target.value);
+  let Recruit = (e) => setParticipate(e.target.value);
+  let Dday = (e) => setDeadLine(e.target.value );
+  let Comment = (e) => setNotice(e.target.value);
 
-  // const writeContents = () => {
-  // navigate(`/post/1`);
-  // };
+  let LimitDate = new Date();
+  LimitDate.setMinutes(LimitDate.getMinutes()+deadline/1)
+  console.log(LimitDate)
 
-  function randomIDGenerator() {
-    // Math.random should be unique because of its seeding algorithm.
-    // Convert it to base 36 (numbers + letters), and grab the first 9 characters
-    // after the decimal.
-    return '_' + Math.random().toString(36).substr(2, 9);
+  const LimitTime =(a)=>{
+   let today = new Date();   
+  let year = today.getFullYear(); // 년도
+  let month = today.getMonth() + 1;  // 월
+  let date = today.getDate();  // 날짜
+  let hours = today.getHours(); // 시
+  let minutes = today.setMinutes(today.getMinutes()+a/1);  // 분  
+  let seconds = today.getSeconds();  // 초
+  console.log(year + '-' + month + '-' + date + ' ' + hours + ":" + minutes+ ":" + seconds  )
   }
 
-  const postTest = () => {
-    return (
-      axios
-        // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
-        .post(' http://localhost:8080/items', JSON.stringify(posts))
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        })
-    );
+
+  const SubmitWrite = () => {
+    let posts = {
+      "memberId": 1, //'${현재접속중인 맴버 아이디}'
+      "title": "테스트중입니다",
+      "foodCategoryId": `${category}`,
+      "deadline": `${deadline}`,
+      "recruit": `${participate}`,
+      "pickupLocation" : {
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 33.556355,
+        "longitude": 126.79581
+    },
+    "restaurantName": "추후인풋창추가",
+    "restaurantUrl": `${menuUrl}`,
+    "body": `${notice}`,
+    "imageUrl": {
+        "url": "imageurl/url/image.jpg",
+        "type": 1
+    }
+    };
+
+    return axios
+    // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
+    .post(process.env.REACT_APP_TEST_URL+"/items", posts)
+    .then((res) => {
+      console.log(res.data)
+      navigate(`/post/${res.data.id}`)
+    })
+    .catch((err)=>{
+      console.log(err.response.data)
+    });
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    SubmitWrite()
   };
 
+  console.log(Dday)
   return (
     <>
       <Header />
       <PaddingBox />
       <Background>
-        <form onSubmit={postTest}>
+        <form onSubmit={onSubmit}>
           <ContentsArea>
             <AddressBox>
               <font.H1>배송지 선택</font.H1>
@@ -283,20 +260,20 @@ function WritePage() {
               <WriteInfoChild>
                 <Title>카테고리</Title>
                 <Content>
-                  <select>
+                  <select  onChange={NowCategory}>
                     <option value="선택">--선택--</option>
-                    <option value="1인분주문">1인분 주문</option>
-                    <option value="프렌차이즈">프렌차이즈</option>
-                    <option value="치킨">치킨</option>
-                    <option value="피자/양식">피자/양식</option>
-                    <option value="중식">중식</option>
-                    <option value="한식">한식</option>
-                    <option value="일식/돈까스">일식/돈까스</option>
-                    <option value="족발/보쌈">족발/보쌈</option>
-                    <option value="야식">야식</option>
-                    <option value="분식">분식</option>
-                    <option value="카페/디저트">카페/디저트</option>
-                    <option value="편의점/마트">편의점/마트</option>
+                    <option value="1">1인분 주문</option>
+                    <option value="2">프렌차이즈</option>
+                    <option value="3">치킨</option>
+                    <option value="4">피자/양식</option>
+                    <option value="5">중식</option>
+                    <option value="6">한식</option>
+                    <option value="7">일식/돈까스</option>
+                    <option value="8">족발/보쌈</option>
+                    <option value="9">야식</option>
+                    <option value="10">분식</option>
+                    <option value="11">카페/디저트</option>
+                    <option value="12">편의점/마트</option>
                   </select>
                 </Content>
               </WriteInfoChild>
@@ -306,6 +283,7 @@ function WritePage() {
                   <InputBox
                     placeholder="배달어플에서 주문희망 상품페이지 url을 복사붙여넣기 하세요"
                     name="url"
+                    onChange={MenuURL}
                   ></InputBox>
                 </Content>
               </WriteInfoChild>
@@ -317,9 +295,10 @@ function WritePage() {
                     name="number"
                     step="1"
                     min="1"
-                    max="5"
+                    max="3"
+                    onChange={Recruit}
                   ></LimitInput>
-                  <div>참가희망 인원을 입력해주세요. 최대 5명</div>
+                  <div>참가희망 인원을 입력해주세요. 최대 3명</div>
                 </Content>
               </WriteInfoChild>
               <WriteInfoChild>
@@ -331,6 +310,7 @@ function WritePage() {
                     step="30"
                     min="0"
                     max="120"
+                    onChange={Dday}
                   ></LimitInput>
                   <div>30분 단위로 설정할 수 있습니다. 최대 2시간</div>
                 </Content>
@@ -341,11 +321,11 @@ function WritePage() {
                   <TextareaBox
                     placeholder="참여자에게 전달사항을 입력해주세요."
                     name="notice"
+                    onChange={Comment}
                   ></TextareaBox>
                 </Content>
               </WriteInfoChild>
             </WriteInfo>
-            {/* <button onClick={() => navigate(`/post/${detail}`)}>글쓰기</button> */}
             <SubmitInput type="submit" />
           </ContentsArea>
         </form>

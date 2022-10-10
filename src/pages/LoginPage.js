@@ -130,27 +130,23 @@ function LoginPage({ setIsLogin, setUserInfo }) {
     } else {
       setErrorMessage('');
     }
-    return (
-      axios
-        // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/members",{loginInfo, checkedKeepLogin})
-        .post('http://localhost:8080/v1/members', {
-          loginInfo,
-          checkedKeepLogin,
-        })
-        .then((res) => {
-          // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
-          console.log(res.data);
-          // setUserInfo(res.data)
-          // setIsLogin(true)
-          SignIn('/');
-          // localStorage.setItem('user', JSON.stringify(user));
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-          setErrorMessage('로그인에 실패했습니다.');
-          // 로그인에 실패했다면 그에 대한 에러 핸들링을 구현하세요.
-        })
-    );
+    return axios
+      // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/members",{loginInfo, checkedKeepLogin})
+      .post(process.env.REACT_APP_TEST_URL+"/members",{loginInfo, checkedKeepLogin})
+      .then((res) => {
+        // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
+        console.log(res.data)
+        // setUserInfo(res.data)
+        // setIsLogin(true)
+        SignIn('/')
+        // localStorage.setItem('user', JSON.stringify(user));
+      })
+      .catch((err) => {
+        console.log(err.response.data)
+        setErrorMessage("로그인에 실패했습니다.")
+        // 로그인에 실패했다면 그에 대한 에러 핸들링을 구현하세요. 
+      });
+      
   };
 
   return (

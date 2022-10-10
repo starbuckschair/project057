@@ -1,7 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import font from '../styles/font';
+import PostListPage from '../pages/PostListPage';
 
 let FilterBox = styled.div`
   margin-top: 1%;
@@ -34,21 +36,101 @@ let All = styled(Filters)`
 `;
 
 function FilterBar() {
+  //유즈파람스로 클릭한 번호 보내고 그 파람스에 맞춰 맵핑한다.
+  let navigate = useNavigate();
   return (
     <FilterBox>
-      <All>전체보기</All>
-      <Filters>1인분 주문 </Filters>
-      <Filters>프렌차이즈</Filters>
-      <Filters>치킨</Filters>
-      <Filters>피자/양식</Filters>
-      <Filters>중국집</Filters>
-      <Filters>한식</Filters>
-      <Filters>일식/돈까스</Filters>
-      <Filters>족발/보쌈</Filters>
-      <Filters>야식</Filters>
-      <Filters>분식</Filters>
-      <Filters>까페/디저트</Filters>
-      <Filters>편의점/마트</Filters>
+      <All
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        전체보기
+      </All>
+      <Filters
+        onClick={() => {
+          navigate('/1');
+        }}
+      >
+        1인분 주문{' '}
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/2');
+        }}
+      >
+        프렌차이즈
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/3');
+        }}
+      >
+        치킨
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/4');
+        }}
+      >
+        피자/양식
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/5');
+        }}
+      >
+        중국집
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/6');
+        }}
+      >
+        한식
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/7');
+        }}
+      >
+        일식/돈까스
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/8');
+        }}
+      >
+        족발/보쌈
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/9');
+        }}
+      >
+        야식
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/10');
+        }}
+      >
+        분식
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/11');
+        }}
+      >
+        까페/디저트
+      </Filters>
+      <Filters
+        onClick={() => {
+          navigate('/12');
+        }}
+      >
+        편의점/마트
+      </Filters>
     </FilterBox>
   );
 }

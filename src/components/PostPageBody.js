@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import {useParams} from "react-router-dom"
 import styled from 'styled-components';
 import Comment from './Comment';
@@ -33,10 +33,6 @@ let MapBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* background-image:url('./직방이미지.png');
-    background-size:cover;
-    background-position: center; */
 `
 let DetailInfo = styled.div`
     width: 45%;
@@ -148,23 +144,53 @@ let JoinButton = styled.button`
 
 
 
+function elapsedTime(date) {
+    const end = new Date(date);// 마감 시간
+    const now = new Date(); // 현재 시간
+    
+    const diff = (end - now); // 차감 시간
+   
+    const times = [
+      {time: "분", milliSeconds: 1000 * 60},
+      {time: "시간", milliSeconds: 1000 * 60 * 60},
+      {time: "일", milliSeconds: 1000 * 60 * 60 * 24},
+      {time: "개월", milliSeconds: 1000 * 60 * 60 * 24 * 30},
+      {time: "년", milliSeconds: 1000 * 60 * 60 * 24 * 365},
+    ].reverse();
+    
+    // 년 단위부터 알맞는 단위 찾기
+    for (const value of times) {
+      const betweenTime = Math.floor(diff / value.milliSeconds);
+          
+      // 큰 단위는 0보다 작은 소수 단위 나옴
+      if (betweenTime > 0) {
+        return `${betweenTime}${value.time} 전`;
+      }
+    }
+    
+    // 모든 단위가 맞지 않을 시
+    return "곧 마감";
+  }
+
+
 
 function PostPageBody(props){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let {id} = useParams();
-    let pickItem = contents.find(el=>el.itemId == id);
+    let pickItem = contents.find(el=>el.id == id); //수정 el.id => itemId로
     let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
     // let participants = pickItem.participantsList;
     // let [icon, setIcon] = useState([])
-
-
-  
+    let pickLat = pickItem?.pickupLocation?.latitude;
+    let pickLng = pickItem?.pickupLocation?.longitude;
+    console.log(pickLat)
+    console.log(pickLng)
 
 
     useEffect(()=>{
         // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items?page=0&size=100").then((res)=>{
-        axios.get("http://localhost:8080/items").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_URL+"/items").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setContents(copy)
@@ -177,7 +203,7 @@ function PostPageBody(props){
    
      useEffect(()=>{
         // axios.get("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/members").then((res)=>{
-        axios.get("http://localhost:8080/members").then((res)=>{
+        axios.get(process.env.REACT_APP_TEST_URL+"/members").then((res)=>{
             let copy = [...res.data];
             // console.log(copy);
             setUsers(copy)
@@ -188,26 +214,33 @@ function PostPageBody(props){
         })
      },[])
 
-
-    
+ 
+ 
     return(
         <>
             <Body>
                 <OrderInfo>
                     <MapBox>
                         <Map
-                            center={{ lat: 33.5563, lng: 126.79581 }}
-                            style={{ width: "98%", height: "98%"}}
+                            center={{ 
+                                lat: 33.5563, 
+                                lng: 126.8059
+                                }}
+                            style={{ width: "98%", height: "290px"}}
+                            level={3}
                             >
-                            <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
-                                <div style={{ color: "#000" }}>호박공구마</div>
+                            <MapMarker position={{
+                                 lat: pickLat, 
+                                 lng: pickLng 
+                                 }}>
+                                <div style={{ color: "#000" }}>픽업장소</div>
                             </MapMarker>
-                        </Map>    
+                        </Map>
                     </MapBox>
                     <DetailInfo>
                         <StaticInfo>
                             <StaticInfoTitle>픽업장소</StaticInfoTitle>
-                            <StaticInfoDetail>{pickItem?.restaurantName}</StaticInfoDetail>
+                            <StaticInfoDetail>{pickItem?.pickupLocation?.nameOfPlace}</StaticInfoDetail>
                         </StaticInfo>
                         <StaticInfo>
                             <StaticInfoTitle>메뉴정보</StaticInfoTitle>
@@ -239,14 +272,24 @@ function PostPageBody(props){
                                 }
                             </LiveInfoImg>
                             <LiveInfoText>
-                                <LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
-                                <LiveInfoTextTo>마감 5분전 </LiveInfoTextTo>
+                                {
+                                    pickItem?.participantsList?.length+1 >= pickItem?.recruit
+                                    ?<LiveInfoTextTo>모집완료</LiveInfoTextTo>
+                                    :(
+                                        pickItem?.participantsList?.length == undefined
+                                        ?<LiveInfoTextTo>1명 참여중</LiveInfoTextTo>
+                                        :<LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
+                                    )
+                                        
+                                    
+                                }
+                                <LiveInfoTextTo>{elapsedTime(pickItem?.deadline)}</LiveInfoTextTo>
                             </LiveInfoText>
                         </LiveInfo>
                         <JoinButtonBox>
                             <JoinButton onClick={()=>{
                                axios.post(
-                                 `http://localhost:8080/items/${id}?memberId=4`
+                                process.env.REACT_APP_TEST_URL+`/items/${id}?memberId=4`
                                 //  `ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items/${id}?memberId=4`
                                )
                                .then((response) => {
