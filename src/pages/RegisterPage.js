@@ -13,14 +13,8 @@ const Background = styled.div`
   height: auto;
   margin-top: 50px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
   /* border: 1px solid red; */
-  > button {
-    width: 500px;
-    height: 50px;
-  }
 `;
 const FormBox = styled.div`
   width: 400px;
@@ -30,35 +24,21 @@ const FormBox = styled.div`
   border-radius: 3px;
   border: none;
   border: 1px solid hsl(210, 8%, 75%);
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  > h1 {
-    border-bottom: 1px solid hsl(210, 8%, 75%);
-    padding-left: 10px;
-    padding-bottom: 5px;
-    width: 430px;
-  }
-  > div {
-    margin-left: 10px;
-  }
 `;
 const TitleZone = styled.div`
   width: 80%;
   height: 15%;
   padding: 10px 20px;
-`
-
-const FormBoxChild = styled.div`
-  width: 90%;
-  height: 20px;
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid red;
+  /* border: 1px solid blue; */
 `;
-const AllCheck = styled.div`
-  margin-bottom: 15px;
-  margin-top: 15px;
+
+const FormBoxInfo = styled.div`
+  width: 80%;
+  height: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* border: 1px solid red; */
 `;
 const CheckZone = styled.div`
   width: 15%;
@@ -70,16 +50,36 @@ const CheckZone = styled.div`
 const TextZone = styled.div`
   width: 85%;
   height: 20px;
+  display: flex;
+  align-items: center;
 `;
-
+const ButtonZone = styled(TitleZone)`
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
 const SubmitButton = styled.button`
-  width: 300px;
-  height: 30px;
-  padding: 4.5px;
-  border-radius: 3px;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
+  margin: 1em;
+  padding: 0.5em 1em;
+  border-radius: 25px;
+  background: #7d45a8;
+  text-decoration: none;
   border: none;
-  outline: 1px solid hsl(210, 8%, 75%);
-  margin-top: 20px;
+  outline: 1px solid #7d45a8;
+  &:hover {
+    color: #f0be29;
+    font-weight: 700;
+    cursor: pointer;
+  }
 `;
 
 const RegisterPage = () => {
@@ -119,26 +119,27 @@ const RegisterPage = () => {
       <Background>
         <FormBox>
           <TitleZone>
-          <font.H1>회원가입</font.H1>
-          <div>환영합니다! 호박공구마 서비스 이용약관에 동의해주세요.</div>
+            <font.H1>회원가입</font.H1>
+            <font.H4>
+              환영합니다! 호박공구마 서비스 이용약관에 동의해주세요.
+            </font.H4>
           </TitleZone>
-          <AllCheck>
-            <FormBoxChild>
-              <CheckZone>
-                <input
-                  type="checkbox"
-                  name="select-all"
-                  onChange={(e) => handleAllCheck(e.target.checked)}
-                  checked={
-                    checkItems.length === CheckData.length ? true : false
-                  }
-                />
-              </CheckZone>
-              <TextZone>모두동의합니다.</TextZone>
-            </FormBoxChild>
-          </AllCheck>
+          <FormBoxInfo>
+            <CheckZone>
+              <input
+                type="checkbox"
+                name="select-all"
+                onChange={(e) => handleAllCheck(e.target.checked)}
+                checked={checkItems.length === CheckData.length ? true : false}
+              />
+            </CheckZone>
+            <TextZone>
+              <font.BoldP>모두동의합니다.</font.BoldP>
+            </TextZone>
+          </FormBoxInfo>
+
           {CheckData?.map((CheckData, key) => (
-            <FormBoxChild key={key}>
+            <FormBoxInfo key={key}>
               <CheckZone>
                 <input
                   type="checkbox"
@@ -150,16 +151,18 @@ const RegisterPage = () => {
                 />
               </CheckZone>
               <TextZone>
-                <span>{CheckData.title}</span>
+                <font.P>{CheckData.title}</font.P>
               </TextZone>
-            </FormBoxChild>
+            </FormBoxInfo>
           ))}
-          <SubmitButton onClick={() => navigate('/regiInfo')}>
-            동의하고 진행하기
-          </SubmitButton>
+          <ButtonZone>
+            <SubmitButton onClick={() => navigate('/regiInfo')}>
+              <font.Body1>동의하고 진행하기</font.Body1>
+            </SubmitButton>
+          </ButtonZone>
         </FormBox>
-        <Footer/>
       </Background>
+      <Footer />
     </>
   );
 };

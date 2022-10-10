@@ -27,7 +27,7 @@ let LogoBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('./pumkinlogo.png');
+  /* background: url('./pumkinlogo.png'); */
   /* border: 1px solid #7e30d1; */
   border-radius: 10px;
   &:hover {
@@ -38,7 +38,6 @@ let LogoBox = styled.div`
 let LoginBox = styled.div`
   width: 300px;
   height: 50px;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +82,7 @@ function Header() {
           navigate('/');
         }}
       >
-        {/* <img src={/public/pumkinlogo} alt="Logo" /> */}
+        <img src="url(/pumkinlogo.png)" alt="Logo" />
         호박공구마
       </LogoBox>
       <LoginBox>
@@ -92,21 +91,21 @@ function Header() {
             navigate('/write');
           }}
         >
-          방만들기
+          <font.H4>방만들기</font.H4>
         </Button>
         <Button
           onClick={() => {
             navigate('/login');
           }}
         >
-          로그인
+          <font.H4>로그인</font.H4>
         </Button>
         <Button
           onClick={() => {
             navigate('/register');
           }}
         >
-          회원가입
+          <font.H4>회원가입</font.H4>
         </Button>
       </LoginBox>
     </Box>
