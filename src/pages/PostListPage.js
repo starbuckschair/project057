@@ -5,9 +5,7 @@ import Footer from '../components/Footer';
 import PostLists from '../components/PostLists';
 import FilterBar from '../components/FilterBar';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-const {kakao}= window;
 import axios from 'axios';
-
 
 let PaddingBox = styled.div`
   height: 60px;

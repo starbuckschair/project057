@@ -328,7 +328,6 @@ function WritePage() {
             <input type="submit" value="방만들기" />
           </form>
           </ContentsArea>
-        </form>
         <Footer />
       </Background>
     </>
