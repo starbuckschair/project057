@@ -119,7 +119,7 @@ function RegisterInfo() {
       paymentMethod: `${payment}`,
     };
 
-    fetch(process.env.REACT_APP_TEST_URL + '/v1/members', {
+    fetch(process.env.REACT_APP_TEST_REGISTER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(members),

@@ -201,38 +201,38 @@ function WritePage() {
 
   const SubmitWrite = () => {
     let posts = {
-      memberId: 1, //'${현재접속중인 맴버 아이디}'
-      title: '테스트중입니다',
-      foodCategoryId: `${category}`,
-      deadline: `${deadline}`,
-      recruit: `${participate}`,
-      pickupLocation: {
-        nameOfPlace: '더큰내일센터',
-        korAddress: '제주도 연북로',
-        addressDetail: '101동 101호',
-        type: 1,
-        latitude: 33.556355,
-        longitude: 126.79581,
-      },
-      restaurantName: '추후인풋창추가',
-      restaurantUrl: `${menuUrl}`,
-      body: `${notice}`,
-      imageUrl: {
-        url: 'imageurl/url/image.jpg',
-        type: 1,
-      },
+      "memberId": 13, //'${현재접속중인 맴버 아이디}'
+      "title": "테스트중입니다",
+      "foodCategoryId": `${category}`,
+      "deadline": `${deadline}`,
+      "recruit": `${participate}`,
+      "pickupLocation" : {
+        "nameOfPlace": "더큰내일센터",
+        "korAddress": "제주도 연북로",
+        "addressDetail": "101동 101호",
+        "type": 1,
+        "latitude": 33.556355,
+        "longitude": 126.79581
+    },
+    "restaurantName": "추후인풋창추가",
+    "restaurantUrl": `${menuUrl}`,
+    "body": `${notice}`,
+    "imageUrl": {
+        "url": "imageurl/url/image.jpg",
+        "type": 1
+    }
     };
 
     return axios
-      .post(process.env.REACT_APP_TEST_URL + '/items', posts)
-      .then((res) => {
-        console.log(res.data);
-        navigate(`/post/${res.data.itemId}`);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  };
+    .post(process.env.REACT_APP_TEST_URL+"/items", posts)
+    .then((res) => {
+      console.log(res.data)
+      navigate(`/post/${res.data.itemId}`)
+    })
+    .catch((err)=>{
+      console.log(err.response.data)
+    });
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();

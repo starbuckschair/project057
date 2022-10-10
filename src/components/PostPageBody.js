@@ -199,129 +199,123 @@ function PostPageBody(props) {
   console.log(pickLng);
   console.log(pickItem?.pickupLocation?.nameOfPlace);
 
-  useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_TEST_URL + '/items?page=0&size=100')
-      .then((res) => {
-        let copy = [...res.data];
-        console.log(copy);
-        setContents(copy);
-        // console.log(choice)
-      })
-      .catch(() => {
-        console.log('실패함');
-      });
-  }, []);
 
-  useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_TEST_URL + '/v1/members?page=0&size=100')
-      .then((res) => {
-        let copy = [...res.data];
-        console.log(copy);
-        setUsers(copy);
-        // console.log(res.data)
-      })
-      .catch(() => {
-        console.log('실패함'); //뜨지마라
-      });
-  }, []);
+    useEffect(()=>{
+        axios.get(process.env.REACT_APP_TEST_ALLITEMS_URL).then((res)=>{
+            let copy = [...res.data];
+            console.log(copy);
+            setContents(copy)
+            // console.log(choice)
+        })
+        .catch(()=>{
+          console.log('실패함')
+        })
+     },[])
+   
+     useEffect(()=>{
+        axios.get(process.env.REACT_APP_TEST_ALLMEMBERS_URL).then((res)=>{
+            let copy = [...res.data];
+            console.log(copy);
+            setUsers(copy)
+            // console.log(res.data)
+        })
+        .catch(()=>{
+          console.log('실패함')//뜨지마라
+        })
+     },[])
 
-  return (
-    <>
-      <PaddingBox />
-      <Body>
-        <OrderInfo>
-          <MapBox>
-            <Map
-              center={{
-                lat: 33.48151,
-                lng: 126.508923,
-              }}
-              style={{ width: '98%', height: '290px' }}
-              level={3}
-            >
-              <MapMarker
-                position={{
-                  lat: pickLat,
-                  lng: pickLng,
-                }}
-              >
-                <div style={{ color: '#000' }}>픽업장소</div>
-              </MapMarker>
-            </Map>
-          </MapBox>
-          <DetailInfo>
-            <StaticInfo>
-              <StaticInfoTitle>픽업장소</StaticInfoTitle>
-              <StaticInfoDetail>
-                {pickItem?.pickupLocation?.nameOfPlace}
-              </StaticInfoDetail>
-            </StaticInfo>
-            <StaticInfo>
-              <StaticInfoTitle>메뉴정보</StaticInfoTitle>
-              <StaticInfoDetail>{pickItem?.restaurantUrl}</StaticInfoDetail>
-            </StaticInfo>
-            <StaticInfo>
-              <StaticInfoTitle>배달료</StaticInfoTitle>
-              <StaticInfoDetail>1인 2000원</StaticInfoDetail>
-            </StaticInfo>
-            <StaticInfo>
-              <StaticInfoTitle>모집인원</StaticInfoTitle>
-              <StaticInfoDetail>{pickItem?.recruit}명</StaticInfoDetail>
-            </StaticInfo>
-            <LiveInfo>
-              <LiveInfoImg>
-                <LiveInfoImgs>{pickItemMaker?.username}</LiveInfoImgs>
-                {pickItem?.participantsList?.map((a, i) => {
-                  return (
-                    <LiveInfoImgs key={i}>
-                      {pickItem?.participantsList[i]?.member.username}
-                    </LiveInfoImgs>
-                  );
-                })}
-              </LiveInfoImg>
-              <LiveInfoText>
-                {pickItem?.participantsList?.length + 1 >= pickItem?.recruit ? (
-                  <LiveInfoTextTo>모집완료</LiveInfoTextTo>
-                ) : pickItem?.participantsList?.length == undefined ? (
-                  <LiveInfoTextTo>1명 참여중</LiveInfoTextTo>
-                ) : (
-                  <LiveInfoTextTo>
-                    {pickItem?.participantsList?.length + 1}명 참여중
-                  </LiveInfoTextTo>
-                )}
-                <LiveInfoTextTo>
-                  {elapsedTime(pickItem?.deadline)}
-                </LiveInfoTextTo>
-              </LiveInfoText>
-            </LiveInfo>
-            <JoinButtonBox>
-              <JoinButton
-                onClick={() => {
-                  axios
-                    .post(
-                      process.env.REACT_APP_TEST_URL +
-                        `/items/${id}?memberId=4`,
-                    )
-                    .then((response) => {
-                      console.log(response);
-                      navigate(`/post/${id}`);
-                    })
-                    .catch((error) => {
-                      console.log(error.response);
-                    });
-                }}
-              >
-                참여하기
-              </JoinButton>
-            </JoinButtonBox>
-          </DetailInfo>
-        </OrderInfo>
-        <Comment />
-      </Body>
-    </>
-  );
+ 
+ 
+    return(
+        <>
+            <Body>
+                <OrderInfo>
+                    <MapBox>
+                        <Map
+                            center={{ 
+                                lat: 33.481510, 
+                                lng: 126.508923
+                                }}
+                            style={{ width: "98%", height: "290px"}}
+                            level={6}
+                            >
+                            <MapMarker position={{
+                                 lat: pickLat, 
+                                 lng: pickLng 
+                                 }}>
+                                <div style={{ color: "#000" }}>픽업장소</div>
+                            </MapMarker>
+                        </Map>
+                    </MapBox>
+                    <DetailInfo>
+                        <StaticInfo>
+                            <StaticInfoTitle>픽업장소</StaticInfoTitle>
+                            <StaticInfoDetail>{pickItem?.pickupLocation?.nameOfPlace}</StaticInfoDetail>
+                        </StaticInfo>
+                        <StaticInfo>
+                            <StaticInfoTitle>메뉴정보</StaticInfoTitle>
+                            <StaticInfoDetail>{pickItem?.restaurantUrl}</StaticInfoDetail>
+                        </StaticInfo>
+                        <StaticInfo>
+                            <StaticInfoTitle>배달료</StaticInfoTitle>
+                            <StaticInfoDetail>1인 2000원</StaticInfoDetail>
+                        </StaticInfo>
+                        <StaticInfo>
+                            <StaticInfoTitle>모집인원</StaticInfoTitle>
+                            <StaticInfoDetail>{pickItem?.recruit}명</StaticInfoDetail>
+                        </StaticInfo>
+                        <LiveInfo>
+                            <LiveInfoImg>
+                                <LiveInfoImgs>
+                                    {
+                                        pickItemMaker?.username
+                                    }
+                                </LiveInfoImgs>
+                                {
+                                    pickItem?.participantsList?.map((a, i)=>{
+                                        return(
+                                            <LiveInfoImgs key={i}>
+                                                {pickItem?.participantsList[i]?.member.username}
+                                            </LiveInfoImgs>
+                                        )  
+                                    })   
+                                }
+                            </LiveInfoImg>
+                            <LiveInfoText>
+                                {
+                                    pickItem?.participantsList?.length+1 >= pickItem?.recruit
+                                    ?<LiveInfoTextTo>모집완료</LiveInfoTextTo>
+                                    :(
+                                        pickItem?.participantsList?.length == undefined
+                                        ?<LiveInfoTextTo>1명 참여중</LiveInfoTextTo>
+                                        :<LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
+                                    )
+                                        
+                                    
+                                }
+                                <LiveInfoTextTo>{elapsedTime(pickItem?.deadline)}</LiveInfoTextTo>
+                            </LiveInfoText>
+                        </LiveInfo>
+                        <JoinButtonBox>
+                            <JoinButton onClick={()=>{
+                               axios.post(
+                                process.env.REACT_APP_TEST_JOIN_URL
+                               )
+                               .then((response) => {
+                                 console.log(response);
+                                 navigate(`/post/${id}`)
+                               })
+                               .catch((error) => {
+                                 console.log(error.response);
+                               });
+                            }}>참여하기</JoinButton>
+                        </JoinButtonBox>
+                    </DetailInfo>
+                </OrderInfo>
+                <Comment />
+            </Body>
+        </>
+    )
 }
 
 export default PostPageBody;

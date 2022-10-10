@@ -131,10 +131,7 @@ function LoginPage({ setIsLogin, setUserInfo }) {
       setErrorMessage('');
     }
     return axios
-      .post(process.env.REACT_APP_TEST_URL + '/v1/members/login', {
-        loginInfo,
-        checkedKeepLogin,
-      })
+      .post(process.env.REACT_APP_TEST_LOGIN_URL,{loginInfo, checkedKeepLogin})
       .then((res) => {
         // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
         SignIn();
