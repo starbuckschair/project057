@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import font from '../styles/font';
 import data from '../data';
 
 let PaddingBox = styled.div`
@@ -13,7 +15,9 @@ const Background = styled.div`
   height: auto;
   margin-top: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   /* border: 1px solid red; */
 `;
 const ContentsArea = styled.div`
@@ -34,10 +38,10 @@ const AddressBox = styled.div`
   align-items: center;
   border: none;
   outline: 1px solid hsl(210, 8%, 75%);
-  > h2 {
+  /* > h2 {
     margin-top: 0px;
     margin-bottom: 10px;
-  }
+  } */
   > div {
     display: flex;
     justify-content: space-between;
@@ -92,7 +96,7 @@ const Content = styled.div`
     resize: none;
     border: none;
     outline: 1px solid hsl(210, 8%, 75%);
-    > select option {
+    &:focus select option {
       background-color: white;
     }
   }
@@ -118,6 +122,47 @@ const TextareaBox = styled.textarea`
   border: none;
   outline: 1px solid hsl(210, 8%, 75%);
 `;
+const SubmitBtn = styled.button`
+  width: 110px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border-radius: 28px;
+  background: #7d45a8;
+  text-decoration: none;
+  /* border: 1px solid solid #7e30d1; */
+  border: none;
+  outline: 1px solid #7d45a8;
+  &:hover {
+    color: #f0be29;
+    cursor: pointer;
+  }
+`;
+const SubmitInput = styled(InputBox)`
+  width: 110px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border-radius: 28px;
+  background: #7d45a8;
+  text-decoration: none;
+  border: none;
+  outline: 1px solid #7d45a8;
+  &:hover {
+    color: #f0be29;
+    cursor: pointer;
+  }
+`;
 
 function WritePage() {
   let [category, setCategory] = useState('');
@@ -126,25 +171,25 @@ function WritePage() {
   let [deadline, setDeadLine] = useState('');
   let [notice, setNotice] = useState('');
   let [posts, setPosts] = useState({
-    "memberId" : 1,
-    "title": "Title",
-    "foodCategoryId": "1",
-    "deadline" : 1664348627680,
-    "recruit" : 10,
-    "pickupLocation" : {
-        "nameOfPlace": "더큰내일센터",
-        "korAddress": "제주도 연북로",
-        "addressDetail": "101동 101호",
-        "type": 1,
-        "latitude": 209.987,
-        "longitude": 1234.343
+    memberId: 1,
+    title: 'Title',
+    foodCategoryId: '1',
+    deadline: 1664348627680,
+    recruit: 10,
+    pickupLocation: {
+      nameOfPlace: '더큰내일센터',
+      korAddress: '제주도 연북로',
+      addressDetail: '101동 101호',
+      type: 1,
+      latitude: 209.987,
+      longitude: 1234.343,
     },
-    "restaurantName": "McDonalds1",
-    "restaurantUrl": "http://local1.com/",
-    "body": "오늘 저녁에 치킨 드실 분 같이 주문해요!!",
-    "imageUrl": {
-        "url": "imageurl/url/image.jpg",
-        "type": 1
+    restaurantName: 'McDonalds1',
+    restaurantUrl: 'http://local1.com/',
+    body: '오늘 저녁에 치킨 드실 분 같이 주문해요!!',
+    imageUrl: {
+      url: 'imageurl/url/image.jpg',
+      type: 1,
     },
   });
   let navigate = useNavigate();
@@ -169,7 +214,7 @@ function WritePage() {
     // SignUp();
   };
   const onSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // //   setUrl(e.target.menuUrl.value);
     // //   setParticipate(e.target.participate.value);
     // //   setDeadLine(e.target.deadline.value);
@@ -201,17 +246,19 @@ function WritePage() {
     return '_' + Math.random().toString(36).substr(2, 9);
   }
 
-  const postTest =()=> {
-    return axios
-      // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
-      .post(" http://localhost:8080/items", JSON.stringify(posts))
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((err)=>{
-        console.log(err.response.data)
-      });
-  }
+  const postTest = () => {
+    return (
+      axios
+        // .post("ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items", JSON.stringify(posts))
+        .post(' http://localhost:8080/items', JSON.stringify(posts))
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        })
+    );
+  };
 
   return (
     <>
@@ -221,7 +268,7 @@ function WritePage() {
         <form onSubmit={postTest}>
           <ContentsArea>
             <AddressBox>
-              <h2>배송지 선택</h2>
+              <font.H1>배송지 선택</font.H1>
               <div>김제주 </div>
               <p>제주특별자치도 제주시 한라산 백록담, 101동 </p>
               <p>010-0707-8282</p>
@@ -231,7 +278,7 @@ function WritePage() {
                 <button>선택</button>
               </div>
             </AddressBox>
-            <button>+배송지추가</button>
+            <SubmitBtn>+배송지추가</SubmitBtn>
             <WriteInfo>
               <WriteInfoChild>
                 <Title>카테고리</Title>
@@ -299,9 +346,10 @@ function WritePage() {
               </WriteInfoChild>
             </WriteInfo>
             {/* <button onClick={() => navigate(`/post/${detail}`)}>글쓰기</button> */}
-            <input type="submit" />
+            <SubmitInput type="submit" />
           </ContentsArea>
         </form>
+        <Footer />
       </Background>
     </>
   );

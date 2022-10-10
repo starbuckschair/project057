@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Comment from './Comment';
 import {Map, MapMarker} from 'react-kakao-maps-sdk';
 import axios from 'axios';
+import font from '../styles/font';
 import WritePage from '../pages/WritePage';
 
 let Body = styled.div`

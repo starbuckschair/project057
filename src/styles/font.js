@@ -64,4 +64,10 @@ export default {
     line-height: 15px;
     letter-spacing: -0.25px;
   `,
+  P : styled.div`
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+  `,
 };

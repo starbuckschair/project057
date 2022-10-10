@@ -1,81 +1,116 @@
-import React from "react";
-import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
+import React from 'react';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import font from '../styles/font';
 
 let Box = styled.div`
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    border-bottom: 2px solid grey;
-    position: fixed;
-    z-index: 100;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 8px;
+  background-color: white;
+  /* border-bottom: 2px solid red; */
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: none;
+  /* outline: 1px solid red; */
 `;
 
 let LogoBox = styled.div`
-    width: 100px;
-    height: 45px;
-    margin: 1px;
-    font-weight: 500;
-    font-size: large;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid gray;
-    border-radius: 10px;
-    &:hover {
-      color: red;
-      cursor: pointer;
-    }
+  width: 100px;
+  height: 45px;
+  margin: 1px;
+  font-weight: 500;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('./pumkinlogo.png');
+  /* border: 1px solid #7e30d1; */
+  border-radius: 10px;
+  &:hover {
+    color: #f0be29;
+    cursor: pointer;
+  }
 `;
 let LoginBox = styled.div`
-    width: 300px;
-    height: 50px;
-    /* border: 1px solid black; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:hover {
-      color: red;
-      cursor: pointer;
-    }
+  width: 300px;
+  height: 50px;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    color: #f0be29;
+    cursor: pointer;
+  }
 `;
-let Button = styled.button`//로그인/회원가입버튼
-    width: 120px;
-    height: 30px;
-  color: black;
-  background-color: white;
-  font-size: 12px;
-  font-weight: 500;
+let Button = styled.button`
+  //로그인/회원가입버튼
+  width: 120px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
   margin: 1em;
   padding: 0.25em 1em;
-  border-radius: 10px;
-  /* border: 2px solid palevioletred; */
+  border-radius: 28px;
+  background: #7d45a8;
+  text-decoration: none;
+  /* border: 1px solid solid #7e30d1; */
+  border: none;
+  outline: 1px solid #7d45a8;
   &:hover {
-      color: red;
-      cursor: pointer;
-    }
+    color: #f0be29;
+    cursor: pointer;
+  }
 `;
-const OpenButton = styled(Button)`//방만들기버튼
-    font-weight: 700;
-`
+// const OpenButton = styled(Button)`
+//   //방만들기버튼
+//   font-weight: 700;
+// `;
 
-function Header(){
-    let navigate = useNavigate();
-    return(
-        <Box>
-            <LogoBox onClick={()=>{navigate('/')}}>호박공구마</LogoBox> 
-            <LoginBox>
-                <OpenButton onClick={()=>{navigate('/write')}}>방만들기</OpenButton>
-                <Button onClick={()=>{navigate('/login')}}>로그인</Button>
-                <Button onClick={()=>{navigate('/register')}}>회원가입</Button>
-            </LoginBox>
-        </Box>
-        
-        ) 
-  
-};
+function Header() {
+  let navigate = useNavigate();
+  return (
+    <Box>
+      <LogoBox
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        {/* <img src={/public/pumkinlogo} alt="Logo" /> */}
+        호박공구마
+      </LogoBox>
+      <LoginBox>
+        <Button
+          onClick={() => {
+            navigate('/write');
+          }}
+        >
+          방만들기
+        </Button>
+        <Button
+          onClick={() => {
+            navigate('/login');
+          }}
+        >
+          로그인
+        </Button>
+        <Button
+          onClick={() => {
+            navigate('/register');
+          }}
+        >
+          회원가입
+        </Button>
+      </LoginBox>
+    </Box>
+  );
+}
 
 export default Header;
