@@ -222,7 +222,7 @@ function PostPageBody(props){
             // console.log(res.data)
         })
         .catch(()=>{
-          console.log('실패함')//뜨지마라
+          console.log('실패함')
         })
      },[])
 
@@ -320,7 +320,7 @@ function PostPageBody(props){
                                 });
                             }}>참여하기</JoinButton>
                             </JoinButtonBox>
-                            : <>모집완료되었습니다.</>
+                            : <></>
                         }
 
                     </DetailInfo>
