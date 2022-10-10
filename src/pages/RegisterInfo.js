@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+import font from '../styles/font';
 import data from '../data';
-
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -29,12 +30,12 @@ const FormBox = styled.div`
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  > h1 {
-    margin-top: 0;
+  > font.H1 {
+    margin-bottom: 5px;
   }
   > div {
-    display: flex;
-    justify-content: center;
+    margin-top: 5px;
+    margin-left: 15px;
   }
 `;
 const FormPosition = styled.div`
@@ -137,16 +138,18 @@ function RegisterInfo() {
       <Background>
         <form onSubmit={onSubmit}>
           <FormBox>
-            <h1>회원가입정보</h1>
-            <FormPosition>
-              <FormTitle>이름</FormTitle>
-              <InputBox
-                type="text"
-                name="name"
-                placeholder="name"
-                onChange={Named}
-              ></InputBox>
-            </FormPosition>
+            <font.H1>회원가입정보</font.H1>
+            <div>
+              <FormPosition>
+                <FormTitle>이름</FormTitle>
+                <InputBox
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  onChange={Named}
+                ></InputBox>
+              </FormPosition>
+            </div>
             <FormPosition>
               <FormTitle>이메일</FormTitle>
               <InputBox
@@ -191,11 +194,10 @@ function RegisterInfo() {
             </div>
           </FormBox>
         </form>
+        <Footer/>
       </Background>
     </>
   );
 }
 
 export default RegisterInfo;
-
-

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+import font from '../styles/font';
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -21,9 +23,10 @@ const Background = styled.div`
   }
 `;
 const FormBox = styled.div`
-  width: 500px;
+  width: 400px;
   height: 500px;
-  padding: 40px 30px;
+  padding-left: 30px;
+  padding-top: 30px;
   border-radius: 3px;
   border: none;
   border: 1px solid hsl(210, 8%, 75%);
@@ -40,11 +43,18 @@ const FormBox = styled.div`
     margin-left: 10px;
   }
 `;
+const TitleZone = styled.div`
+  width: 80%;
+  height: 15%;
+  padding: 10px 20px;
+`
+
 const FormBoxChild = styled.div`
   width: 90%;
   height: 20px;
   display: flex;
   justify-content: space-between;
+  border: 1px solid red;
 `;
 const AllCheck = styled.div`
   margin-bottom: 15px;
@@ -108,8 +118,10 @@ const RegisterPage = () => {
       <PaddingBox />
       <Background>
         <FormBox>
-          <h1>회원가입</h1>
+          <TitleZone>
+          <font.H1>회원가입</font.H1>
           <div>환영합니다! 호박공구마 서비스 이용약관에 동의해주세요.</div>
+          </TitleZone>
           <AllCheck>
             <FormBoxChild>
               <CheckZone>
@@ -146,6 +158,7 @@ const RegisterPage = () => {
             동의하고 진행하기
           </SubmitButton>
         </FormBox>
+        <Footer/>
       </Background>
     </>
   );

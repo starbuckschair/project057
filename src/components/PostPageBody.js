@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Comment from './Comment';
 import {Map, MapMarker} from 'react-kakao-maps-sdk';
 import axios from 'axios';
+import font from '../styles/font';
 import WritePage from '../pages/WritePage';
 import { useNavigate } from 'react-router-dom'
 
@@ -33,10 +34,6 @@ let MapBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* background-image:url('./직방이미지.png');
-    background-size:cover;
-    background-position: center; */
 `
 let DetailInfo = styled.div`
     width: 45%;

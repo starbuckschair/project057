@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import PostLists from '../components/PostLists';
 import FilterBar from '../components/FilterBar';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
+const {kakao}= window;
 import axios from 'axios';
 
 
@@ -21,14 +23,24 @@ let Body = styled.div`
 let Describe = styled.div`
   width: 800px;
   height: 80px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   font-weight: 800;
   text-align: center;
-  /* background-image: url('./describe.jpeg'); */
+  background-image: url('./background.jpeg');
   /* background-size: cover; */
   /* background-position: center; */
+  display: flex;
+  justify-content: center;
   align-items: center;
   border: 1px solid gray;
   border-radius: 10px;
+  > div {
+    width: 100px;
+    height: 80px;
+    border: 1px solid red;
+    margin-right: 15px;
+  }
 `;
 let MapImg = styled.div`
   width: 800px;
@@ -86,6 +98,9 @@ function PostListPage() {
       <PaddingBox />
       <Body>
         <Describe>
+          <div>
+            <img src="url('./pumkinlogo.png')" />
+          </div>
           <br></br>호박공구마는 배달건당 주문량을 늘려 탄소절감과 고객비용부담
           완화를 통해 <br></br>더 나은 세상을 만들기 위한 배달비공유
           사이트입니다.
@@ -114,6 +129,7 @@ function PostListPage() {
         </MapImg>
         <FilterBar />
         <PostLists />
+        <Footer/>
       </Body>
     </>
   );

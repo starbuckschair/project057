@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import font from '../styles/font';
 import data from '../data';
 
 let PaddingBox = styled.div`
@@ -13,7 +15,9 @@ const Background = styled.div`
   height: auto;
   margin-top: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   /* border: 1px solid red; */
 `;
 const ContentsArea = styled.div`
@@ -34,10 +38,10 @@ const AddressBox = styled.div`
   align-items: center;
   border: none;
   outline: 1px solid hsl(210, 8%, 75%);
-  > h2 {
+  /* > h2 {
     margin-top: 0px;
     margin-bottom: 10px;
-  }
+  } */
   > div {
     display: flex;
     justify-content: space-between;
@@ -92,7 +96,7 @@ const Content = styled.div`
     resize: none;
     border: none;
     outline: 1px solid hsl(210, 8%, 75%);
-    > select option {
+    &:focus select option {
       background-color: white;
     }
   }
@@ -117,6 +121,47 @@ const TextareaBox = styled.textarea`
   resize: none;
   border: none;
   outline: 1px solid hsl(210, 8%, 75%);
+`;
+const SubmitBtn = styled.button`
+  width: 110px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border-radius: 28px;
+  background: #7d45a8;
+  text-decoration: none;
+  /* border: 1px solid solid #7e30d1; */
+  border: none;
+  outline: 1px solid #7d45a8;
+  &:hover {
+    color: #f0be29;
+    cursor: pointer;
+  }
+`;
+const SubmitInput = styled(InputBox)`
+  width: 110px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border-radius: 28px;
+  background: #7d45a8;
+  text-decoration: none;
+  border: none;
+  outline: 1px solid #7d45a8;
+  &:hover {
+    color: #f0be29;
+    cursor: pointer;
+  }
 `;
 
 function WritePage() {
@@ -197,7 +242,7 @@ function WritePage() {
       <Background>
           <ContentsArea>
             <AddressBox>
-              <h2>배송지 선택</h2>
+              <font.H1>배송지 선택</font.H1>
               <div>김제주 </div>
               <p>제주특별자치도 제주시 한라산 백록담, 101동 </p>
               <p>010-0707-8282</p>
@@ -283,7 +328,8 @@ function WritePage() {
             <input type="submit" value="방만들기" />
           </form>
           </ContentsArea>
-        
+        </form>
+        <Footer />
       </Background>
     </>
   );
