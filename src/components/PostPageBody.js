@@ -129,16 +129,25 @@ let JoinButtonBox = styled.div`
     align-items: center;
 `
 let JoinButton = styled.button`
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 50px;
     font-weight: 500;
-    margin-top: 5%;
-    background-color: white;
-    border: 2px solid gray;
-    border-radius: 10px;
+    /* margin-top: 5%; */
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
+  margin: 1em;
+  padding: 0.5em 1em;
+  border-radius: 25px;
+  background: #7d45a8;
+  text-decoration: none;
+  border: none;
+  outline: 1px solid #7d45a8;
     &:hover {
     cursor: pointer;
-    color: red;
+    color: #f0be29;
     }
 `
 
@@ -303,7 +312,6 @@ function PostPageBody(props){
                     </DetailInfo>
                 </OrderInfo>
                 <Comment />
-                
             </Body>
         </>
     )
