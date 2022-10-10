@@ -97,6 +97,27 @@
           },
           "createdAt": 1664858338741,
           "modifiedAt": 1664858338741
+        },
+        {
+          "participantsId": 1,
+          "type": 2,
+          "member": {
+            "memberId": 3,
+            "username": "신가경",
+            "email": "test2@email.com",
+            "password": "pass1234",
+            "phoneNumber": "010-2222-1111",
+            "location": null,
+            "profileImageUrl": "https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Rdr/image/4KLr3IqIbJlrxgio86OtpDhxR-Q.JPG",
+            "joinedAt": 12341234,
+            "modifiedAt": 12341234,
+            "paymentMethod": "cash",
+            "role": "ROLE_USER",
+            "provider": "provider2",
+            "providerId": "providerId2"
+          },
+          "createdAt": 1664858338741,
+          "modifiedAt": 1664858338741
         }
       ],
       "body": "배송비나눔해요, 결제는 계좌이체 희망합니다.",

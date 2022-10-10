@@ -187,8 +187,10 @@ function elapsedTime(date) {
 function PostPageBody(props){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
+    let [render, setRender]= useState(false) //참여하기 클릭 후 랜더를 위함 함수
     let {id} = useParams();
-    let pickItem = contents.find(el=>el.itemId == id); //수정 el.id => itemId로
+    // let pickItem = contents.find(el=>el.itemId == id); //수정 el.id => itemId로
+    let pickItem = contents.find(el=>el.id == id); //수정 el.id => itemId로
     let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
     // let participants = pickItem.participantsList;
     // let [icon, setIcon] = useState([])
@@ -210,7 +212,7 @@ function PostPageBody(props){
         .catch(()=>{
           console.log('실패함')
         })
-     },[])
+     },[render])
    
      useEffect(()=>{
         axios.get(process.env.REACT_APP_TEST_ALLMEMBERS_URL).then((res)=>{
@@ -284,32 +286,43 @@ function PostPageBody(props){
                             <LiveInfoText>
                                 {
                                     pickItem?.participantsList?.length+1 >= pickItem?.recruit
-                                    ?<LiveInfoTextTo>모집완료</LiveInfoTextTo>
+                                    ?<>
+                                    <LiveInfoTextTo>모집완료</LiveInfoTextTo>
+                                    <LiveInfoTextTo></LiveInfoTextTo>
+                                    </>
                                     :(
                                         pickItem?.participantsList?.length == undefined
-                                        ?<LiveInfoTextTo>1명 참여중</LiveInfoTextTo>
-                                        :<LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
-                                    )
-                                        
-                                    
+                                        ?<>
+                                            <LiveInfoTextTo>1명 참여중</LiveInfoTextTo>
+                                            <LiveInfoTextTo>{elapsedTime(pickItem?.deadline)}</LiveInfoTextTo>
+                                        </>
+                                        :<>
+                                            <LiveInfoTextTo>{pickItem?.participantsList?.length+1}명 참여중</LiveInfoTextTo>
+                                            <LiveInfoTextTo>{elapsedTime(pickItem?.deadline)}</LiveInfoTextTo>
+                                        </>
+                                    )   
                                 }
-                                <LiveInfoTextTo>{elapsedTime(pickItem?.deadline)}</LiveInfoTextTo>
                             </LiveInfoText>
                         </LiveInfo>
-                        <JoinButtonBox>
+                        {
+                            render === false
+                            ?<JoinButtonBox>
                             <JoinButton onClick={()=>{
-                               axios.post(
+                                axios.post(
                                 process.env.REACT_APP_TEST_JOIN_URL
-                               )
-                               .then((response) => {
-                                 console.log(response);
-                                 navigate(`/post/${id}`)
-                               })
-                               .catch((error) => {
-                                 console.log(error.response);
-                               });
+                                )
+                                .then((response) => {
+                                    console.log(response);
+                                    setRender(true)
+                                })
+                                .catch((error) => {
+                                    console.log(error.response);
+                                });
                             }}>참여하기</JoinButton>
-                        </JoinButtonBox>
+                            </JoinButtonBox>
+                            : <>모집완료되었습니다.</>
+                        }
+
                     </DetailInfo>
                 </OrderInfo>
                 <Comment />

@@ -132,7 +132,8 @@ function PostLists(){
         {
             id === undefined
             ?contents.map((a, i)=>{
-                const detail = a.itemId; //수정 id를 itemId로 
+                // const detail = a.itemId; //수정 id를 itemId로 
+                const detail = a.id; //수정 id를 itemId로 
                 const user = users.find((el)=>{return el.memberId===a.memberId});
                 const lat2 = a.pickupLocation.latitude;
                 const lon2 = a.pickupLocation.longitude;
@@ -161,7 +162,7 @@ function PostLists(){
                         <ContentsBox>{a.restaurantName}</ContentsBox>
                         <ContentsBox>{user?.username}</ContentsBox>
                         <ContentsBox>{a.recruit}명</ContentsBox>
-                        <ContentsBox>{getDistance(33.5563, 126.79581, lat2, lon2)}미터</ContentsBox>
+                        <ContentsBox>{getDistance(33.481510, 126.508923, lat2, lon2)}미터</ContentsBox>
                         <ContentsBox>{elapsedTime(a.deadline)}</ContentsBox>
                     </PostHead>
                 )
