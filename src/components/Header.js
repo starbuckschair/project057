@@ -2,8 +2,9 @@ import React from 'react';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import font from '../styles/font';
+import Responsive from '../components/common/Responsive'
 
-let Box = styled.div`
+let Box = styled(Responsive)`
   width: 100%;
   height: 50px;
   padding: 8px;
@@ -73,6 +74,7 @@ let Button = styled.button`
 //   //방만들기버튼
 //   font-weight: 700;
 // `;
+
 
 function Header() {
   let navigate = useNavigate();

@@ -132,8 +132,8 @@ function PostLists(){
         {
             id === undefined
             ?contents.map((a, i)=>{
-                // const detail = a.itemId; //수정 id를 itemId로 
-                const detail = a.id; //수정 id를 itemId로 
+                const detail = a.itemId; //수정 id를 itemId로 
+                // const detail = a.id; //수정 id를 itemId로 
                 const user = users.find((el)=>{return el.memberId===a.memberId});
                 const lat2 = a.pickupLocation.latitude;
                 const lon2 = a.pickupLocation.longitude;

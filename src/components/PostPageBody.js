@@ -189,8 +189,8 @@ function PostPageBody(props){
     let [users, setUsers] = useState([]);
     let [render, setRender]= useState(false) //참여하기 클릭 후 랜더를 위함 함수
     let {id} = useParams();
-    // let pickItem = contents.find(el=>el.itemId == id); //수정 el.id => itemId로
-    let pickItem = contents.find(el=>el.id == id); //수정 el.id => itemId로
+    let pickItem = contents.find(el=>el.itemId == id); //수정 el.id => itemId로
+    // let pickItem = contents.find(el=>el.id == id); //수정 el.id => itemId로
     let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
     // let participants = pickItem.participantsList;
     // let [icon, setIcon] = useState([])
@@ -306,21 +306,25 @@ function PostPageBody(props){
                         </LiveInfo>
                         {
                             render === false
-                            ?<JoinButtonBox>
-                            <JoinButton onClick={()=>{
-                                axios.post(
-                                process.env.REACT_APP_TEST_JOIN_URL
-                                )
-                                .then((response) => {
-                                    console.log(response);
-                                    setRender(true)
-                                })
-                                .catch((error) => {
-                                    console.log(error.response);
-                                });
-                            }}>참여하기</JoinButton>
-                            </JoinButtonBox>
-                            : <></>
+                            ?(
+                                pickItem?.participantsList?.length+1 < pickItem?.recruit
+                                ?<JoinButtonBox>
+                                <JoinButton onClick={()=>{
+                                    axios.post(
+                                    // process.env.REACT_APP_TEST_JOIN_URL
+                                    `http://ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items/${id}?memberId=14`
+                                    )
+                                    .then((response) => {
+                                        console.log(response);
+                                        setRender(true)
+                                    })
+                                    .catch((error) => {
+                                        console.log(error.response);
+                                    });
+                                }}>참여하기</JoinButton>
+                                </JoinButtonBox>
+                                : <></>
+                            ): <></>
                         }
 
                     </DetailInfo>

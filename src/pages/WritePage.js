@@ -197,7 +197,7 @@ function WritePage() {
 
   const SubmitWrite = () => {
     let posts = {
-      "memberId": 13, //'${현재접속중인 맴버 아이디}'
+      "memberId": 12, 
       "title": "테스트중입니다",
       "foodCategoryId": `${category}`,
       "deadline": `${deadline}`,
