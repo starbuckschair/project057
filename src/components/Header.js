@@ -4,6 +4,11 @@ import styled from 'styled-components';
 import font from '../styles/font';
 import Responsive from '../components/common/Responsive'
 
+const UserInfo = styled.div`
+  font-weight: 800;
+  margin-right: 1rem;
+`;
+
 let Box = styled(Responsive)`
   width: 100%;
   height: 50px;
@@ -75,7 +80,7 @@ let Button = styled.button`
 // `;
 
 
-function Header() {
+function Header({user}) {
   let navigate = useNavigate();
   return (
     <Box>
@@ -95,20 +100,22 @@ function Header() {
         >
           <font.H4>방만들기</font.H4>
         </Button>
-        <Button
-          onClick={() => {
-            navigate('/login');
-          }}
-        >
-          <font.H4>로그인</font.H4>
-        </Button>
-        <Button
-          onClick={() => {
-            navigate('/register');
-          }}
-        >
-          <font.H4>회원가입</font.H4>
-        </Button>
+
+          {user? (
+            <Button onClick={() => {navigate('/login')}}>
+            <font.H4>로그아웃</font.H4>
+            </Button>
+          ):(
+            <>
+              <Button onClick={() => {navigate('/login')}}>
+                <font.H4>로그인</font.H4>
+              </Button>
+              <Button onClick={() => {navigate('/register')}}>
+                <font.H4>회원가입</font.H4>
+              </Button>
+            </>
+          )
+        }
       </LoginBox>
     </Box>
   );
