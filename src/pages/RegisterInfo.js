@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import font from '../styles/font';
-import data from '../data';
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -103,11 +102,6 @@ function RegisterInfo() {
   let Pass = (e) => setPw(e.target.value);
   let Phone = (e) => setPhone(e.target.value);
   let Pay = (e) => setPayment(e.target.value);
-  //   const handleClick = (event) => {
-  //     // event.preventDefault();
-  //     // setUserName(event.target.username)
-  //     console.log(event.target);
-  //   };
 
   const JoinFetch = () => {
     let members = {
@@ -143,7 +137,6 @@ function RegisterInfo() {
     // setPw(e.target.pw.value);
     // setPhone(e.target.phone.value);
     // setPayment(e.target.payment.value);
-
     JoinFetch();
     SignUp();
   };

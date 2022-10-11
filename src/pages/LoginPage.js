@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -114,7 +114,7 @@ function LoginPage({ setIsLogin, setUserInfo }) {
   const [checkedKeepLogin, setCheckedKeepLogin] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const SignIn = () => {
-    navigate('/');
+    navigate('/',{state: {id:1}});
   };
   const handleInputValue = (key) => (e) => {
     setLoginInfo({ ...loginInfo, [key]: e.target.value });
@@ -122,7 +122,7 @@ function LoginPage({ setIsLogin, setUserInfo }) {
   const loginRequestHandler = () => {
     // Login 컴포넌트가 가지고 있는 state를 이용해 로그인을 구현합니다.
     // 로그인에 필요한 유저정보가 충분히 제공되지 않았다면 에러메시지가 나타남
-    console.log(loginInfo);
+    // console.log(loginInfo);
 
     if (!loginInfo.userId || !loginInfo.password) {
       setErrorMessage('아이디와 비밀번호를 입력하세요');

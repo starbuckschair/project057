@@ -1,9 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import PostListPage from '../pages/PostListPage';
 
 let FilterBox = styled.div`
   margin-top: 1%;

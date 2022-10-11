@@ -6,6 +6,7 @@ import PostLists from '../components/PostLists';
 import FilterBar from '../components/FilterBar';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import axios from 'axios';
+import { useLocation } from 'react-router';
 
 
 let PaddingBox = styled.div`
@@ -53,6 +54,10 @@ let MapImg = styled.div`
 
 function PostListPage() {
   const [contents, setContents] = useState([]);
+  // const location = useLocation();
+  // const id = location.state.id;
+  // const [islogin, setIslogin] = useState(id)
+  
 
   useEffect(()=>{
     axios.get(process.env.REACT_APP_TEST_ALLITEMS_URL).then((res)=>{
@@ -71,6 +76,7 @@ function PostListPage() {
 
   return (
     <>
+      {/* <Header isLogin={islogin}/> */}
       <Header />
       <PaddingBox />
       <Body>
@@ -88,20 +94,6 @@ function PostListPage() {
             style={{ width: '98%', height: '98%' }}
             level={3} // 지도의 확대 레벨
           >
-            {/* {positions.map((position, index) => (
-          <MapMarker
-            key={`${position.title}-${position.latlng}`}
-            position={position.latlng} // 마커를 표시할 위치
-            image={{
-              src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
-              size: {
-                width: 24,
-                height: 35
-              }, // 마커이미지의 크기입니다
-            }}
-            title={position.title} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-          />
-      ))} */}
           {contents.map((position, index) => (
               <MapMarker
                 key={`${position?.pickupLocation?.nameOfPlace}-${position?.pickupLocation?.latitude}`}

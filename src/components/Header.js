@@ -1,13 +1,8 @@
 import React from 'react';
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import font from '../styles/font';
-// import Responsive from '../components/common/Responsive'
 
-const UserInfo = styled.div`
-  font-weight: 800;
-  margin-right: 1rem;
-`;
 
 let Box = styled.div`
   width: 100%;
@@ -80,7 +75,7 @@ let Button = styled.button`
 // `;
 
 
-function Header() {
+function Header(props) {
   let navigate = useNavigate();
   return (
     <Box>
@@ -93,20 +88,20 @@ function Header() {
         호박공구마
       </LogoBox>
       <LoginBox>
-        <Button
-          onClick={() => {
-            navigate('/write');
-          }}
-        >
-          <font.H4>방만들기</font.H4>
-        </Button>
-              <Button onClick={() => {navigate('/login')}}>
-                <font.H4>로그인</font.H4>
-              </Button>
-              <Button onClick={() => {navigate('/register')}}>
-                <font.H4>회원가입</font.H4>
-              </Button>
-           
+        {
+          props.id == undefined
+          ?<>
+            <Button onClick={() => {navigate('/login')}}>
+              <font.H4>로그인</font.H4>
+            </Button>
+            <Button onClick={() => {navigate('/register')}}>
+              <font.H4>회원가입</font.H4>
+            </Button>
+          </>
+          :<Button onClick={() => {navigate('/write')}}>
+            <font.H4>방만들기</font.H4>
+          </Button>
+        }
       </LoginBox>
     </Box>
   );

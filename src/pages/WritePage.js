@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styled from 'styled-components';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import font from '../styles/font';
-import data from '../data';
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -169,7 +168,7 @@ function WritePage() {
   let NowCategory = (e) => setCategory(e.target.value);
   let MenuURL = (e) => setUrl(e.target.value);
   let Recruit = (e) => setParticipate(e.target.value);
-  let Dday = (e) => setDeadLine(e.target.value);
+  let Dday = (e) => setDeadLine(LimitTime + e.target.value);
   let Comment = (e) => setNotice(e.target.value);
 
   let LimitDate = new Date();

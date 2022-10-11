@@ -1,17 +1,10 @@
-import React from 'react';
-import { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Comment from './Comment';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import axios from 'axios';
-import font from '../styles/font';
-import WritePage from '../pages/WritePage';
-import { useNavigate } from 'react-router-dom';
 
-let PaddingBox = styled.div`
-  height: 30px;
-`;
 let Body = styled.div`
   width: 98%;
   height: auto;
@@ -194,14 +187,12 @@ function PostPageBody(props){
     let pickItem = contents.find(el=>el.itemId == id); //수정 el.id => itemId로
     // let pickItem = contents.find(el=>el.id == id); //수정 el.id => itemId로
     let pickItemMaker = users.find(el=>el.memberId == pickItem?.memberId);
-    // let participants = pickItem.participantsList;
-    // let [icon, setIcon] = useState([])
+
     let pickLat = pickItem?.pickupLocation?.latitude;
     let pickLng = pickItem?.pickupLocation?.longitude;
-    let navigate = useNavigate()
-    console.log(pickLat)
-    console.log(pickLng)
-    console.log(pickItem?.pickupLocation?.nameOfPlace)
+    // console.log(pickLat)
+    // console.log(pickLng)
+    // console.log(pickItem?.pickupLocation?.nameOfPlace)
 
 
     useEffect(()=>{

@@ -1,6 +1,5 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { Routes, Route, Link, useNavigate, useParams } from 'react-router-dom';
+import React,{ useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -95,9 +94,7 @@ function PostLists(){
     let [users, setUsers] = useState([]);
     let navigate = useNavigate();
     let {id} = useParams()
-    let [limit, setLimit] = useState('');
 
-    
     useEffect(()=>{
         axios.get(process.env.REACT_APP_TEST_ALLITEMS_URL).then((res)=>{
             let copy = [...res.data];
