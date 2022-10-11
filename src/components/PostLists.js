@@ -143,7 +143,7 @@ function PostLists(){
                     }}>
                         <ContentsBox>{a.restaurantName}</ContentsBox>
                         <ContentsBox>{user?.username}</ContentsBox>
-                        <ContentsBox>{a.participantsList.length+1}/{a.recruit}명</ContentsBox>
+                        <ContentsBox>{a.recruit}명</ContentsBox>
                         <ContentsBox>{getDistance(33.5563, 126.79581, lat2, lon2)}미터</ContentsBox>
                         <ContentsBox>{elapsedTime(a.deadline)}</ContentsBox>
                     </PostHead>
@@ -161,7 +161,7 @@ function PostLists(){
                     }}>
                         <ContentsBox>{a.restaurantName}</ContentsBox>
                         <ContentsBox>{user?.username}</ContentsBox>
-                        <ContentsBox>{a.participantsList.length+1}/{a.recruit}명</ContentsBox>
+                        <ContentsBox>{a.recruit}명</ContentsBox>
                         <ContentsBox>{getDistance(33.481510, 126.508923, lat2, lon2)}미터</ContentsBox>
                         <ContentsBox>{elapsedTime(a.deadline)}</ContentsBox>
                     </PostHead>

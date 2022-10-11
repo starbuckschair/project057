@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -54,7 +53,6 @@ let MapImg = styled.div`
 
 function PostListPage() {
   const [contents, setContents] = useState([]);
-  let {id} = useParams();
 
   useEffect(()=>{
     axios.get(process.env.REACT_APP_TEST_ALLITEMS_URL).then((res)=>{
@@ -68,6 +66,8 @@ function PostListPage() {
       console.log('실패함')
     })
  },[])
+
+
 
   return (
     <>
@@ -102,45 +102,20 @@ function PostListPage() {
             title={position.title} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
           />
       ))} */}
-          {
-            id == undefined
-            ?(
-              contents.map((position, index) => (
-                <MapMarker
-                  key={`${position?.pickupLocation?.nameOfPlace}-${position?.pickupLocation?.latitude}`}
-                  position={{"lat":position?.pickupLocation?.latitude, "lng": position?.pickupLocation?.longitude} } // 마커를 표시할 위치
-                  image={{
-                    src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
-                    size: {
-                      width: 24,
-                      height: 35
-                    }, // 마커이미지의 크기입니다
-                  }}
-                  title={position.title} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                />
-            ))
-            )
-            :(
-              contents.filter((el)=>
-                el.foodCategoryId == id
-              )
-              .map((position, index) => (
-                <MapMarker
-                  key={`${position?.pickupLocation?.nameOfPlace}-${position?.pickupLocation?.latitude}`}
-                  position={{"lat":position?.pickupLocation?.latitude, "lng": position?.pickupLocation?.longitude} } // 마커를 표시할 위치
-                  image={{
-                    src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
-                    size: {
-                      width: 24,
-                      height: 35
-                    }, // 마커이미지의 크기입니다
-                  }}
-                  title={position.title} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                />
-            ))
-            )
-          }
-          
+          {contents.map((position, index) => (
+              <MapMarker
+                key={`${position?.pickupLocation?.nameOfPlace}-${position?.pickupLocation?.latitude}`}
+                position={{"lat":position?.pickupLocation?.latitude, "lng": position?.pickupLocation?.longitude} } // 마커를 표시할 위치
+                image={{
+                  src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
+                  size: {
+                    width: 24,
+                    height: 35
+                  }, // 마커이미지의 크기입니다
+                }}
+                title={position.title} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+              />
+          ))}
           </Map>
         </MapImg>
         <FilterBar />

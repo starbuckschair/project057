@@ -116,6 +116,7 @@ let LiveInfoText = styled.div`
   justify-content: space-around;
   flex-direction: column;
 `;
+
 let LiveInfoTextTo = styled.div`
   margin-top: 2%;
   font-weight: 700;
@@ -182,6 +183,8 @@ function elapsedTime(date) {
   // 모든 단위가 맞지 않을 시
   return '곧 마감';
 }
+
+
 
 function PostPageBody(props){
     let [contents, setContents] = useState([]);
