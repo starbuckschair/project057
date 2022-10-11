@@ -311,8 +311,7 @@ function PostPageBody(props){
                                 ?<JoinButtonBox>
                                 <JoinButton onClick={()=>{
                                     axios.post(
-                                    // process.env.REACT_APP_TEST_JOIN_URL
-                                    `http://ec2-3-35-16-72.ap-northeast-2.compute.amazonaws.com:8080/items/${id}?memberId=14`
+                                    process.env.REACT_APP_TEST_MAKE_URL+`/${id}?memberId=14`
                                     )
                                     .then((response) => {
                                         console.log(response);
