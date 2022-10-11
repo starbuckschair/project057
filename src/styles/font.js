@@ -70,4 +70,10 @@ export default {
     line-height: 15px;
     letter-spacing: -0.25px;
   `,
+  BoldP: styled.div`
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+  `
 };

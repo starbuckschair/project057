@@ -20,54 +20,74 @@ const Background = styled.div`
   /* border: 1px solid red; */
 `;
 const FormBox = styled.div`
-  width: 500px;
+  width: 400px;
   height: 500px;
-  padding-top: 40px;
-  padding-left: 15px;
+  padding-top: 30px;
+  padding-left: 30px;
   border-radius: 3px;
   border: none;
   border: 1px solid hsl(210, 8%, 75%);
-  margin-bottom: 10px;
+  /* display: flex;
+  flex-direction: column; */
+`;
+const TitleZone = styled.div`
+  width: 80%;
+  height: 10%;
+  padding: 10px 20px;
+`;
+const InputZone = styled(TitleZone)`
+  height: 55%;
   display: flex;
   flex-direction: column;
-  > font.H1 {
-    margin-bottom: 5px;
-  }
-  > div {
-    margin-top: 5px;
-    margin-left: 15px;
-  }
+  /* border: 1px solid red; */
 `;
-const FormPosition = styled.div`
+
+const FormInfo = styled(TitleZone)`
+  /* border: 1px solid blue; */
+  width: 90%;
   display: flex;
-  margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-around;
 `;
 const FormTitle = styled.div`
-  width: 15%;
-  height: 20px;
+  width: 20%;
+  height: 25px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 `;
 const InputBox = styled.input`
-  width: 300px;
+  width: 80%;
   height: 25px;
-  padding: 4.5px;
+  padding: 2.5px;
   border-radius: 3px;
   border: none;
   outline: 1px solid hsl(210, 8%, 75%);
 `;
-const JoinButton = styled.button`
-  width: 300px;
-  height: 30px;
-  padding: 4.5px;
-  border-radius: 3px;
+const BtnZone = styled(TitleZone)`
+  height: 20%;
+  display: flex;
+  justify-content: center;
+`;
+
+const JoinButton = styled.input`
+  width: 150px;
+  height: 50px;
+  padding: 0.5em 1em;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
+  margin: 1em;
+  border-radius: 25px;
   border: none;
-  outline: 1px solid hsl(210, 8%, 75%);
-  margin-top: 20px;
+  background: #7d45a8;
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: 1px solid #7d45a8;
+  &:hover {
+    color: #f0be29;
+    cursor: pointer;
+  }
 `;
 
 function RegisterInfo() {
@@ -138,63 +158,75 @@ function RegisterInfo() {
       <Background>
         <form onSubmit={onSubmit}>
           <FormBox>
-            <font.H1>회원가입정보</font.H1>
-            <div>
-              <FormPosition>
-                <FormTitle>이름</FormTitle>
+            <TitleZone>
+              <font.H1>회원가입정보</font.H1>
+            </TitleZone>
+            <InputZone>
+              <FormInfo>
+                <FormTitle>
+                  <font.H4>이름</font.H4>
+                </FormTitle>
                 <InputBox
                   type="text"
                   name="name"
                   placeholder="name"
                   onChange={Named}
                 ></InputBox>
-              </FormPosition>
-            </div>
-            <FormPosition>
-              <FormTitle>이메일</FormTitle>
-              <InputBox
-                type="text"
-                name="emailId"
-                placeholder="email"
-                onChange={Email}
-              ></InputBox>
-            </FormPosition>
-            <FormPosition>
-              <FormTitle>비밀번호</FormTitle>
-              <InputBox
-                type="password"
-                name="pw"
-                placeholder="password"
-                onChange={Pass}
-              ></InputBox>
-            </FormPosition>
-            <FormPosition>
-              <FormTitle>연락처</FormTitle>
-              <InputBox
-                type="tel"
-                name="phone"
-                placeholder="phone"
-                onChange={Phone}
-              ></InputBox>
-            </FormPosition>
-            <FormPosition>
-              <FormTitle>결제수단</FormTitle>
-              <InputBox
-                type="text"
-                name="payment"
-                placeholder="payment"
-                onChange={Pay}
-              ></InputBox>
-            </FormPosition>
-            <div>
-              {/* <JoinButton type="submit" onClick={handleClick}>
+              </FormInfo>
+              <FormInfo>
+                <FormTitle>
+                  <font.H4>이메일</font.H4>
+                </FormTitle>
+                <InputBox
+                  type="text"
+                  name="emailId"
+                  placeholder="email"
+                  onChange={Email}
+                ></InputBox>
+              </FormInfo>
+              <FormInfo>
+                <FormTitle>
+                  <font.H4>비밀번호</font.H4>
+                </FormTitle>
+                <InputBox
+                  type="password"
+                  name="pw"
+                  placeholder="password"
+                  onChange={Pass}
+                ></InputBox>
+              </FormInfo>
+              <FormInfo>
+                <FormTitle>
+                  <font.H4>연락처</font.H4>
+                </FormTitle>
+                <InputBox
+                  type="tel"
+                  name="phone"
+                  placeholder="phone"
+                  onChange={Phone}
+                ></InputBox>
+              </FormInfo>
+              <FormInfo>
+                <FormTitle>
+                  <font.H4>결제수단</font.H4>
+                </FormTitle>
+                <InputBox
+                  type="text"
+                  name="payment"
+                  placeholder="payment"
+                  onChange={Pay}
+                ></InputBox>
+              </FormInfo>
+            </InputZone>
+            {/* <JoinButton type="submit" onClick={handleClick}>
                 가입하기
               </JoinButton> */}
-              <input type="submit" />
-            </div>
+            <BtnZone>
+              <JoinButton type="submit" />
+            </BtnZone>
           </FormBox>
         </form>
-        <Footer/>
+        <Footer />
       </Background>
     </>
   );

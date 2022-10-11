@@ -18,38 +18,27 @@ const Background = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid red; */
 `;
 const ContentsArea = styled.div`
   /* border: 1px solid yellow; */
-  width: 600px;
-  height: 630px;
+  width: 53%;
+  height: 90%;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
 `;
-const AddressBox = styled.div`
-  width: 500px;
-  height: 220px;
+const AddressBox = styled(ContentsArea)`
+  width: 90%;
+  height: 50%;
   padding: 15px;
   border-radius: 3px;
-  flex-direction: column;
-  align-items: center;
   border: none;
   outline: 1px solid hsl(210, 8%, 75%);
-  /* > h2 {
-    margin-top: 0px;
-    margin-bottom: 10px;
-  } */
-  > div {
-    display: flex;
-    justify-content: space-between;
-  }
 `;
-const WriteInfo = styled.div`
-  width: 500px;
-  height: 300px;
+const WriteInfo = styled(AddressBox)`
+  height: 400px;
   padding: 0px 15px;
   border-radius: 3px;
   border: none;
@@ -59,38 +48,35 @@ const WriteInfo = styled.div`
   justify-content: space-evenly;
 `;
 const WriteInfoChild = styled.div`
+  /* border: 1px solid blue; */
   width: 98%;
   height: 25px;
-  font-size: 13px;
-  font-weight: 500;
-  /* border: 1px solid blue; */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  > span {
-    font-size: 10pt;
-  }
 `;
 const Title = styled.div`
-  width: 20%;
+  width: 15%;
   height: 100%;
   display: flex;
   align-items: center;
+  /* border: 1px solid red; */
 `;
 const Content = styled.div`
   width: 80%;
   height: 100%;
   display: flex;
-  align-items: flex-start;
+  justify-content: flex-start;
   > div {
     height: 100%;
     margin-left: 5px;
     color: gray;
     display: flex;
     align-items: center;
+    font-size: 12px;
   }
   > select {
-    width: 100%;
+    width: 90%;
     height: 100%;
     border-radius: 3px;
     resize: none;
@@ -101,8 +87,30 @@ const Content = styled.div`
     }
   }
 `;
+const AddBtn = styled.button`
+  width: 110px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px #666666;
+  color: white;
+  margin: 1em;
+  padding: 0.5em 1em;
+  border-radius: 25px;
+  background: #7d45a8;
+  text-decoration: none;
+  /* border: 1px solid solid #7e30d1; */
+  border: none;
+  outline: 1px solid #7d45a8;
+  &:hover {
+    color: #f0be29;
+    cursor: pointer;
+  }
+`;
 const InputBox = styled.input`
-  width: 450px;
+  /* width: 450px; */
+  width: 90%;
   height: 18px;
   padding: 4.5px;
   border-radius: 3px;
@@ -110,11 +118,11 @@ const InputBox = styled.input`
   outline: 1px solid hsl(210, 8%, 75%);
 `;
 const LimitInput = styled(InputBox)`
-  width: 150px;
+  width: 43%;
 `;
 const TextareaBox = styled.textarea`
-  width: 450px;
-  height: 30px;
+  width: 90%;
+  height: 40px;
   overflow: visible;
   padding: 4px;
   border-radius: 3px;
@@ -122,7 +130,13 @@ const TextareaBox = styled.textarea`
   border: none;
   outline: 1px solid hsl(210, 8%, 75%);
 `;
-const SubmitBtn = styled.button`
+const BtnZone = styled.div`
+  width: 500px;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+`;
+const SubmitBtn = styled.input`
   width: 110px;
   height: 30px;
   display: flex;
@@ -143,26 +157,6 @@ const SubmitBtn = styled.button`
     cursor: pointer;
   }
 `;
-const SubmitInput = styled(InputBox)`
-  width: 110px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 1px 1px 3px #666666;
-  color: white;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border-radius: 28px;
-  background: #7d45a8;
-  text-decoration: none;
-  border: none;
-  outline: 1px solid #7d45a8;
-  &:hover {
-    color: #f0be29;
-    cursor: pointer;
-  }
-`;
 
 function WritePage() {
   let navigate = useNavigate();
@@ -172,28 +166,38 @@ function WritePage() {
   let [deadline, setDeadLine] = useState('');
   let [notice, setNotice] = useState('');
 
-
   let NowCategory = (e) => setCategory(e.target.value);
   let MenuURL = (e) => setUrl(e.target.value);
   let Recruit = (e) => setParticipate(e.target.value);
-  let Dday = (e) => setDeadLine(e.target.value );
+  let Dday = (e) => setDeadLine(e.target.value);
   let Comment = (e) => setNotice(e.target.value);
 
   let LimitDate = new Date();
-  LimitDate.setMinutes(LimitDate.getMinutes()+deadline/1)
-  console.log(LimitDate)
+  LimitDate.setMinutes(LimitDate.getMinutes() + deadline / 1);
+  console.log(LimitDate);
 
-  const LimitTime =(a)=>{
-   let today = new Date();   
-  let year = today.getFullYear(); // 년도
-  let month = today.getMonth() + 1;  // 월
-  let date = today.getDate();  // 날짜
-  let hours = today.getHours(); // 시
-  let minutes = today.setMinutes(today.getMinutes()+a/1);  // 분  
-  let seconds = today.getSeconds();  // 초
-  console.log(year + '-' + month + '-' + date + ' ' + hours + ":" + minutes+ ":" + seconds  )
-  }
-
+  const LimitTime = (a) => {
+    let today = new Date();
+    let year = today.getFullYear(); // 년도
+    let month = today.getMonth() + 1; // 월
+    let date = today.getDate(); // 날짜
+    let hours = today.getHours(); // 시
+    let minutes = today.setMinutes(today.getMinutes() + a / 1); // 분
+    let seconds = today.getSeconds(); // 초
+    console.log(
+      year +
+        '-' +
+        month +
+        '-' +
+        date +
+        ' ' +
+        hours +
+        ':' +
+        minutes +
+        ':' +
+        seconds,
+    );
+  };
 
   const SubmitWrite = () => {
     let posts = {
@@ -220,7 +224,7 @@ function WritePage() {
     };
 
     return axios
-    .post(process.env.REACT_APP_TEST_MAKE_URL, posts)
+    .post(process.env.REACT_APP_TEST_URL+"/items", posts)
     .then((res) => {
       console.log(res.data)
       navigate(`/post/${res.data.itemId}`)
@@ -232,7 +236,7 @@ function WritePage() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    SubmitWrite()
+    SubmitWrite();
   };
 
   return (
@@ -240,26 +244,29 @@ function WritePage() {
       <Header />
       <PaddingBox />
       <Background>
-          <ContentsArea>
-            <AddressBox>
-              <font.H1>배송지 선택</font.H1>
-              <div>김제주 </div>
-              <p>제주특별자치도 제주시 한라산 백록담, 101동 </p>
-              <p>010-0707-8282</p>
-              <p>문 앞</p>
-              <div>
-                <button>수정</button>
-                <button>선택</button>
-              </div>
-            </AddressBox>
-            <button>+배송지추가</button>
-
+        <ContentsArea>
+          <AddressBox>
+            <font.H1>배송지 선택</font.H1>
+            <div>김제주 </div>
+            <p>제주특별자치도 제주시 한라산 백록담, 101동 </p>
+            <p>010-0707-8282</p>
+            <p>문 앞</p>
+            <div>
+              <button>수정</button>
+              <button>선택</button>
+            </div>
+          </AddressBox>
+          <BtnZone>
+            <AddBtn>+배송지추가</AddBtn>
+          </BtnZone>
           <form onSubmit={onSubmit}>
             <WriteInfo>
               <WriteInfoChild>
-                <Title>카테고리</Title>
+                <Title>
+                  <font.H4>카테고리</font.H4>
+                </Title>
                 <Content>
-                  <select  onChange={NowCategory}>
+                  <select onChange={NowCategory}>
                     <option value="선택">--선택--</option>
                     <option value="1">1인분 주문</option>
                     <option value="2">프렌차이즈</option>
@@ -277,7 +284,9 @@ function WritePage() {
                 </Content>
               </WriteInfoChild>
               <WriteInfoChild>
-                <Title>URL</Title>
+                <Title>
+                  <font.H4>URL</font.H4>
+                </Title>
                 <Content>
                   <InputBox
                     placeholder="배달어플에서 주문희망 상품페이지 url을 복사붙여넣기 하세요"
@@ -287,7 +296,9 @@ function WritePage() {
                 </Content>
               </WriteInfoChild>
               <WriteInfoChild>
-                <Title>참여하기</Title>
+                <Title>
+                  <font.H4>참여하기</font.H4>
+                </Title>
                 <Content>
                   <LimitInput
                     type="number"
@@ -301,10 +312,12 @@ function WritePage() {
                 </Content>
               </WriteInfoChild>
               <WriteInfoChild>
-                <Title>마감시간</Title>
+                <Title>
+                  <font.H4>마감시간</font.H4>
+                </Title>
                 <Content>
                   <LimitInput
-                    type="number"
+                    type="time"
                     name="deadline"
                     step="30"
                     min="0"
@@ -315,7 +328,9 @@ function WritePage() {
                 </Content>
               </WriteInfoChild>
               <WriteInfoChild>
-                <Title>추가사항</Title>
+                <Title>
+                  <font.H4>추가사항</font.H4>
+                </Title>
                 <Content>
                   <TextareaBox
                     placeholder="참여자에게 전달사항을 입력해주세요."
@@ -325,11 +340,13 @@ function WritePage() {
                 </Content>
               </WriteInfoChild>
             </WriteInfo>
-            <input type="submit" value="방만들기" />
+            <BtnZone>
+              <SubmitBtn type="submit" value="방만들기" />
+            </BtnZone>
           </form>
-          </ContentsArea>
-        <Footer />
+        </ContentsArea>
       </Background>
+      <Footer />
     </>
   );
 }
