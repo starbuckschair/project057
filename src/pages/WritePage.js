@@ -211,8 +211,8 @@ function WritePage() {
         "korAddress": "제주도 연북로",
         "addressDetail": "101동 101호",
         "type": 1,
-        "latitude": 33.556355,
-        "longitude": 126.79581
+        "latitude": 33.481510,
+        "longitude": 126.508923
     },
     "restaurantName": "추후인풋창추가",
     "restaurantUrl": `${menuUrl}`,

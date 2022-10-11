@@ -52,24 +52,6 @@ let MapImg = styled.div`
 
 function PostListPage() {
   const [contents, setContents] = useState([]);
-  const positions = [
-    {
-      title: "더큰내일센터",
-      latlng: { lat: 33.556245, lng: 126.792824 },
-    },
-    {
-      title: "매종글래드",
-      latlng: { lat: 33.556468, lng: 126.794843 },
-    },
-    {
-      title: "노형아이파크아파트",
-      latlng: { lat:33.556689, lng: 126.796862 },
-    },
-    {
-      title: "제주부영아파트1차",
-      latlng: { lat: 33.558393, lng: 126.798881 },
-    },
-  ]
 
   useEffect(()=>{
     axios.get(process.env.REACT_APP_TEST_ALLITEMS_URL).then((res)=>{
