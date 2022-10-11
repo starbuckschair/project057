@@ -4,11 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { combineReducers, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import rootReducer, { rootSaga } from './modules';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 
@@ -22,12 +17,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  // <Provider store={store}>
     <BrowserRouter>
       <App />
-    </BrowserRouter>,
-  {/* </Provider> */}
-  
+    </BrowserRouter>
   // </React.StrictMode>
 );
 

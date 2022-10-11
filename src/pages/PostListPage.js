@@ -6,7 +6,7 @@ import PostLists from '../components/PostLists';
 import FilterBar from '../components/FilterBar';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import axios from 'axios';
-import HeaderContainer from '../containers/common/HeaderContainer';
+
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -71,7 +71,7 @@ function PostListPage() {
 
   return (
     <>
-      <HeaderContainer />
+      <Header />
       <PaddingBox />
       <Body>
         <Describe>
