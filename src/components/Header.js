@@ -29,7 +29,7 @@ let LogoBox = styled.div`
   justify-content: center;
   align-items: center;
   /* background: url('./pumkinlogo.png'); */
-  /* border: 1px solid #7e30d1; */
+  border: 1px solid #7e30d1;
   border-radius: 10px;
   &:hover {
     color: #f0be29;
@@ -84,7 +84,7 @@ function Header() {
           navigate('/');
         }}
       >
-        <img src="url(/pumkinlogo.png)" alt="Logo" />
+        {/* <img src="url(./pumkinlogo.png)" alt="Logo" /> */}
         호박공구마
       </LogoBox>
       <LoginBox>
