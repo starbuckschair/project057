@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Comment from './Comment';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import WritePage from '../pages/WritePage';
 
 let Body = styled.div`
   width: 98%;
@@ -190,6 +192,7 @@ function PostPageBody(){
 
     let pickLat = pickItem?.pickupLocation?.latitude;
     let pickLng = pickItem?.pickupLocation?.longitude;
+    let navigate = useNavigate()
     // console.log(pickLat)
     // console.log(pickLng)
     // console.log(pickItem?.pickupLocation?.nameOfPlace)
