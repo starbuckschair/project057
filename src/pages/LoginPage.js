@@ -104,6 +104,7 @@ const KaKaoLogin = styled(LoginButton)`
 `;
 
 function LoginPage({ setIsLogin, setUserInfo }) {
+  const [isHere, setIsHere] = useState(false)
   // const [Email, setEmail] = useState('');
   // const [Password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -111,10 +112,11 @@ function LoginPage({ setIsLogin, setUserInfo }) {
     userId: '',
     password: '',
   });
-  const [checkedKeepLogin, setCheckedKeepLogin] = useState(false);
+  const [checkedKeepLogin, setCheckedKeepLogin] = useState('false');
   const [errorMessage, setErrorMessage] = useState('');
   const SignIn = () => {
-    navigate('/',{state: {id:1}});
+    setIsHere(true)
+    navigate('/')
   };
   const handleInputValue = (key) => (e) => {
     setLoginInfo({ ...loginInfo, [key]: e.target.value });
@@ -134,10 +136,11 @@ function LoginPage({ setIsLogin, setUserInfo }) {
       .post(process.env.REACT_APP_TEST_LOGIN_URL,{loginInfo, checkedKeepLogin})
       .then((res) => {
         // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
-        SignIn();
         console.log(res.data);
-        setUserInfo(res.data);
-        setIsLogin(true);
+        // setUserInfo(res.data);
+        // setIsLogin(true);
+        
+        SignIn();
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -148,7 +151,7 @@ function LoginPage({ setIsLogin, setUserInfo }) {
 
   return (
     <>
-      <Header />
+      <Header isHere={isHere}/>
       <PaddingBox />
       <Background>
         <ContentsBox>

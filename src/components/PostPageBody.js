@@ -179,7 +179,7 @@ function elapsedTime(date) {
 
 
 
-function PostPageBody(props){
+function PostPageBody(){
     let [contents, setContents] = useState([]);
     let [users, setUsers] = useState([]);
     let [render, setRender]= useState(false) //참여하기 클릭 후 랜더를 위함 함수

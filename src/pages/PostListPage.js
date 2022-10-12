@@ -6,8 +6,6 @@ import PostLists from '../components/PostLists';
 import FilterBar from '../components/FilterBar';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import axios from 'axios';
-import { useLocation } from 'react-router';
-
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -54,10 +52,6 @@ let MapImg = styled.div`
 
 function PostListPage() {
   const [contents, setContents] = useState([]);
-  // const location = useLocation();
-  // const id = location.state.id;
-  // const [islogin, setIslogin] = useState(id)
-  
 
   useEffect(()=>{
     axios.get(process.env.REACT_APP_TEST_ALLITEMS_URL).then((res)=>{
@@ -65,7 +59,7 @@ function PostListPage() {
         // console.log(copy);
         setContents(copy);
         // console.log(choice)
-
+        // setIsLogin(location.state.check)
     })
     .catch(()=>{
       console.log('실패함')
@@ -76,7 +70,6 @@ function PostListPage() {
 
   return (
     <>
-      {/* <Header isLogin={islogin}/> */}
       <Header />
       <PaddingBox />
       <Body>

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import font from '../styles/font';
+import { useLocation } from 'react-router';
+import { useEffect } from 'react';
 
 
 let Box = styled.div`
@@ -77,6 +79,10 @@ let Button = styled.button`
 
 function Header(props) {
   let navigate = useNavigate();
+  const location = useLocation();
+  console.log(props.isHere)
+
+
   return (
     <Box>
       <LogoBox
@@ -89,7 +95,7 @@ function Header(props) {
       </LogoBox>
       <LoginBox>
         {
-          props.id == undefined
+          props.isHere == undefined
           ?<>
             <Button onClick={() => {navigate('/login')}}>
               <font.H4>로그인</font.H4>
