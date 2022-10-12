@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import font from '../styles/font';
-import { useLocation } from 'react-router';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { changeName } from "../store"
 
 
 let Box = styled.div`
@@ -77,12 +77,16 @@ let Button = styled.button`
 // `;
 
 
-function Header(props) {
+function Header() {
   let navigate = useNavigate();
-  const location = useLocation();
-  console.log(props.isHere)
+  const isLogin = useSelector((state) => { return state.user } )
+  const dispatch = useDispatch()
+  const [render, setRender] = useState(false)
+  console.log(isLogin)
 
-
+    useEffect(()=>{
+      console.log('로그인상태점검')
+    },[render])
   return (
     <Box>
       <LogoBox
@@ -95,8 +99,19 @@ function Header(props) {
       </LogoBox>
       <LoginBox>
         {
-          props.isHere == undefined
+          isLogin === true
           ?<>
+            <Button onClick={() => {navigate('/write')}}>
+              <font.H4>방만들기</font.H4>
+            </Button>
+            <Button onClick={() => {
+              dispatch(changeName());
+              }
+              }>
+              <font.H4>로그아웃</font.H4>
+            </Button>
+          </>
+          :<>
             <Button onClick={() => {navigate('/login')}}>
               <font.H4>로그인</font.H4>
             </Button>
@@ -104,9 +119,6 @@ function Header(props) {
               <font.H4>회원가입</font.H4>
             </Button>
           </>
-          :<Button onClick={() => {navigate('/write')}}>
-            <font.H4>방만들기</font.H4>
-          </Button>
         }
       </LoginBox>
     </Box>

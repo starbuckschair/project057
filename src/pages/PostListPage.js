@@ -7,6 +7,7 @@ import FilterBar from '../components/FilterBar';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import axios from 'axios';
 
+
 let PaddingBox = styled.div`
   height: 60px;
 `;

@@ -5,6 +5,9 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import font from '../styles/font';
+import { useDispatch, useSelector } from "react-redux";
+import { changeName } from "../store"
+
 
 let PaddingBox = styled.div`
   height: 60px;
@@ -104,7 +107,6 @@ const KaKaoLogin = styled(LoginButton)`
 `;
 
 function LoginPage({ setIsLogin, setUserInfo }) {
-  const [isHere, setIsHere] = useState(false)
   // const [Email, setEmail] = useState('');
   // const [Password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -114,8 +116,16 @@ function LoginPage({ setIsLogin, setUserInfo }) {
   });
   const [checkedKeepLogin, setCheckedKeepLogin] = useState('false');
   const [errorMessage, setErrorMessage] = useState('');
+  const a = useSelector((state) => { return state } )
+  const dispatch = useDispatch();
+  console.log(a)
+
+
+
+
+
+
   const SignIn = () => {
-    setIsHere(true)
     navigate('/')
   };
   const handleInputValue = (key) => (e) => {
@@ -139,6 +149,7 @@ function LoginPage({ setIsLogin, setUserInfo }) {
         console.log(res.data);
         // setUserInfo(res.data);
         // setIsLogin(true);
+        dispatch(changeName())
         
         SignIn();
       })
@@ -151,7 +162,7 @@ function LoginPage({ setIsLogin, setUserInfo }) {
 
   return (
     <>
-      <Header isHere={isHere}/>
+      <Header/>
       <PaddingBox />
       <Background>
         <ContentsBox>
