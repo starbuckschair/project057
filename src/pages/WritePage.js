@@ -200,7 +200,7 @@ function WritePage() {
 
   const SubmitWrite = () => {
     let posts = {
-      "memberId": 12, 
+      "memberId": 1, 
       "title": "테스트중입니다",
       "foodCategoryId": `${category}`,
       "deadline": `${deadline}`,
@@ -223,7 +223,7 @@ function WritePage() {
     };
 
     return axios
-    .post(process.env.REACT_APP_TEST_URL+"/items", posts)
+    .post(process.env.REACT_APP_TEST_MAKE_URL, posts)
     .then((res) => {
       console.log(res.data)
       navigate(`/post/${res.data.itemId}`)
