@@ -175,7 +175,7 @@ function LoginPage({ setIsLogin, setUserInfo }) {
               <font.H3>아이디</font.H3>
               <InputBox
                 type="text"
-                placeholder="이메일주소 입력"
+                placeholder="아이디를 입력해주세요"
                 onChange={handleInputValue('userId')}
               ></InputBox>
             </div>

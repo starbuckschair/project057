@@ -5,7 +5,6 @@ import font from '../styles/font';
 import { useDispatch, useSelector } from "react-redux";
 import { changeName } from "../store"
 
-
 let Box = styled.div`
   width: 100%;
   height: 50px;
@@ -82,7 +81,7 @@ function Header() {
   const isLogin = useSelector((state) => { return state.user } )
   const dispatch = useDispatch()
   const [render, setRender] = useState(false)
-  console.log(isLogin)
+  // console.log(isLogin)
 
     useEffect(()=>{
       console.log('로그인상태점검')
