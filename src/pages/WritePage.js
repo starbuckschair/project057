@@ -316,7 +316,6 @@ function WritePage() {
                 </Title>
                 <Content>
                   <LimitInput
-                    type="time"
                     name="deadline"
                     step="30"
                     min="0"
